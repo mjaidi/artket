@@ -10,10 +10,82 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_03_121102) do
+ActiveRecord::Schema.define(version: 2018_09_03_131850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "art_photos", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "artwork_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_art_photos_on_artwork_id"
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.date "birth_date"
+    t.date "death_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "artworks", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "year"
+    t.string "dimensions"
+    t.float "price"
+    t.bigint "gallery_id"
+    t.bigint "exhibition_id"
+    t.bigint "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artworks_on_artist_id"
+    t.index ["exhibition_id"], name: "index_artworks_on_exhibition_id"
+    t.index ["gallery_id"], name: "index_artworks_on_gallery_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exhibitions", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "cover_photo"
+    t.bigint "gallery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_exhibitions_on_gallery_id"
+  end
+
+  create_table "galleries", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "full_address"
+    t.string "phone"
+    t.string "email"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_galleries_on_user_id"
+  end
+
+  create_table "join_art_categories", force: :cascade do |t|
+    t.bigint "artwork_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_join_art_categories_on_artwork_id"
+    t.index ["category_id"], name: "index_join_art_categories_on_category_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +99,12 @@ ActiveRecord::Schema.define(version: 2018_09_03_121102) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "art_photos", "artworks"
+  add_foreign_key "artworks", "artists"
+  add_foreign_key "artworks", "exhibitions"
+  add_foreign_key "artworks", "galleries"
+  add_foreign_key "exhibitions", "galleries"
+  add_foreign_key "galleries", "users"
+  add_foreign_key "join_art_categories", "artworks"
+  add_foreign_key "join_art_categories", "categories"
 end
