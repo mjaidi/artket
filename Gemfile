@@ -27,6 +27,8 @@ gem 'carrierwave', '~> 1.2'
 # Maps Setup - geocode and display
 gem "geocoder"
 
+# Seeding Fake Data
+gem 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
