@@ -1,2 +1,18 @@
 <h1>Artwork#index</h1>
 <p>Find me in app/views/artwork/index.html.erb</p>
+<ul>
+  <% @galleries.each do |gallery| %>
+  <li>
+    <p><%= gallery.name %></p>
+    <p><%= gallery.full_address %></p>
+  </li>
+  <% end %>
+</ul>
+
+
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+></div>

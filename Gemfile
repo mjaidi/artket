@@ -20,6 +20,14 @@ gem 'webpacker'
 #authorization with pundit
 gem "pundit"
 
+#image uploading through cloudinary
+gem "cloudinary"
+gem 'carrierwave', '~> 1.2'
+
+# Maps Setup - geocode and display
+gem "geocoder"
+
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
