@@ -1,4 +1,4 @@
-class ArtworkPolicy < ApplicationPolicy
+class GalleryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
