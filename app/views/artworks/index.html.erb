@@ -1,10 +1,24 @@
 <h1>Artwork#index</h1>
 <p>Find me in app/views/artwork/index.html.erb</p>
 <ul>
-  <% @galleries.each do |gallery| %>
+  <% @artworks.each do |artwork| %>
   <li>
-    <p><%= gallery.name %></p>
-    <p><%= gallery.full_address %></p>
+    <%= cl_image_tag(artwork.art_photos.first.photo, :height=>100, :width=>70, :crop=>"scale") %>
+    <p>Name: <%= artwork.name %></p>
+    <p>Description: <%= artwork.description %></p>
+    <p>Category: <%= artwork.categories.first.name %></p>
+    <p>Year: <%= artwork.year %></p>
+    <p>Dimensions: <%= artwork.dimensions %></p>
+    <p>Price: $<%= artwork.price %></p>
+    <p>Artist: <%= artwork.artist.name %></p>
+    <p>Artist Birth: <%= artwork.artist.birth_date %></p>
+    <p>Artist Death: <%= artwork.artist.death_date %></p>
+    <p>Gallery Name <%= artwork.gallery.name %></p>
+    <p>Gallery Address:<%= artwork.gallery.full_address %></p>
+    <p>Exhibition Name: <%= artwork.exhibition.name %></p>
+    <p>Exhibition Start: <%= artwork.exhibition.start_date %></p>
+    <p>Exhibition End: <%= artwork.exhibition.end_date %></p>
+
   </li>
   <% end %>
 </ul>
