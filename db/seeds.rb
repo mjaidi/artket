@@ -4,11 +4,11 @@ puts "Cleaning Database"
 
 Cloudinary::Api.delete_all_resources
 ArtPhoto.destroy_all
+JoinArtCategory.destroy_all
 Artwork.destroy_all
 Artist.destroy_all
 Exhibition.destroy_all
 Gallery.destroy_all
-JoinArtCategory.destroy_all
 Category.destroy_all
 User.destroy_all
 
@@ -31,7 +31,8 @@ categories = ["Peinture", "Sculpture", "Photographie", "Editions", "Dessin"]
 
 
 now = Date.today
-a_millenia_ago = now - 365*1000
+birth = Date.today - 25
+a_millenia_ago = now - 365*200
 
 
 puts "Adding Data"
@@ -58,8 +59,9 @@ exhibition2 = Exhibition.create!(gallery_id: gallery2.id, name: "Thema Photograp
 #seeding artists
 
 5.times do 
-  random_date = rand(a_millenia_ago..now)
-  random_age = random_date + rand(25..90)
+  random_date = rand(a_millenia_ago..birth)
+  random_age = random_date + (rand(15..60)*365)
+  random_age = now if random_age > now
   Artist.create!(name: Faker::Artist.name, description: Faker::Lorem.paragraph, birth_date: random_date, death_date: random_age)
 end
 start_artist_id = Artist.first.id
@@ -72,7 +74,7 @@ i = 0
 9.times do 
 art = Artwork.create!(gallery_id: [gallery1.id, gallery2.id].sample, exhibition_id: [exhibition1.id, exhibition2.id].sample, artist_id: rand(start_artist_id..end_artist_id),
                       name: Faker::Ancient.hero, description: Faker::Lorem.paragraph, dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))  
-art.year = rand(art.artist.birth_date..art.artist.death_date)
+art.year = rand(art.artist.birth_date..art.artist.death_date).year
 art.save
 
 photo = ArtPhoto.new(artwork_id: art.id)
