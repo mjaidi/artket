@@ -3,7 +3,7 @@
 <ul>
   <% @artworks.each do |artwork| %>
   <li>
-    <%= cl_image_tag(artwork.art_photos.first.photo, :height=>100, :width=>70, :crop=>"scale") %>
+    <%= cl_image_tag(artwork.art_photos.first.photo, :height=>200, :width=>140, :crop=>"scale") %>
     <p>Name: <%= artwork.name %></p>
     <p>Description: <%= artwork.description %></p>
     <ul>
@@ -20,11 +20,14 @@
     <p>Year: <%= artwork.year %></p>
     <p>Dimensions: <%= artwork.dimensions %></p>
     <p>Price: $<%= artwork.price %></p>
+    <%= cl_image_tag(artwork.artist.photo, :height=>100, :width=>70, :crop=>"scale") %>
     <p>Artist: <%= artwork.artist.first_name %>, <%= artwork.artist.last_name %> </p>
     <p>Artist Birth: <%= artwork.artist.birth_date %></p>
     <p>Artist Death: <%= artwork.artist.death_date %></p>
+    <%= cl_image_tag(artwork.gallery.photo, :height=>100, :width=>70, :crop=>"scale") %>
     <p>Gallery Name <%= artwork.gallery.name %></p>
     <p>Gallery Address:<%= artwork.gallery.full_address %></p>
+    <%= cl_image_tag(artwork.exhibition.cover_photo, :height=>100, :width=>70, :crop=>"scale") %>
     <p>Exhibition Name: <%= artwork.exhibition.name %></p>
     <p>Exhibition Start: <%= artwork.exhibition.start_date %></p>
     <p>Exhibition End: <%= artwork.exhibition.end_date %></p>
