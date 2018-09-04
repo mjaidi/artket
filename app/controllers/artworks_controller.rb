@@ -4,14 +4,25 @@ class ArtworksController < ApplicationController
 
   def index
     @artworks = policy_scope(Artwork)
-    @galleries = Gallery.all
 
-    @markers = @galleries.map do |gallery|
-      {
-        lat: gallery.latitude,
-        lng: gallery.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-      }
+    if params[:query].present?
+      @artworks = Artwork.search("%#{params[:query]}%", hitsPerPage: 4)
+      @markers = @artworks.map do |gallery|
+        {
+          lat: gallery.gallery.latitude,
+          lng: gallery.gallery.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
+    else
+      @artworks = Artwork.all
+      @markers = @artworks.map do |gallery|
+        {
+          lat: gallery.gallery.latitude,
+          lng: gallery.gallery.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
     end
   end
 
