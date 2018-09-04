@@ -1,0 +1,52 @@
+.banner-home {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(banner.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  color: white;
+  height: 100vh;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  text-align: center;
+.banner-title p{
+  font-size: 72px;
+}
+
+.galerie-name p{
+  font-size: 72px;
+}
+
+.presente p{
+  font-size: 36px;
+}
+.banner-subtitle p{
+  font-size: 36px;
+}
+}
+
+.ban-expo {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("http://www.uprising-art.com/wp-content/uploads/2012/10/Fausto-Ortiz-Horizontes-de-Paz.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    color: white;
+    font-size: 50px;
+  }
+}
+
+.suggestions {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
