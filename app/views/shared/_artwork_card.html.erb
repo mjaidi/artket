@@ -1,13 +1,13 @@
 <div class="card-art">
 
-  <div class="card-body" style="background-image: url('https://www.thebroad.org/sites/default/files/art/koons_balloondog_blue_white_studio_web.jpg')">
+  <div class="card-body" style="background-image: url(<%= cl_image_path(artwork.art_photos.first.photo) %>)">
   </div>
 
   <div class="card-footer">
     <div class="card-title">
-      <p> Titre </p>
+      <p><%= artwork.name %> </p>
       <div class="card-desc">
-        <p> Artist's name </p>
+        <p><%= artwork.artist.first_name %> <%= artwork.artist.last_name %></p>
       </div>
     </div>
     <div class="controls">
