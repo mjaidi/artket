@@ -1,3 +1,16 @@
-<h1>Gallery show page</h1>
+<!-- Gallery name -->
+  <div class="title-galeries">
+    <p><%= @gallery.name %></p>
+  </div>
 
-<p><%= @gallery.name %></p>
+<!-- Gallery banner -->
+  <div class="ban-gallery" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@gallery.photo) %>);">
+  </div>
+
+<!-- Social -->
+<div class="social">
+  <a href="#"><i class="fab fa-facebook"></i></a>
+  <a href="#"><i class="fab fa-twitter"></i></a>
+  <a href="#"><i class="fab fa-instagram"></i></a>
+</div>
+

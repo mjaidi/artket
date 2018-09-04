@@ -2,7 +2,6 @@ require 'date'
 
 puts "Cleaning Database"
 
-Cloudinary::Api.delete_all_resources
 ArtPhoto.destroy_all
 JoinArtCategory.destroy_all
 Artwork.destroy_all
@@ -16,7 +15,7 @@ puts "Creating Data Arrays"
 
 home_banner = "http://wossthemes.com/artday/wp-content/uploads/2016/07/01_slider_image.jpg"
 
-artwork_photos = ["http://wossthemes.com/artday/wp-content/uploads/2016/01/product_19.png", 
+artwork_photos = ["http://wossthemes.com/artday/wp-content/uploads/2016/01/product_19.png",
            "http://wossthemes.com/artday/wp-content/uploads/2016/01/product_18.png",
            "http://wossthemes.com/artday/wp-content/uploads/2016/01/product_17.png",
            "http://wossthemes.com/artday/wp-content/uploads/2016/01/product_15.png",
@@ -85,7 +84,7 @@ exhibition2.save
 
 #seeding artists
 i = 0
-5.times do 
+5.times do
   random_date = rand(a_millenia_ago..birth)
   random_age = random_date + (rand(15..60)*365)
   random_age = now if random_age > now
@@ -101,9 +100,9 @@ end_artist_id = Artist.last.id
 
 i = 0
 
-9.times do 
+9.times do
 art = Artwork.create!(gallery_id: [gallery1.id, gallery2.id].sample, exhibition_id: [exhibition1.id, exhibition2.id].sample, artist_id: rand(start_artist_id..end_artist_id),
-                      name: Faker::Ancient.hero, description: Faker::Lorem.paragraph, dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))  
+                      name: Faker::Ancient.hero, description: Faker::Lorem.paragraph, dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
 art.year = rand(art.artist.birth_date..art.artist.death_date).year
 art.save
 
@@ -116,6 +115,6 @@ photo.save
 end
 end
 
- 
+
 
 puts "Seed Completed"
