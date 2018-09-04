@@ -1,46 +1,28 @@
 <div id="index-page"></div>
-<h1>Artwork#index</h1>
-<p>Find me in app/views/artwork/index.html.erb</p>
-<ul>
-  <% @artworks.each do |artwork| %>
-  <li>
-    <%= cl_image_tag(artwork.art_photos.first.photo, :height=>200, :width=>140, :crop=>"scale") %>
-    <p>Name: <%= artwork.name %></p>
-    <p>Description: <%= artwork.description %></p>
-    <ul>
-    <p>Category: <% artwork.categories.each do |category| %>
-      <li>
-      <% if category.parent_category != nil %>
-        <%= category.parent_category.name %> , 
-      <% end %>
-      <%= category.name %>
-      </li>
-      <% end %>
-    </p>
-    </ul>
-    <p>Year: <%= artwork.year %></p>
-    <p>Dimensions: <%= artwork.dimensions %></p>
-    <p>Price: $<%= artwork.price %></p>
-    <%= cl_image_tag(artwork.artist.photo, :height=>100, :width=>70, :crop=>"scale") %>
-    <p>Artist: <%= artwork.artist.first_name %>, <%= artwork.artist.last_name %> </p>
-    <p>Artist Birth: <%= artwork.artist.birth_date %></p>
-    <p>Artist Death: <%= artwork.artist.death_date %></p>
-    <%= cl_image_tag(artwork.gallery.photo, :height=>100, :width=>70, :crop=>"scale") %>
-    <p>Gallery Name <%= artwork.gallery.name %></p>
-    <p>Gallery Address:<%= artwork.gallery.full_address %></p>
-    <%= cl_image_tag(artwork.exhibition.cover_photo, :height=>100, :width=>70, :crop=>"scale") %>
-    <p>Exhibition Name: <%= artwork.exhibition.name %></p>
-    <p>Exhibition Start: <%= artwork.exhibition.start_date %></p>
-    <p>Exhibition End: <%= artwork.exhibition.end_date %></p>
+<!-- Results Grid -->
+<div class="title-galeries">
+  <p> Search Results </p>
+</div>
 
-  </li>
-  <% end %>
-</ul>
-
-
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-></div>
+<div id="main-results-page-grid">
+  <div class="wrapper-first" id="art-results-wrapper">
+    <!-- Artwork card Result -->
+    <div class="container" id="results-container">
+      <div class="row">
+        <% @artworks.each do |artwork| %>
+          <div class="col-xs-12 col-md-6 col-lg-4">
+            <%= render "shared/artwork_card", artwork: artwork %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div> 
+  <div class="wrapper-first" id="map-wrapper">
+    <div
+      id="map"
+      style="
+      height: 100vh;"
+      data-markers="<%= @markers.to_json %>"
+      ></div>
+  </div>  
+</div>  

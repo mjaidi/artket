@@ -6,7 +6,7 @@ class ArtworksController < ApplicationController
     @artworks = policy_scope(Artwork)
 
     if params[:query].present?
-      @artworks = Artwork.search("%#{params[:query]}%", hitsPerPage: 4)
+      @artworks = Artwork.search("%#{params[:query]}%")
       @markers = @artworks.map do |gallery|
         {
           lat: gallery.gallery.latitude,
