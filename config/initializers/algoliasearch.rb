@@ -6,5 +6,4 @@ AlgoliaSearch.configuration = {
   send_timeout: 30,
   batch_timeout: 120,
   search_timeout: 5
-  pagination_backend: :will_paginate
    }

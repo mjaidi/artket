@@ -1,0 +1,39 @@
+#map-wrapper {
+  height: 400px;
+  width: 100%;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+
+@media (min-width: 992px) {
+ #art-results-wrapper {
+    width: 70%;
+    #results-container {
+      width: 100%
+    }
+  }
+    #main-results-page-grid {
+    display: flex;
+  }
+  #map-wrapper {
+    flex: 0 0 30%;
+    height: 100vh;
+    position: sticky !important; /* !important to override Gmaps inline CSS */
+    top: 0 !important;
+  }
+}
+
+@media (min-width: 1200px) {
+ #art-results-wrapper {
+    width: 100%;
+    #results-container {
+    width: 100%
+    }
+  }
+}
+
+
