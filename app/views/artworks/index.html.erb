@@ -6,11 +6,21 @@
     <%= cl_image_tag(artwork.art_photos.first.photo, :height=>100, :width=>70, :crop=>"scale") %>
     <p>Name: <%= artwork.name %></p>
     <p>Description: <%= artwork.description %></p>
-    <p>Category: <%= artwork.categories.first.name %></p>
+    <ul>
+    <p>Category: <% artwork.categories.each do |category| %>
+      <li>
+      <% if category.parent_category != nil %>
+        <%= category.parent_category.name %> , 
+      <% end %>
+      <%= category.name %>
+      </li>
+      <% end %>
+    </p>
+    </ul>
     <p>Year: <%= artwork.year %></p>
     <p>Dimensions: <%= artwork.dimensions %></p>
     <p>Price: $<%= artwork.price %></p>
-    <p>Artist: <%= artwork.artist.name %></p>
+    <p>Artist: <%= artwork.artist.first_name %>, <%= artwork.artist.last_name %> </p>
     <p>Artist Birth: <%= artwork.artist.birth_date %></p>
     <p>Artist Death: <%= artwork.artist.death_date %></p>
     <p>Gallery Name <%= artwork.gallery.name %></p>
