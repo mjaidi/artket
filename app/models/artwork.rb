@@ -1,4 +1,6 @@
 class Artwork < ApplicationRecord
+  include AlgoliaSearch
+  
   belongs_to :gallery
   belongs_to :exhibition
   belongs_to :artist
@@ -9,4 +11,10 @@ class Artwork < ApplicationRecord
   validates :name, presence: true
   validates :gallery, presence: true
   validates :artist, presence: true
+
+
+
+  algoliasearch do
+    # all attributes will be sent
+  end
 end

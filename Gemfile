@@ -30,7 +30,8 @@ gem "geocoder"
 # Seeding Fake Data
 gem 'faker'
 
-#errors
+#search
+gem "algoliasearch-rails"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
