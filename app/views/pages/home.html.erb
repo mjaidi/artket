@@ -16,82 +16,62 @@
     </div>
 </div>
 
-
 <!-- Galeries cards -->
   <div class="title-galeries">
   <p> Galeries </p>
   </div>
     <div class="container">
       <div class="row">
+        <% 3.times do %>
+          <% @galleries.each do |gallery| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
-            <%= render "shared/gallery_card" %>
+            <%= render "shared/gallery_card", gallery: gallery %>
           </div>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <%= render "shared/gallery_card" %>
-          </div>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <%= render "shared/gallery_card" %>
-          </div>
+        <% end %>
+        <% end %>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <%= render "shared/gallery_card" %>
-          </div>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <%= render "shared/gallery_card" %>
-          </div>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <%= render "shared/gallery_card" %>
-          </div>
-      </div>
-    </div>
-
 <hr>
 
 <!-- Artistes à suivre  -->
-<div class="title-artistes">
-<p> Artistes à suivre </p>
-</div>
-<div class="container">
-  <div class="row">
-      <div class="col-xs-12 col-md-6 col-lg-4">
-        <%= render "shared/artist_card" %>
-      </div>
-      <div class="col-xs-12 col-md-6 col-lg-4">
-        <%= render "shared/artist_card" %>
-      </div>
-      <div class="col-xs-12 col-md-6 col-lg-4">
-        <%= render "shared/artist_card" %>
-      </div>
+  <div class="title-artistes">
+    <p> Artistes à suivre </p>
   </div>
-</div>
+  <div class="container">
+    <div class="row">
+        <% @artists.first(3).each do |artist| %>
+          <div class="col-xs-12 col-md-6 col-lg-4">
+            <%= render "shared/artist_card", artist: artist %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
 
 <hr>
 
 <!-- Expositions -->
-<div class="container">
-  <div class="ban-expo">
-    <p>Suivre les expositions</p>
+  <div class="container">
+    <div class="ban-expo">
+      <p>Suivre les expositions</p>
+    </div>
   </div>
-</div>
 
 <hr>
 
 <!-- Suggestions  style in home.scss-->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <div class="sug populaires">
-        <p>Populaire</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div class="sug populaires">
+          <p>Populaire</p>
+        </div>
       </div>
-    </div>
 
-    <div class="col-xs-12 col-md-6">
-      <div class="sug nouveautes">
-        <p>Nouveautés</p>
+      <div class="col-xs-12 col-md-6">
+        <div class="sug nouveautes">
+          <p>Nouveautés</p>
+        </div>
       </div>
     </div>
   </div>
-</div>

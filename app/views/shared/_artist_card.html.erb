@@ -1,9 +1,9 @@
 <div class="card-artist">
-  <div class="card-body" style="background-image: url('http://femmesdumaroc.com/wp-content/uploads/2018/02/Peinture-Nabil-Boudarqa-signe-de-perturbants-portraits-a-la-galerie-Thema.jpg')">
+  <div class="card-body" style="background-image: url(<%= cl_image_path(artist.photo) %>)">
   </div>
   <div class="card-footer">
     <div class="card-title">
-      <p> Nom, prénom </p>
+      <p> <%=artist.first_name%>, <%= artist.last_name %> </p>
     </div>
     <div class="controls">
       <a href="#"><i class="fas fa-heart"></i></a>

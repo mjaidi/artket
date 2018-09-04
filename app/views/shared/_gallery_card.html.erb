@@ -1,11 +1,11 @@
 <div class="card-art">
-  <div class="card-body" style="background-image: url('https://d7hftxdivxxvm.cloudfront.net/?resize_to=fill&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlNrF2bGV1AXGyQ0xqE6oJw%2Flarger.jpg&width=800&height=450&quality=80')">
+  <div class="card-body" style="background-image: url(<%= cl_image_path(gallery.photo) %>)">
   </div>
   <div class="card-footer">
     <div class="card-title">
-      <p> KRENO </p>
+      <p> <%= gallery.name %> </p>
       <div class="card-desc">
-        <p> Casablanca </p>
+        <p> <%= gallery.city %> </p>
       </div>
     </div>
     <div class="controls">
