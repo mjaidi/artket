@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_104117) do
+ActiveRecord::Schema.define(version: 2018_09_04_123850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_104117) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "photo"
   end
 
   create_table "artworks", force: :cascade do |t|
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_104117) do
     t.string "address_line"
     t.string "city"
     t.string "country"
+    t.string "photo"
     t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 

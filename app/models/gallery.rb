@@ -4,10 +4,22 @@ class Gallery < ApplicationRecord
   has_many :exhibitions
   has_many :artists, through: :artworks
 
+  mount_uploader :photo, PhotoUploader
+
+
   validates :user, presence: true
-  validates :name, presence: true
-  validates :full_address, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true
+  validates :phone, presence: true
+  validates :address_line, presence: true
+  validates :city, presence: true
+  validates :country, presence: true
+  validates :full_address, uniqueness: true
 
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_full_address?
+
+  before_validation do
+    self.full_address = "#{address_line}, #{city}, #{country}"
+  end
 end
