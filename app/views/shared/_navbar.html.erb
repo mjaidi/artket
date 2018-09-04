@@ -1,30 +1,33 @@
 <% if current_page?('/') == true %>
-    <div class="navbar-wagon navbar-home">
+  <div class="navbar-wagon navbar-home">
 <% else %>
-    <div class="navbar-wagon">
+  <div class="navbar-wagon">
 <% end %>
 
-  <!-- Logo -->
-  <div class="logo">
-    <!-- Search -->
-    <form class="navbar-form navbar-left form-inline" action="/apartments" method= "get">
-      <div class="form-group">
-        <input type="search" name= "query" class="form-control-btn"  placeholder="Recherche">
+      <div class="left-part">
+        <!-- Logo -->
+        <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag ("logo.jpg") %>
+        <% end %>
+
+        <!-- Search -->
+        <form class="navbar-form navbar-left form-inline" action="" method= "get">
+          <div class="form-group">
+            <input type="search" name= "query" class="form-control-btn-search"  placeholder="Recherche">
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <!-- Right Navigation -->
+      <div class="right-part hidden-xs hidden-sm">
+        <a href="" class="navbar-wagon-item navbar-wagon-link">Galeries</a>
+        <a href="" class="navbar-wagon-item navbar-wagon-link">Oeuvres</a>
+        <a href="" class="navbar-wagon-item navbar-wagon-link">Expositions</a>
+        <a href="" class="navbar-wagon-item navbar-wagon-link">Newsletter</a>
+        <button type="submit" class="log-btn">Sign in</button>
+      </div>
 
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Galeries</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Oeuvres</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Expositions</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Newsletter</a>
-
-    <button type="submit" class="log-btn">Sign in</button>
-
-    <!-- Profile picture with dropdown list -->
-<!--     <div class="navbar-wagon-item">
+      <!-- Profile picture with dropdown list -->
+      <!--     <div class="navbar-wagon-item">
       <div class="dropdown">
         <img src="https://kitt.lewagon.com/placeholder/users/yashann" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -37,16 +40,17 @@
   </div> -->
 
   <!-- Dropdown appearing on mobile only -->
-    <div class="navbar-wagon-item hidden-md hidden-lg">
-      <div class="dropdown">
-        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Galeries</a></li>
-          <li><a href="#">Oeuvres</a></li>
-          <li><a href="#">Expositions</a></li>
-          <li><a href="#">Newsletter</a></li>
-        </ul>
+      <div class="navbar-wagon-item hidden-md hidden-lg">
+        <div class="dropdown">
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><a href="#">Galeries</a></li>
+            <li><a href="#">Oeuvres</a></li>
+            <li><a href="#">Expositions</a></li>
+            <li><a href="#">Newsletter</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
   </div>
-</div>
+
+
