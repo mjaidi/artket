@@ -28,6 +28,11 @@ artwork_photos = ["http://wossthemes.com/artday/wp-content/uploads/2016/01/produ
            ]
 
 categories = ["Peinture", "Sculpture", "Photographie", "Editions", "Dessin"]
+subcategories = [["Abstrait", "Street Art", "Peinture huile", "Acrylique", "Nature", "Pop Art", "Portrait", "Scène de Vie", "Nature Morte", "Naif", "Orientalisme"],
+                 ["Bronze", "Acier", "Animale", "Résine", "Bois", "Abstrait", "Marbre", "Murale", "äôer", "Monumentale", "Artisanale"],
+                 ["Nu", "Noir et Blanc", "Nature", "Urbaine", "Scène de Vie", "Portrait", "Abstrait", "Animaux", "Icones"],
+                 ["Abstrait", "Gravure", "Impression Digitale", "Lithographie", "Pop Art", "Sérigraphie", "Street Art"],
+                 ["Aquarelle", "Abstrait", "Street Art", "Collage", "Portrait"]]
 
 
 now = Date.today
@@ -38,11 +43,14 @@ a_millenia_ago = now - 365*200
 puts "Adding Data"
 
 #seeding users
-test_user = User.create!(email: "majid@gmail.com", password: "123456789")
+test_user = User.create!(first_name: "Majid", last_name: "Jaidi", email: "majid@gmail.com", password: "123456789")
 
 #seeding categories
-categories.each do |category|
-  Category.create!(name: category)
+categories.each_with_index do |category, index|
+  cat = Category.create!(name: category)
+  subcategories[index].each do |subcategory|
+    Category.create!(name: subcategory, parent_id: cat.id)
+  end
 end
 
 start_categories_id = Category.first.id
@@ -62,7 +70,7 @@ exhibition2 = Exhibition.create!(gallery_id: gallery2.id, name: "Thema Photograp
   random_date = rand(a_millenia_ago..birth)
   random_age = random_date + (rand(15..60)*365)
   random_age = now if random_age > now
-  Artist.create!(name: Faker::Artist.name, description: Faker::Lorem.paragraph, birth_date: random_date, death_date: random_age)
+  Artist.create!(first_name: Faker::Artist.name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph, birth_date: random_date, death_date: random_age)
 end
 start_artist_id = Artist.first.id
 end_artist_id = Artist.last.id
@@ -81,8 +89,9 @@ photo = ArtPhoto.new(artwork_id: art.id)
 photo.remote_photo_url = artwork_photos[i]
 i += 1
 photo.save
-
-JoinArtCategory.create!(artwork_id: art.id, category_id: rand(start_categories_id..end_categories_id))
+3.times do
+  JoinArtCategory.create!(artwork_id: art.id, category_id: rand(start_categories_id..end_categories_id))
+end
 end
 
  
