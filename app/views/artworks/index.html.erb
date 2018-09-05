@@ -3,79 +3,35 @@
 <div class="title-galeries">
   <p> Résultats pour "<%= params[:query] %>" </p>
 </div>
-<div class="container">
-  <!-- Tab Pannels -->
-  <div>
-
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist" id="#search_tabs">
-      <li role="presentation" class="active"><a href="#art" aria-controls="art" role="tab" data-toggle="tab">Oeuvres</a></li>
-      <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Galleries</a></li>
-      <li role="presentation"><a href="#artist" aria-controls="artist" role="tab" data-toggle="tab">Artistes</a></li>
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-
-      <div role="tabpanel" class="tab-pane fade active in" id="art">
-        <div id="main-results-page-grid">
-          <div class="wrapper-first" id="art-results-wrapper">
-            <!-- Artwork card Result -->
-            <div class="container" id="results-container">
-              <div class="row">
-                <% @artworks.each do |artwork| %>
-                  <div class="col-xs-12 col-md-6 col-lg-4">
-                    <%= render "shared/artwork_card", artwork: artwork %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>  
-        </div> 
-      </div>
-
-      <div role="tabpanel" class="tab-pane fade" id="gallery">
-        <div id="main-results-page-grid">
-          <div class="wrapper-first" id="art-results-wrapper-map">
-            <!-- Gallery card Result -->
-            <div class="container" id="results-container">
-              <div class="row">
-                <% @galleries.uniq.each do |gallery| %>
-                  <div class="col-xs-12 col-md-6 col-lg-6">
-                    <%= render "shared/gallery_card", gallery: gallery %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div> 
-          <div class="" id="map-wrapper">
-            <div
-              id="map"
-              style=""
-              data-markers="<%= @markers.to_json %>"
-              ></div>
-          </div>  
-        </div> 
-      </div>
-
-      <div role="tabpanel" class="tab-pane fade" id="artist">
-        <div id="main-results-page-grid">
-          <div class="wrapper-first" id="art-results-wrapper">
-            <!-- Artwork card Result -->
-            <div class="container" id="results-container">
-              <div class="row">         
-                <% @artists.uniq.each do |artist| %>
-                  <div class="col-xs-12 col-md-6 col-lg-4">
-                    <%= render "shared/artist_card", artist: artist %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div> 
-        </div> 
-      </div>
-
+<div class="container text-center select-form">
+  <div class="row">
+     <%= form_tag("",method: "get", remote: true, class: "form-inline") %> 
+     <div class="col-xs-12 col-sm-6">
+      <label for="city"> Ville </label>
+      <%= select_tag "city", options_from_collection_for_select(@galleries.uniq,"city", "city"), id: "city", include_blank: 'séléctioner tous', class: "form-control" %>
+     </div> 
+     <div class="col-xs-12 col-sm-6">
+      <label for="categories"> Categories</label>
+      <%= select_tag "categories", options_from_collection_for_select(@categories.uniq,"name", "name"), id: "category", include_blank: 'séléctioner tous', class: "form-control" %>
+      </div>  
     </div>
-
+    <br>
+    <div class="row">
+      <div class="col-xs-12">
+      <%=submit_tag "Filtrer les Résultats", class: "btn btn-success" %>
+    </div>
   </div>
 </div>
+
+<div id="search-render">
+  <%= render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists %>
+</div>
+
+<% content_for :after_js do %>
+<!-- <script type="text/javascript">
+    function submit()
+    {
+        document.submitForm.submit(); // Submits the form without the button
+    }
+</script> -->
+<% end %>

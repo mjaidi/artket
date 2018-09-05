@@ -1,0 +1,26 @@
+console.log("reading");
+
+document.getElementById("city").addEventListener("change", () => {
+  console.log("ok")
+});
+
+console.log("<%=@artworks%>");
+<% if params["city"] == ""  && params["categories"] == "" %>
+  <% @artworks = @artworks %>
+<% elsif params["city"] == "" %>
+    <% @artworks = @artworks.joins(join_art_categories: :category).where(categories: {name: params["categories"]}) %>
+<% elsif params["categories"] == "" %>
+  <% @artworks = @artworks.joins(:gallery).where(galleries: {city: params["city"]}) %>
+<% else %>
+  <% @artworks = @artworks.joins(:gallery).joins(join_art_categories: :category).where(galleries: {city: params["city"]}, categories: {name: params["categories"]}) %>
+<% end %>
+
+<% @galleries = @artworks.map {|artwork| artwork.gallery} %>
+<% @artists = @artworks.map {|artwork| artwork.artist} %>
+console.log("<%=@artworks%>");
+console.log("<%=@artists%>");
+console.log("<%=@galleries%>");
+
+document.getElementById("search-render").innerHTML = "";
+document.getElementById("search-render").insertAdjacentHTML("beforeend",   
+  "<%= j render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists %>");

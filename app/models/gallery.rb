@@ -28,4 +28,4 @@ class Gallery < ApplicationRecord
   algoliasearch do
     # all attributes will be sent
   end
-end
+end 
