@@ -44,7 +44,7 @@
       <div class="container">
         <% 3.times do %>
           <div class="row">
-            <% @gallery.artworks.each do |artwork| %>
+            <% @exhibition.artworks.each do |artwork| %>
               <div class="col-xs-12 col-md-6 col-lg-4">
                 <%= render "shared/artwork_card", artwork: artwork %>
               </div>

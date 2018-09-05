@@ -1,5 +1,50 @@
-<h1>Artworks show page</h1>
+<!-- Artwork picture -->
+  <div class="container-art">
+    <div class="row">
+      <div class="col-xs-12 col-md-12 flex-main">
+        <div class="art-left" style="background-image: url(<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>)">
+        </div>
+<!-- Info about artwork -->
+        <div class="art-right">
+            <div class="cat-art">
+            <p>Artiste: </div>
+            <%= @artwork.artist.first_name %> <%= @artwork.artist.last_name %></p>
 
-<p><%= @artwork.name %></p>
-<p><%= @artwork.gallery.name %> </p>
-<p><%= @artwork.exhibition.name %> </p>
+            <hr>
+            <div class="cat-art">
+            <p>Description: </div><%= @artwork.description %></p>
+
+            <hr>
+            <div class="cat-art">
+            <p>Année: </div><%= @artwork.year %></p>
+
+            <hr>
+            <div class="cat-art">
+            <p>Dimensions: </div><%= @artwork.dimensions %></p>
+
+            <hr>
+            <div class="cat-art">
+            <p>Prix: </div><%= @artwork.price %></p>
+          </div>
+        </div>
+    </div>
+  </div>
+
+<hr>
+
+<h4>Autres oeuvres de l'artiste</h4>
+    <div class="container">
+      <div class="row">
+          <% @artworks.each do |artwork| %>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+              <%= render "shared/artwork_card", artwork: artwork %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+
+
+
+
+
+

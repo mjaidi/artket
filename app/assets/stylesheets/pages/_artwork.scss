@@ -1,0 +1,51 @@
+// Main container
+  .container-art {
+    margin-top: 20px;
+    height: 450px;
+    background-color: white;
+    margin-left: 50px;
+    margin-right: 50px;
+    .flex-main {
+      display: flex;
+    }
+    .art-right {
+      margin-left: 15px;
+      display: flex;
+      flex: 0 0 40% !important;
+      width: 100%;
+      flex-direction: column;
+      font-family: 'Nanum Myeongjo', serif;
+    }
+
+    .art-left {
+      width: 60%;
+      height: 450px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .cat-art {
+    font-style: bold;
+    color: #C2A476;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    font-family: 'PT serif', serif;
+  }
+
+  h4 {
+    margin-left: 20px;
+  }
+
+// Lines
+  .art-right hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-width: 3px;
+    color: black;
+  }
+
+
