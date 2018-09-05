@@ -3,6 +3,8 @@ class ExhibitionsController < ApplicationController
   before_action :find_exhibition, only: [:show]
 
   def show
+    @exhibition = Exhibition.find(params[:id])
+    @gallery = Gallery.find(params[:id])
   end
 
   private

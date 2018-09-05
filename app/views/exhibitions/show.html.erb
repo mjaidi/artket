@@ -1,4 +1,54 @@
-<h1>Exhibitions show page</h1>
+<!-- CSS in gallery.scss -->
+<!-- CSS in gallery.scss -->
+<!-- CSS in gallery.scss -->
 
-<p><%= @exhibition.name %></p>
-<p><%= @exhibition.gallery.name %> </p>
+<!-- Galerie & Exhibition names -->
+  <div class="title-galeries">
+    <p><%= @exhibition.name %></p>
+    <p><%= @exhibition.gallery.name %> </p>
+  </div>
+
+<!-- Exhibition banner -->
+  <div class="ban-gallery" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://content.ngv.vic.gov.au/col-images/api/ARTS010940/1280');">
+  </div>
+
+<hr>
+
+<!-- Exhibition Desription -->
+  <div class="container-expo">
+      <% @gallery.exhibitions.each do |exhibition| %>
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <div class="expo-left">
+              <div class="expo-title">
+                <%= exhibition.name %>
+              </div>
+              <div class="expo-description">
+                <%= exhibition.description %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div class="expo-right" style="background-image: url('https://i2.wp.com/magazine.bam.archi/wp-content/uploads/2018/06/bicycles.jpg?resize=759%2C500&ssl=1')"></div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+
+<hr>
+
+<!-- Exhibition Artworks  -->
+  <div class="title-galeries">
+    <p> Oeuvres </p>
+    </div>
+      <div class="container">
+        <% 3.times do %>
+          <div class="row">
+            <% @gallery.artworks.each do |artwork| %>
+              <div class="col-xs-12 col-md-6 col-lg-4">
+                <%= render "shared/artwork_card", artwork: artwork %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
