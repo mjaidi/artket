@@ -1,12 +1,12 @@
 <div class="card-art">
-  <div class="card-body" style="background-image: url(<%= cl_image_path(gallery.photo.url(:cards)) %>)">
-    <%= link_to "", gallery_path(gallery.id), class: "card-link" %>
+  <div class="card-body" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:cards)) %>)">
+    <%= link_to "", exhibition_path(exhibition.id), class: "card-link" %>  
   </div>
   <div class="card-footer">
     <div class="card-title">
-      <p> <%= gallery.name %> </p>
+      <p> <%= exhibition.name %> </p>
       <div class="card-desc">
-        <p> <%= gallery.city %> </p>
+        <p> <%= exhibition.start_date %> </p>
       </div>
     </div>
     <div class="controls">

@@ -6,6 +6,6 @@ version :cards do
 end
 
 version :banner do
-  resize_to_fit 1250, 750
+  resize_to_fit 2000, 1750
 end
 end
