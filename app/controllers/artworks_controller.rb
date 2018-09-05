@@ -31,6 +31,8 @@ class ArtworksController < ApplicationController
 
   def show
     @artwork = Artwork.find(params[:id])
+    @artworks = Artwork.where(["artist_id = ?", @artwork.artist_id])
+    @gallery = Gallery.find(@artwork.gallery_id)
   end
 
   private
