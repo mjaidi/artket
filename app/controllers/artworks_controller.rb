@@ -6,24 +6,27 @@ class ArtworksController < ApplicationController
     @artworks = policy_scope(Artwork)
 
     if params[:query].present?
-      @artworks = Artwork.search("%#{params[:query]}%")
-      @markers = @artworks.map do |gallery|
+      @artworks = Artwork.global_search("%#{params[:query]}%")
+      @galleries = @artworks.map {|artwork| artwork.gallery}
+      @markers = @galleries.uniq.map do |gallery|
         {
-          lat: gallery.gallery.latitude,
-          lng: gallery.gallery.longitude#,
+          lat: gallery.latitude,
+          lng: gallery.longitude#,
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
       end
     else
       @artworks = Artwork.all
-      @markers = @artworks.map do |gallery|
+      @galleries = @artworks.map {|artwork| artwork.gallery}
+      @markers = @galleries.uniq.map do |gallery|
         {
-          lat: gallery.gallery.latitude,
-          lng: gallery.gallery.longitude#,
+          lat: gallery.latitude,
+          lng: gallery.longitude#,
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
       end
     end
+    @artists = @artworks.map {|artwork| artwork.artist}
   end
 
   def show

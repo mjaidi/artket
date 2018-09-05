@@ -4,7 +4,7 @@
   </div>
 
 <!-- Gallery banner -->
-  <div class="ban-gallery" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@gallery.photo) %>);">
+  <div class="ban-gallery" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@gallery.photo.url(:banner)) %>);">
   </div>
 
 <!-- Social -->

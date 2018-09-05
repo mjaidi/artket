@@ -35,6 +35,8 @@ gem 'faker'
 
 #search
 gem "algoliasearch-rails"
+gem 'pg_search'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'

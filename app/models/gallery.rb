@@ -1,4 +1,6 @@
 class Gallery < ApplicationRecord
+  include AlgoliaSearch
+
   belongs_to :user
   has_many :artworks
   has_many :exhibitions
@@ -21,5 +23,9 @@ class Gallery < ApplicationRecord
 
   before_validation do
     self.full_address = "#{address_line}, #{city}, #{country}"
+  end
+
+  algoliasearch do
+    # all attributes will be sent
   end
 end
