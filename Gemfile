@@ -17,6 +17,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 #authorization with pundit
 gem "pundit"
 

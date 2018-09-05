@@ -5,5 +5,6 @@ class PagesController < ApplicationController
     @galleries = Gallery.all
     @artworks = Artwork.all
     @artists = Artist.all
+    @exhibitions = Exhibition.all
   end
 end

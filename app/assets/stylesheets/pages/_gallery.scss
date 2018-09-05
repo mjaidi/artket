@@ -22,13 +22,13 @@
   font-family: 'Nanum Myeongjo', serif;
 }
 
-.container-expo{
+.container-expo {
   height: 400px;
   background-color: #FCF8F8;
   margin-left: 50px;
   margin-right: 50px;
 
-  .expo-left{
+  .expo-left {
     display: flex;
     text-align: center;
     align-items: center;
@@ -48,4 +48,14 @@
   }
 }
 
+.expo-description{
+  font-size: 20px;
+}
+
+.container-exposition{
+  height: 400px;
+  background-color: lightgrey;
+  margin-left: 50px;
+  margin-right: 50px;
+}
 
