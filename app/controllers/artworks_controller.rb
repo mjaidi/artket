@@ -26,7 +26,14 @@ class ArtworksController < ApplicationController
         }
       end
     end
+
     @artists = @artworks.map {|artwork| artwork.artist}
+    @categories = Category.all
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
