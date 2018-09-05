@@ -1,0 +1,26 @@
+<div class="title-galeries">
+  <p> Toutes les Galleries </p>
+</div>
+<div class="container">
+  <div id="main-results-page-grid">
+    <div class="wrapper-first" id="art-results-wrapper-map">
+      <!-- Gallery card Result -->
+      <div class="container" id="results-container">
+        <div class="row">
+          <% @galleries.each do |gallery| %>
+            <div class="col-xs-12 col-sm-6">
+              <%= render "shared/gallery_card", gallery: gallery %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div> 
+    <div class="" id="map-wrapper">
+      <div
+        id="map"
+        style=""
+        data-markers="<%= @markers.to_json %>"
+        ></div>
+    </div>  
+  </div> 
+</div>

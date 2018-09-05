@@ -78,6 +78,7 @@ gallery2.save
 #seeding Exhibitions
 exhibition1 = Exhibition.create!(gallery_id: gallery1.id, name: "Artket Peinture", description: Faker::Lorem.paragraph(2, false, 6), start_date: (now - 10), end_date: (now + 50))
 exhibition1.remote_cover_photo_url = exhibition_photos[0]
+exhibition1.save
 exhibition2 = Exhibition.create!(gallery_id: gallery2.id, name: "Thema Photographie", description: Faker::Lorem.paragraph(2, false, 6), start_date: (now + 15), end_date: (now + 95))
 exhibition2.remote_cover_photo_url = exhibition_photos[1]
 exhibition2.save
