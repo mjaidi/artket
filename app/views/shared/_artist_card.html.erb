@@ -1,5 +1,5 @@
 <div class="card-artist">
-  <div class="card-body" style="background-image: url(<%= cl_image_path(artist.photo) %>)">
+  <div class="card-body" style="background-image: url(<%= cl_image_path(artist.photo.url(:cards)) %>)">
   </div>
   <div class="card-footer">
     <div class="card-title">

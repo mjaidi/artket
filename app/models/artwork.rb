@@ -1,6 +1,7 @@
 class Artwork < ApplicationRecord
   include AlgoliaSearch
-  
+  include PgSearch
+
   belongs_to :gallery
   belongs_to :exhibition
   belongs_to :artist
@@ -17,4 +18,15 @@ class Artwork < ApplicationRecord
   algoliasearch do
     # all attributes will be sent
   end
+
+  pg_search_scope :global_search,
+    against: [ :name, :description ],
+    associated_against: {
+      artist: [ :first_name, :last_name ],
+      gallery:[ :name, :full_address],
+      categories:[:name]
+    },
+    using: {
+      tsearch: { prefix: true, :any_word => true }
+    }
 end
