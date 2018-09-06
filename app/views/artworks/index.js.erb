@@ -1,26 +1,30 @@
-console.log("reading");
-
 document.getElementById("city").addEventListener("change", () => {
   console.log("ok")
 });
-
 console.log("<%=@artworks%>");
+<% @artworks = Artwork.global_search("%#{params[:search_query]}%") %>
+console.log("<%@artworks%>");
+
 <% if params["city"] == ""  && params["categories"] == "" %>
-  <% @artworks = @artworks %>
+  <% @artworks %>
 <% elsif params["city"] == "" %>
-    <% @artworks = @artworks.joins(join_art_categories: :category).where(categories: {name: params["categories"]}) %>
+    <% @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["categories"].to_i } %>
 <% elsif params["categories"] == "" %>
-  <% @artworks = @artworks.joins(:gallery).where(galleries: {city: params["city"]}) %>
+  <% @artworks = @artworks.select { |artwork| artwork.gallery.city == params["city"]} %>
 <% else %>
-  <% @artworks = @artworks.joins(:gallery).joins(join_art_categories: :category).where(galleries: {city: params["city"]}, categories: {name: params["categories"]}) %>
+  <% @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["categories"].to_i }.select { |artwork| artwork.gallery.city == params["city"]} %>
 <% end %>
 
 <% @galleries = @artworks.map {|artwork| artwork.gallery} %>
 <% @artists = @artworks.map {|artwork| artwork.artist} %>
+<% @markers = @galleries.uniq.map do |gallery| %>
+  <% {lat: gallery.latitude, lng: gallery.longitude  } %>
+<% end %>
+
 console.log("<%=@artworks%>");
 console.log("<%=@artists%>");
 console.log("<%=@galleries%>");
 
 document.getElementById("search-render").innerHTML = "";
 document.getElementById("search-render").insertAdjacentHTML("beforeend",   
-  "<%= j render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists %>");
+  "<%= j render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, markers: @markers %>");
