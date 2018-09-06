@@ -1,15 +1,15 @@
-class GalleryPolicy < ApplicationPolicy
+class PagePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  def show?
+  def home?
      true
   end
 
-  def user_gallery?
-    record.user == user
+  def user_gallery_dashboard?
+    true
   end
 end

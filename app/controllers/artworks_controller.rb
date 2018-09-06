@@ -37,12 +37,39 @@ class ArtworksController < ApplicationController
   end
 
   def show
-    @artwork = Artwork.find(params[:id])
     @artworks = Artwork.where(["artist_id = ?", @artwork.artist_id])
     @gallery = Gallery.find(@artwork.gallery_id)
   end
 
+  def create
+    @artwork = Artwork.new(artwork_params)
+    @artwork.gallery_id = params["gallery_id"]
+    
+    authorize @artwork    
+    if @artwork.save
+      if params[:art_photos]['photo'].length > 0
+        params[:art_photos]['photo'].each do |a|
+            @photo = @artwork.art_photos.create!(photo: a)
+         end
+      end
+
+      if params[:artwork]["category_ids"].length > 0
+        params[:artwork]["category_ids"].each do |p|
+          JoinArtCategory.create!(artwork_id: @artwork.id, category_id: p) if p != ""
+        end
+      end
+
+      redirect_to artwork_path(@artwork.id)
+    else
+      render :new
+    end
+  end
+
   private
+
+  def artwork_params
+    params.require(:artwork).permit(:category_ids,  :name, :description, :dimensions, :price, :artist_id, :gallery_id, :exhibition_id, :year, :photo)
+  end
 
   def find_artwork
     @artwork = Artwork.find(params[:id])

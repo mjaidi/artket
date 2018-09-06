@@ -1,0 +1,42 @@
+<div class="text-center">
+  <h3>Ajouter une Oeuvre d'Art</h3>
+</div>
+<hr>
+
+<%= simple_form_for(Artwork.new, html: {multipart: true}) do |f| %>
+  <h4>Informations sur l'Oeuvre</h4>
+  <hr>
+    <%= f.input :name %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :year %>
+    <%= f.input :dimensions %>
+    <%= f.input :price %>
+    <%= f.association :artist, label_method: :first_name, value_method: :id %>
+  <hr>
+  <input type="hidden" name= "gallery_id" value="<%=gallery.id%>">
+  <h4>Ajouter des Photos</h4>
+  <br>
+    <%= f.simple_fields_for :artwork do |p| %>
+      <%= p.file_field :art_photo, :multiple => true, name: "art_photos[photo][]" %>
+    <% end %>
+
+  <br>
+  <hr>
+  <br>
+  <h4>Choisir les Catégories</h4>
+  <br>
+  <hr>
+    <div id="equipements">
+      <%= f.association :categories, as: :check_boxes %>
+    </div>
+  <br>
+  <hr>
+  <br>
+
+    <div class="text-center">
+      <%= f.button :submit, class: 'btn btn-create' %>
+    </div>
+    <br>
+
+
+<% end %>

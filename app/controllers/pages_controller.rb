@@ -7,4 +7,7 @@ class PagesController < ApplicationController
     @artists = Artist.all
     @exhibitions = Exhibition.all
   end
+
+  def user_gallery_dashboard
+  end
 end
