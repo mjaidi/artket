@@ -8,7 +8,6 @@ class ExhibitionsController < ApplicationController
 
 
   def show
-    @gallery = Gallery.find(params[:id])
   end
 
   private
