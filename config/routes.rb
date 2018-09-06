@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :exhibitions, only: [:index, :show]
   
   get "users/:user_id/galleries/:gallery_id", to: "galleries#user_gallery", as: :user_gallery
+  get "users/:user_id/dashboard", to: "pages#user_gallery_dashboard", as: :user_gallery_dashboard
 end
