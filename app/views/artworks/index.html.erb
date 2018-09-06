@@ -6,20 +6,16 @@
 <div class="container text-center select-form">
   <div class="row">
      <%= form_tag("",method: "get", remote: true, class: "form-inline") %> 
-     <div class="col-xs-12 col-sm-4">
+     <input type="hidden" name="search_query" value="<%=params[:query]%>">
+     <div class="col-xs-12 col-sm-6">
       <label for="city"> Ville </label>
       <br>
       <%= select_tag "city", options_from_collection_for_select(@galleries.uniq,"city", "city"), id: "city", include_blank: 'séléctioner tous', class: "form-control" %>
      </div> 
-     <div class="col-xs-12 col-sm-4">
+     <div class="col-xs-12 col-sm-6">
       <label for="categories"> Catégorie</label>
       <br>
-      <%= select_tag "categories", options_from_collection_for_select(@categories.where(parent_id: nil).uniq,"name", "name"), id: "category", include_blank: 'séléctioner tous', class: "form-control" %>
-    </div> 
-    <div class="col-xs-12 col-sm-4">
-      <label for="categories"> Sous-catégorie</label>
-      <br>
-      <%= select_tag "categories", options_from_collection_for_select(@categories.uniq,"name", "name"), id: "category", include_blank: 'séléctioner tous', class: "form-control" %>
+      <%= grouped_collection_select(:category, :parent_category ,@categories.where(parent_id: nil), :subcategories, "name", "id", "name", {include_blank: "séléctioner tous"},{id: "categories",  class: "form-control", name: "categories"}) %>
     </div> 
     </div>
     <br>
@@ -31,7 +27,7 @@
 </div>
 
 <div id="search-render">
-  <%= render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists %>
+  <%= render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, markers: @markers %>
 </div>
 
 <% content_for :after_js do %>
