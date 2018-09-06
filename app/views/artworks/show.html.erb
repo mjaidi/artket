@@ -1,7 +1,8 @@
-<!-- Artwork picture -->
+<!-- Artwork page -->
   <div class="container-art">
     <div class="row">
       <div class="col-xs-12 col-md-12 flex-main">
+<!-- Artwork picture -->
         <div class="art-left" style="background-image: url(<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>)">
         </div>
 <!-- Info about artwork -->
@@ -28,6 +29,12 @@
           </div>
         </div>
     </div>
+  </div>
+
+    <div class="art-btns">
+      <div class="btn-artwork">
+          <a class="button">Contacter la galerie</a>
+      </div>
   </div>
 
 <hr>
