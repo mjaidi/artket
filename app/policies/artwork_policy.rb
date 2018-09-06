@@ -8,4 +8,8 @@ class ArtworkPolicy < ApplicationPolicy
   def show?
      true
   end
+
+  def create?
+    record.gallery.user == user
+  end
 end

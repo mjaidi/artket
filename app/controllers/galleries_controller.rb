@@ -16,6 +16,11 @@ class GalleriesController < ApplicationController
   def show
   end
 
+  def user_gallery
+    @gallery = Gallery.find(params[:gallery_id])
+    authorize @gallery
+  end
+
   private
 
   def find_gallery

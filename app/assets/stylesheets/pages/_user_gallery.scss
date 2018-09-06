@@ -1,0 +1,14 @@
+
+@media (min-width: 992px) {
+  #main-user-gallery-show {
+    display: flex;
+    justify-content: space-around;
+    .left {
+      width: 60%
+    }
+    .right {
+      flex: 0 0 40%;
+    }
+  }
+}
+

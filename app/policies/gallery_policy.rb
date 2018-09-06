@@ -8,4 +8,8 @@ class GalleryPolicy < ApplicationPolicy
   def show?
      true
   end
+
+  def user_gallery?
+    record.user == user
+  end
 end
