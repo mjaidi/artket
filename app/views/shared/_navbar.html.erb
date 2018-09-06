@@ -19,8 +19,8 @@
       </div>
       <!-- Right Navigation -->
       <div class="right-part hidden-xs hidden-sm">
-        <a href="" class="navbar-wagon-item navbar-wagon-link">Galeries</a>
-        <a href="" class="navbar-wagon-item navbar-wagon-link">Expositions</a>
+        <%= link_to "Galeries", galleries_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Expositions", exhibitions_path, class: "navbar-wagon-item navbar-wagon-link"  %>
         <button type="submit" class="log-btn">Sign in</button>
       </div>
 
@@ -42,8 +42,8 @@
         <div class="dropdown">
           <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li><a href="#">Galeries</a></li>
-            <li><a href="#">Expositions</a></li>
+            <li><%= link_to "Galeries", galleries_path %></li>
+            <li><%= link_to "Expositions", exhibitions_path %></li>
           </ul>
         </div>
       </div>
