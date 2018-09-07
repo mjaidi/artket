@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
-    before_action :find_artwork, only: [:show,:edit, :update]
+    before_action :find_artwork, only: [:show,:edit, :update, :destroy]
 
   def index
     @artworks = policy_scope(Artwork)
@@ -90,6 +90,11 @@ class ArtworksController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @artwork
+    @artwork.destroy
+    redirect_to user_gallery_dashboard_path(current_user.id)
+  end
 
   private
 

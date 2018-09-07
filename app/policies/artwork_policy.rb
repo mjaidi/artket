@@ -20,4 +20,8 @@ class ArtworkPolicy < ApplicationPolicy
   def create?
     record.gallery.user == user
   end
+
+  def destroy?
+    record.gallery.user == user
+  end
 end
