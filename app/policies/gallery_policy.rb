@@ -11,5 +11,8 @@ class GalleryPolicy < ApplicationPolicy
 
   def contact?
     true
+
+   def user_gallery?
+    record.user == user
   end
 end

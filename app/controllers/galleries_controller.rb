@@ -17,11 +17,15 @@ class GalleriesController < ApplicationController
   end
 
   def contact
-    @gallery = Gallery.find(params[:id])
     @markers = {
       lat: @gallery.latitude,
       lng: @gallery.longitude
     }
+  end
+  
+  def user_gallery
+    @gallery = Gallery.find(params[:gallery_id])
+    authorize @gallery
   end
 
   private

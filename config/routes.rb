@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users 
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :artworks, only: [:index, :show]
+
+  resources :artworks, only: [:index, :show, :create]
+  
   resources :galleries, only: [:index, :show] do
     member do
       get 'contact', to: "galleries#contact"
     end
   end
+  
   resources :exhibitions, only: [:index, :show]
+  
+  get "users/:user_id/galleries/:gallery_id", to: "galleries#user_gallery", as: :user_gallery
+  get "users/:user_id/dashboard", to: "pages#user_gallery_dashboard", as: :user_gallery_dashboard
 end

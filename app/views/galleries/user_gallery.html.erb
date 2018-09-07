@@ -1,0 +1,17 @@
+<!-- Title -->
+<div class="container text-center">
+  <h1><%= current_user.first_name %>'s gallery <strong> <%= @gallery.name %> </strong></h1>
+</div>
+
+
+<div class="wrapper" id="main-user-gallery-show">
+  <!-- Left Side of Page -->
+  <div class="container left">
+    
+  </div>
+
+  <!-- Right Side of Page - Add artworks Form  -->
+  <div class="container right">
+    <%= render 'galleries/shared/add_artwork_form', gallery: @gallery %>
+  </div>
+</div>

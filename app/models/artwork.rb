@@ -3,7 +3,7 @@ class Artwork < ApplicationRecord
   include PgSearch
 
   belongs_to :gallery
-  belongs_to :exhibition
+  belongs_to :exhibition, optional: true
   belongs_to :artist
   has_many :art_photos
   has_many :join_art_categories
