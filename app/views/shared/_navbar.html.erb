@@ -20,7 +20,13 @@
       <div class="right-part hidden-xs hidden-sm">
         <%= link_to "Galeries", galleries_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Expositions", exhibitions_path, class: "navbar-wagon-item navbar-wagon-link"  %>
-        <button type="submit" class="log-btn">Sign in</button>
+        <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "log-btn" do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        <% else %>
+        <%= link_to "Sign In", new_user_session_path, class: "log-btn" %>
+        <% end %>
       </div>
 
   <!-- Dropdown appearing on mobile only -->
