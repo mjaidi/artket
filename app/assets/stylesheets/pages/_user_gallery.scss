@@ -1,14 +1,17 @@
-
+// Half page Form
 @media (min-width: 992px) {
   #main-user-gallery-show {
     display: flex;
     justify-content: space-around;
     .left {
-      width: 60%
+      width: 80%
     }
     .right {
-      flex: 0 0 40%;
+      flex: 0 0 20%;
     }
   }
 }
 
+.table > tbody > tr > td {
+  vertical-align: middle;
+}

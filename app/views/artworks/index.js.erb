@@ -1,9 +1,6 @@
-document.getElementById("city").addEventListener("change", () => {
-  console.log("ok")
-});
-console.log("<%=@artworks%>");
+
 <% @artworks = Artwork.global_search("%#{params[:search_query]}%") %>
-console.log("<%@artworks%>");
+
 
 <% if params["city"] == ""  && params["categories"] == "" %>
   <% @artworks %>
@@ -21,9 +18,6 @@ console.log("<%@artworks%>");
   <% {lat: gallery.latitude, lng: gallery.longitude  } %>
 <% end %>
 
-console.log("<%=@artworks%>");
-console.log("<%=@artists%>");
-console.log("<%=@galleries%>");
 
 document.getElementById("search-render").innerHTML = "";
 document.getElementById("search-render").insertAdjacentHTML("beforeend",   
