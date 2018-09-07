@@ -17,3 +17,10 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     map.fitLatLngBounds(markers);
   }
 }
+
+const mapElementContact = document.getElementById('map-contact');
+if (mapElementContact) { // don't try to build a map if there's no div#map to inject in
+  const markers = JSON.parse(mapElementContact.dataset.markers);
+  const map = new GMaps({ el: '#map-contact', lat: markers.lat, lng: markers.lng });
+  map.addMarker(markers);
+}

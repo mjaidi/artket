@@ -1,7 +1,8 @@
 <!--   CARD -->
+
+<%= link_to artwork_path(artwork.id) do %>
   <div class="card-art">
     <div class="card-body" style="background-image: url(<%= cl_image_path(artwork.art_photos.first.photo.url(:cards)) %>)">
-      <%= link_to "", artwork_path(artwork.id), class: "card-link" %>
     </div>
 
     <div class="card-footer">
@@ -17,3 +18,4 @@
         </div>
       </div>
     </div>
+<% end %>

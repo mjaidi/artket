@@ -31,24 +31,28 @@
     </div>
   </div>
 
+<!-- Button contact gallery -->
     <div class="art-btns">
       <div class="btn-artwork">
           <a class="button">Contacter la galerie</a>
       </div>
-  </div>
+    </div>
 
 <hr>
 
-<h4>Autres oeuvres de l'artiste</h4>
-    <div class="container">
-      <div class="row">
-          <% @artworks.each do |artwork| %>
-            <div class="col-xs-12 col-md-6 col-lg-4">
-              <%= render "shared/artwork_card", artwork: artwork %>
-            </div>
-          <% end %>
+<!-- Other artworks from same artist -->
+  <div class="title-others">
+    <h4>Autres oeuvres de l'artiste</h4>
       </div>
-    </div>
+        <div class="container">
+         <div class="row">
+            <% @artworks.each do |artwork| %>
+              <div class="col-xs-12 col-md-6 col-lg-4">
+                <%= render "shared/artwork_card", artwork: artwork %>
+              </div>
+            <% end %>
+        </div>
+      </div>
 
 
 
