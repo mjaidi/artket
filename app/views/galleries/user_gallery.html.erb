@@ -7,7 +7,33 @@
 <div class="wrapper" id="main-user-gallery-show">
   <!-- Left Side of Page -->
   <div class="container left">
+    <table class="table">
+      <tr>
+        <th>Photo</th>
+        <th>Nom</th> 
+        <th>Artist</th>
+        <th>Année</th>
+        <th>Dimensions</th>
+        <th>Prix</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    <% @gallery.artworks.each do |artwork| %>
+      <tr>
+        <th>Photo</th>
+        <th><%= artwork.name %></th> 
+        <th><%= artwork.artist.first_name %></th>
+        <th><%= artwork.year %></th>
+        <th><%= artwork.dimensions %></th>
+        <th><%= artwork.price %></th>
+        <th>Active</th>
+        <th>Modify Delete</th>
+      </tr>
+    <% end %>
     
+  
+    </table>
+
   </div>
 
   <!-- Right Side of Page - Add artworks Form  -->
