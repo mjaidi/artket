@@ -71,14 +71,42 @@
 }(jQuery));
 
 $(document).ready(function() {
-  
+
   $('.likes').percentPie({
-    width: 100,
-    trackColor: "#444444",
-    barColor: "#2682D5",
-    barWeight: 20,
+    width: 200,
+    trackColor: "white",
+    barColor: "#C2A476",
+    barWeight: 25,
     endPercent: 1,
     fps: 60
   });
-     
+
+    $('.views').percentPie({
+    width: 200,
+    trackColor: "white",
+    barColor: "#C2A476",
+    barWeight: 25,
+    endPercent: 1,
+    fps: 60
+  });
+
+
+    $('.artworks').percentPie({
+    width: 200,
+    trackColor: "white",
+    barColor: "#C2A476",
+    barWeight: 25,
+    endPercent: 1,
+    fps: 60
+  });
+
+    $('.exhibitions').percentPie({
+    width: 200,
+    trackColor: "white",
+    barColor: "#C2A476",
+    barWeight: 25,
+    endPercent: 1,
+    fps: 60
+  });
+
 });

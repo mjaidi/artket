@@ -2,14 +2,34 @@
 .chart {
   position:relative;
   margin:30px auto 0 auto;
-  
+
 }
 
 .tag {
   width:100%;
-  font-family:"Trebuchet", trebuchet, sans-serif;
   text-align:center;
+  font-style: bold;
   position:absolute;
   top:43%;
-  color:#777777;
+  color:#C2A476;
+}
+
+.container-chart{
+ margin-left: 30px;
+ margin-bottom: 30px;
+ display: flex;
+ flex: 0 0 40% !important;
+}
+
+
+.container-chart{
+ margin-left: 30px;
+ margin-bottom: 30px;
+ display: flex;
+ flex: 0 0 60% !important;
+}
+
+.container-all{
+ display: flex;
+ flex-direction: column;
 }
