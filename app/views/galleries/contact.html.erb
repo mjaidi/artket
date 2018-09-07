@@ -1,10 +1,11 @@
-<h1><%=@gallery.name %></h1>
 <!-- Form contact -->
-<div class="container">
+<div class="container container-contacts">
   <div class="row">
+    <h1><%=@gallery.name %></h1>
+
     <div class="col-xs-12 col-md-6">
-      <div class="form">
-        <form action="mailto:mail@mail.com" method="GET" enctype="text/plain" style="max-width:450px; margin:50px auto;">
+      <div class="form contact-form">
+        <form action="mailto:mail@mail.com" method="GET" enctype="text/plain" style="width: 90%; margin: 0 auto;">
           <input name="name" type="text" class="f-input" placeholder="What's your name?">
             <input name="email" type="text" class="f-input" placeholder="Email">
               <textarea name="text" class="f-input" placeholder="Type a comment "></textarea>
@@ -13,12 +14,18 @@
       </div>
     </div>
 
-      <div class="contact-map">
-        <div
-          id="map-contact"
-          style="height: 400px;"
-          data-markers="<%= @markers.to_json %>"
-          ></div>
-      </div>
+
+    <div class="col-xs-12 col-md-6">
+      <div
+        id="map-contact"
+        style="height: 400px; width: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        ></div>
+        <div class="adress">
+          <p><%= @gallery.full_address %></p>
+          <p><%= @gallery.phone %></p>
+          <p><%= @gallery.email %></p>
+        </div>
+    </div>
   </div>
 </div>

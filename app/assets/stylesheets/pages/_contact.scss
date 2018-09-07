@@ -1,81 +1,82 @@
-h1 {
-  display: flex;
-  justify-content: center;
+.container-contacts {
+  h1 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex: 0 0 40% !important;
+    width: 100%;
+    flex-direction: column;
+    font-family: 'Nanum Myeongjo', serif;
+    button {
+      font-family: Arial, Helvetica, sans-serif;
+      width: 100%;
+      background:#C2A476;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      color:white;
+      font-size:24px;
+      padding-top:10px;
+      padding-bottom:10px;
+    text-align:center;
+      transition: all 0.3s;
+      font-weight:600;
+    }
+    button:hover {
+     background:#3a3939;
+    }
+  }
+
+  .contact-map {
+    display:flex;
+    flex: 0 0 60% !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .f-input::placeholder {
+    color:black;
+    opacity:0.9;
+  }
+
+  .f-input {
+    background-color: transparent;
+    border:2px solid #C2A476;
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 15px;
+    width:100%;
+    box-sizing: border-box;
+    color:black;
+    font-family: 'Cinzel', serif;
+    font-weight:500;
+    font-size: 18px;
+    border-radius: 4px;
+    line-height: 22px;
+    text-align:left;
+  }
+
+  .f-input:focus {
+    border:2px solid #3a3939; }
+
+  textarea {
+    height: 250px;
+    line-height: 150%;
+    resize:vertical;
+  }
 }
 
-
-.form {
-  margin-left: 15px;
+.adress{
   display: flex;
-  flex: 0 0 40% !important;
-  width: 100%;
-  flex-direction: column;
-  font-family: 'Nanum Myeongjo', serif;
-}
-
-.contact-map {
-  display:flex;
-  flex: 0 0 60% !important;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-
-
-
-
-
-
-.f-input::placeholder {
-  color:black;
-  opacity:0.9;
-}
-
-.f-input {
-  background-color: transparent;
-  border:2px solid #C2A476;
-  transition: all 0.3s;
-  padding: 13px;
-  margin-bottom: 15px;
-  width:100%;
-  box-sizing: border-box;
-  color:black;
-  font-family: 'Cinzel', serif;
-  font-weight:500;
-  font-size: 18px;
-  border-radius: 4px;
-  line-height: 22px;
-  text-align:left;
-}
-
-.f-input:focus {
-  border:2px solid #3a3939; }
-
-textarea {
-  height: 250px;
-  line-height: 150%;
-  resize:vertical;
-}
-
-button {
-  max-width:450px;
-   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
-  background:#C2A476;
-  border-radius:10px;
-  border:0;
-  cursor:pointer;
-  color:white;
-  font-size:24px;
-  padding-top:10px;
-  padding-bottom:10px;
-text-align:center;
-  transition: all 0.3s;
-  font-weight:600;
-}
-button:hover {
- background:#3a3939;
+  margin-top: 20px;
 }
