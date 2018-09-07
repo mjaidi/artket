@@ -1,10 +1,31 @@
+<% content_for :after_css do %>
+  <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css">
+<% end %>
+
+<% content_for :after_js do %>
+  <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+  <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+  <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+  <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+  <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+  <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+  <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+  <script>
+    lightGallery(document.getElementById('lightgallery'));
+  </script>
+<% end %>
+
 <!-- Artwork page -->
   <div class="container-art">
     <div class="row">
       <div class="col-xs-12 col-md-12 flex-main">
 <!-- Artwork picture -->
-        <div class="art-left" style="background-image: url(<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>)">
+        <div id="lightgallery" class="art-left">
+          <a href="<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>">
+              <img src="<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>">
+          </a>
         </div>
+
 <!-- Info about artwork -->
         <div class="art-right">
             <div class="cat-art">
@@ -12,6 +33,13 @@
             <%= @artwork.artist.first_name %> <%= @artwork.artist.last_name %></p>
 
             <hr>
+
+            <div class="cat-art">
+            <p>Titre: </div>
+            <%= @artwork.name %> <%= @artwork.artist.last_name %></p>
+
+            <hr>
+
             <div class="cat-art">
             <p>Description: </div><%= @artwork.description %></p>
 
@@ -34,7 +62,7 @@
 <!-- Button contact gallery -->
     <div class="art-btns">
       <div class="btn-artwork">
-          <a class="button">Contacter la galerie</a>
+        <%= link_to "Contacter la galerie", contact_gallery_path(@gallery), class: "button" %>
       </div>
     </div>
 
@@ -55,6 +83,12 @@
       </div>
 
 
+<!-- Modal for artork -->
+<!--   <div class="modal modal-artwork fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <%= cl_image_tag(@artwork.art_photos.first.photo.url(:cards)) %>
+    </div>
+  </div> -->
 
 
 
