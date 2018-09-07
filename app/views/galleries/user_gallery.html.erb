@@ -28,7 +28,10 @@
         <td> <%= artwork.dimensions %></td>
         <td> <%= artwork.price %></td>
         <td>Active</td>
-        <td>   <%= link_to "Modifier", edit_artwork_path(artwork.id), class: "btn btn-create"  %>Delete</td>
+        <td>   <%= link_to "Modifier", edit_artwork_path(artwork.id), class: "btn btn-create"  %><%= link_to artwork_path(artwork), method: :delete do %> 
+              <i class="fas fa-trash" style= "color: black;" id= "delete-link-<%=artwork.id%>"></i>
+            <% end %>
+              <!-- <span data-id="<%=artwork.id%>" class="btn btn-primary sweet-alert-d"><i class="fas fa-trash"></i></span> </td> -->
       </tr>
     <% end %>
     
