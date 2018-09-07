@@ -25,6 +25,7 @@
   }
 }
 
+
 // Checkboxes design
 
 .category-choices {
@@ -95,4 +96,13 @@
 /* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: #4CAF50;
+}
+
+
+.btn-create {
+  background-color: $gold;
+  color: white;
+  &:hover {
+    background-color: #ccc;
+  }
 }

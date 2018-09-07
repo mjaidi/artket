@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
-    before_action :find_artwork, only: [:show]
+    before_action :find_artwork, only: [:show,:edit, :update]
 
   def index
     @artworks = policy_scope(Artwork)
@@ -41,6 +41,7 @@ class ArtworksController < ApplicationController
     @gallery = Gallery.find(@artwork.gallery_id)
   end
 
+
   def create
     @artwork = Artwork.new(artwork_params)
     @artwork.gallery_id = params["gallery_id"]
@@ -64,6 +65,31 @@ class ArtworksController < ApplicationController
       render :new
     end
   end
+
+  def edit
+  end
+
+  def update 
+    authorize @artwork    
+    if @artwork.update (artwork_params)
+      if params[:art_photos]['photo'].length > 0
+        params[:art_photos]['photo'].each do |a|
+            @photo = @artwork.art_photos.create!(photo: a)
+         end
+      end
+
+      if params[:artwork]["category_ids"].length > 0
+        params[:artwork]["category_ids"].each do |p|
+          JoinArtCategory.create!(artwork_id: @artwork.id, category_id: p) if p != ""
+        end
+      end
+
+      redirect_to artwork_path(@artwork.id)
+    else
+      render :new
+    end
+  end
+
 
   private
 
