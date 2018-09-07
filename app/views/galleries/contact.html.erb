@@ -1,0 +1,24 @@
+<h1><%=@gallery.name %></h1>
+<!-- Form contact -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="form">
+        <form action="mailto:mail@mail.com" method="GET" enctype="text/plain" style="max-width:450px; margin:50px auto;">
+          <input name="name" type="text" class="f-input" placeholder="What's your name?">
+            <input name="email" type="text" class="f-input" placeholder="Email">
+              <textarea name="text" class="f-input" placeholder="Type a comment "></textarea>
+                <button type="button" value="Send">Send</button>
+        </form>
+      </div>
+    </div>
+
+      <div class="contact-map">
+        <div
+          id="map-contact"
+          style="height: 400px;"
+          data-markers="<%= @markers.to_json %>"
+          ></div>
+      </div>
+  </div>
+</div>

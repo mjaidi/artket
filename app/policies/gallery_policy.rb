@@ -8,4 +8,8 @@ class GalleryPolicy < ApplicationPolicy
   def show?
      true
   end
+
+  def contact?
+    true
+  end
 end
