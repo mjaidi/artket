@@ -1,10 +1,4 @@
 import "bootstrap";
-// import {tabNavigation} from "../pages/index_search";
+import "../pages/multipage_form";
+import "../pages/category_choice";
 
-// tabNavigation();
-
-  $('#searchTabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-});
-  $('#searchTabs a[href="#artwork"]').tab('show');

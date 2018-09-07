@@ -1,0 +1,98 @@
+// title and layout design 
+
+.add-artwork-form {
+  padding: 20px;
+  box-shadow: 1px 1px 3px #ccc;
+  background: #eee;
+  h4 {
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+  }
+  h5 {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+  .prev-nex-button {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      width: 200px;
+      margin: 20px;
+    }
+  }
+}
+
+// Checkboxes design
+
+.category-choices {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.category-choice {
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: 0.4;
+  flex: 0 0 30%;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 150px;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+.active-category {
+    background: $gold;
+    color: white;
+    opacity: 1;
+}
+
+// Form Design 
+
+.submit-artwork {
+  .btn-create {
+    width: 100%;
+    padding: 10px;
+    background: $gold;
+    font-weight: bold;
+    color: white;
+    &:hover {
+      background: #b7b7b7
+    }
+  }
+}
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none; 
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
