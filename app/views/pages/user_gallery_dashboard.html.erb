@@ -1,8 +1,39 @@
 
-<h1>Gallery User <%= current_user.first_name %> Dashboard</h1>
+<h1>Welcome to <%= current_user.first_name %> Dashboard</h1>
 
-<div class="likes chart">
-  <div class="tag">552</div>
+<div class="container-all">
+<!-- Container chart -->
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="container-chart">
+      <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <div class="likes chart">
+              <div class="tag">52 Likes</div>
+            </div>
+
+            <div class="views chart">
+              <div class="tag">121 Vues</div>
+            </div>
+          </div>
+
+        <div class="col-xs-12 col-md-6">
+          <div class="artworks chart">
+            <div class="tag">34 Oeuvres</div>
+          </div>
+
+          <div class="exhibitions chart">
+            <div class="tag">2 Expositions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-xs-12 col-md-6">
+          <h2> Notifications clients </h2>
+          <hr>
+          <h2> Notifications plateforme </h2>
+          <hr>
+   </div>
+  </div>
 </div>
-
-
