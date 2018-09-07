@@ -1,28 +1,15 @@
-    <div class="text-center">
-      <h3>Ajouter une Oeuvre d'Art</h3>
-      <hr>
-      <!-- Large modal -->
-      <button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-add-modal-lg">Ajouter Une Oeuvre</button>
-      <br>
-      <br>
-    </div>
-  </div>
-
-<!-- Large Modal Target -->
-<div class="modal fade bs-add-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="add-artwork-form">
-        <%= simple_form_for(Artwork.new, html: {multipart: true}) do |f| %>
+        <%= simple_form_for(@artwork, html: {multipart: true}) do |f| %>
         <!--           <div style="text-align:center;margin-top:40px;">
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
           </div> -->
           <div class="tab">
-            <div class="text-center">
-              <h4>Informations sur l'Oeuvre</h4>
-            </div>
+          <h4>Informations sur l'Oeuvre</h4>
           <hr>
             <%= f.input :name, label: "Nom" %>
             <%= f.input :description, as: :text %>
@@ -31,12 +18,10 @@
             <%= f.input :price, label: "Prix" %>
             <%= f.association :artist, label_method: :first_name, value_method: :id %>
           <hr>
-          <input type="hidden" name= "gallery_id" value="<%=gallery.id%>">
+          <input type="hidden" name= "gallery_id" value="<%=@artwork.gallery.id%>">
         </div>
         <div class="tab">
-          <div class="text-center">
-            <h4>Ajouter des Photos</h4>
-          </div>
+          <h4>Ajouter des Photos</h4>
           <br>
             <%= f.simple_fields_for :artwork do |p| %>
               <%= p.file_field :art_photo, :multiple => true, name: "art_photos[photo][]" %>
@@ -46,9 +31,8 @@
            <% end %>
         </div>
         <div class="tab">
-          <div class="text-center">
-            <h4>Choisir les Catégories</h4>
-          </div>
+          <h4>Choisir les Catégories</h4>
+
             <div id="equipements">
               <fieldset class="form-group">
                   <input type="hidden" name="artwork[category_ids][]" value="">
@@ -87,6 +71,7 @@
     </div>
   </div>
 </div>
+      
 
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)

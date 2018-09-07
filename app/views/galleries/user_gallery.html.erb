@@ -28,7 +28,7 @@
         <td> <%= artwork.dimensions %></td>
         <td> <%= artwork.price %></td>
         <td>Active</td>
-        <td>Modify Delete</td>
+        <td>   <%= link_to "Modifier", edit_artwork_path(artwork.id), class: "btn btn-create"  %>Delete</td>
       </tr>
     <% end %>
     
@@ -40,5 +40,6 @@
   <!-- Right Side of Page - Add artworks Form  -->
   <div class="container right">
     <%= render 'galleries/shared/add_artwork_form', gallery: @gallery %>
-  </div>
 </div>
+
+

@@ -9,6 +9,14 @@ class ArtworkPolicy < ApplicationPolicy
      true
   end
 
+  def edit?
+    record.gallery.user == user
+  end
+
+  def update?
+    record.gallery.user == user
+  end
+
   def create?
     record.gallery.user == user
   end
