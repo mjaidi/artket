@@ -1,0 +1,30 @@
+<!-- Large Modal Target -->
+<div class="modal fade bs-art-exhib-modal-lg<%=exhibition.id || 0%>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="add-form">
+        <%= simple_form_for([user, exhibition]) do |f| %>
+          <div class="text-center">
+            <h4>Ajouter une Oeuvre à l'Exposition</h4>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.association :artworks, as: :collection_select, collection: Artwork.where('gallery_id = ?', exhibition.gallery.id), label_method: :label_artwork, value_method: :id, label: "Oeuvres" %>
+            </div>
+          </div>
+            
+          <hr>
+
+            <div class="text-center">
+              <div class="submit-exhibition">
+                <%= f.button :submit, class: 'btn btn-create', value: "Ajouter à l'Exposition #{exhibition.name}" %>
+              </div>
+            </div>
+            <br>
+
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>
