@@ -9,5 +9,6 @@ class PagesController < ApplicationController
   end
 
   def user_gallery_dashboard
+    @gallery = Gallery.where("user_id = ?", current_user.id).first
   end
 end

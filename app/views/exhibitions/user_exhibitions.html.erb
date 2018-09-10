@@ -1,7 +1,21 @@
-Liste des exhibitions de l'utilisateur <%= current_user.first_name %>
+<div class="title">
+Liste des expositions de l'utilisateur <%= current_user.first_name %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <% @exhibitions.each do |exhibition| %>
+        <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
+          <%= link_to "Modifier", user_exhibitions_path(current_user.id), class: "btn-modify" %>
+          <%= link_to user_exhibitions_path(current_user.id) do %>
+            <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
 
-<% @exhibitions.each do |exhibition| %>
-<li>
-  <%= exhibition.name %>
-  </li>
-<% end %>
+    <div class="col-xs-12 col-md-6">
+
+    </div>
+  </div>
+</div>
