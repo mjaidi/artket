@@ -10,6 +10,16 @@ class ExhibitionsController < ApplicationController
   def show
   end
 
+  def user_exhibitions # liste des exhibitions de l'utilisateur
+    @exhibitions = Exhibition.joins(:gallery).where("user_id = ?", current_user)
+    authorize @exhibitions
+  end
+
+  def user_exhibition # page détail de l'exhibition de l'utilisateur
+    @exhibition = Exhibition.find(params[:exhibition_id])
+    authorize @exhibition
+  end
+
   private
 
   def find_exhibition
