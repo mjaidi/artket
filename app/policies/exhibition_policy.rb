@@ -8,4 +8,12 @@ class ExhibitionPolicy < ApplicationPolicy
   def show?
      true
   end
+
+  def user_exhibitions?
+    true
+  end
+
+  def user_exhibition?
+    record.gallery.user == user
+  end
 end

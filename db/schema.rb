@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_090551) do
+ActiveRecord::Schema.define(version: 2018_09_10_120036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2018_09_05_090551) do
     t.string "first_name"
     t.string "last_name"
     t.string "photo"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_artists_on_user_id"
   end
 
   create_table "artworks", force: :cascade do |t|
@@ -121,6 +123,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_090551) do
   end
 
   add_foreign_key "art_photos", "artworks"
+  add_foreign_key "artists", "users"
   add_foreign_key "artworks", "artists"
   add_foreign_key "artworks", "exhibitions"
   add_foreign_key "artworks", "galleries"
