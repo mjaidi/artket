@@ -24,6 +24,7 @@ class GalleriesController < ApplicationController
   end
   
   def user_gallery
+    @artwork = Artwork.new
     @gallery = Gallery.find(params[:gallery_id])
     authorize @gallery
   end

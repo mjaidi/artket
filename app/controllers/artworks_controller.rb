@@ -60,7 +60,7 @@ class ArtworksController < ApplicationController
         end
       end
 
-      redirect_to artwork_path(@artwork.id)
+    redirect_to user_gallery_path(current_user.id, @artwork.gallery.id)
     else
       render :new
     end
@@ -72,11 +72,17 @@ class ArtworksController < ApplicationController
   def update 
     authorize @artwork    
     if @artwork.update (artwork_params)
-      if params[:art_photos]['photo'].length > 0
+      if params[:art_photos] != nil
         params[:art_photos]['photo'].each do |a|
             @photo = @artwork.art_photos.create!(photo: a)
          end
       end
+
+      joins = JoinArtCategory.where(artwork: @artwork)
+      joins.each do |j|
+         j.destroy
+      end
+
 
       if params[:artwork]["category_ids"].length > 0
         params[:artwork]["category_ids"].each do |p|
@@ -84,7 +90,7 @@ class ArtworksController < ApplicationController
         end
       end
 
-      redirect_to artwork_path(@artwork.id)
+    redirect_to user_gallery_path(current_user.id, @artwork.gallery.id)
     else
       render :new
     end
@@ -93,7 +99,7 @@ class ArtworksController < ApplicationController
   def destroy
     authorize @artwork
     @artwork.destroy
-    redirect_to user_gallery_dashboard_path(current_user.id)
+    redirect_to user_gallery_path(current_user.id, @artwork.gallery.id)
   end
 
   private
