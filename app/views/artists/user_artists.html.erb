@@ -1,1 +1,7 @@
 liste des artists de l'utilisateur <%= current_user.first_name %>
+
+<% @artists.each do |artist| %>
+<li>
+<%= "#{artist.first_name} #{artist.last_name}" %>
+</li>
+  <% end %>
