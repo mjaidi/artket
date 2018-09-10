@@ -1,0 +1,55 @@
+<!-- Large Modal Target -->
+<div class="modal fade bs-artist-modal-lg<%=exhibition.id || 0%>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="add-form">
+        <%= simple_form_for(exhibition) do |f| %>
+          <div class="text-center">
+            <h4>Informations sur l'Artiste</h4>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <%= f.association :gallery, as: :collection_select, collection: Gallery.where('user_id = ?', current_user.id), label_method: :name, value_method: :id, label: "Galerie",  default: current_user.galleries.first %>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <%= f.input :name, label: "Nom" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.input :description, as: :text %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <%= f.input :start_date,  as: :string, input_html: {type: :date}, label: "Date de Début" %>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <%= f.input :end_date,  as: :string, input_html: {type: :date}, label: "Date de Fin" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.file_field :cover_photo %>
+            </div>
+          </div>
+            
+          <hr>
+
+            <div class="text-center">
+              <div class="submit-exhibition">
+                <% if exhibition.id.nil? %>
+                  <%= f.button :submit, class: 'btn btn-create', value: "Ajouter une Exposition" %>
+                <% else %>
+                  <%= f.button :submit, class: 'btn btn-create', value: "Modifier l'Exposition #{exhibition.name}" %>
+                <% end %>
+              </div>
+            </div>
+            <br>
+
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>

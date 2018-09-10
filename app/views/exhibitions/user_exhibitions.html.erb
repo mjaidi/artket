@@ -5,3 +5,7 @@ Liste des exhibitions de l'utilisateur <%= current_user.first_name %>
   <%= exhibition.name %>
   </li>
 <% end %>
+
+ <button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=@exhibition.id || 0%>">Ajouter Une Exposition</button>
+
+ <%= render 'exhibitions/shared/add_exhibition_form', exhibition: @exhibition %>
