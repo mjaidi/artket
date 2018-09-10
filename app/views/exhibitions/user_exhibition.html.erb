@@ -1,1 +1,11 @@
 Exhibition <%= @exhibition.name %> <%= current_user.first_name %>
+<% @exhibition.artworks.each do |artwork| %>
+<li>
+  <%= artwork.name %>
+  <%= artwork.artist.first_name %>
+</li>
+<% end %>
+
+ <button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-art-exhib-modal-lg<%=@exhibition.id || 0%>">Ajouter Une Oeuvre</button>
+
+ <%= render 'exhibitions/shared/add_art_to_exhibition', exhibition: @exhibition, user: current_user %>

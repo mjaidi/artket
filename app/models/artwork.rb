@@ -29,4 +29,8 @@ class Artwork < ApplicationRecord
     using: {
       tsearch: { prefix: true, :any_word => true }
     }
+
+  def label_artwork
+    "#{name}, #{artist.first_name} #{artist.last_name}, #{year}"
+  end
 end

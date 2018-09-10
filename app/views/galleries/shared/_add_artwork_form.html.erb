@@ -2,7 +2,7 @@
 <div class="modal fade bs-add-modal-lg<%=artwork.id || 0%>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="add-artwork-form">
+      <div class="add-form">
         <%= simple_form_for(artwork, html: {multipart: true}) do |f| %>
         <!--           <div style="text-align:center;margin-top:40px;">
             <span class="step"></span>
@@ -14,12 +14,36 @@
               <h4>Informations sur l'Oeuvre</h4>
             </div>
           <hr>
-            <%= f.input :name, label: "Nom" %>
-            <%= f.input :description, as: :text %>
-            <%= f.input :year, label: "Année" %>
-            <%= f.input :dimensions %>
-            <%= f.input :price, label: "Prix" %>
-            <%= f.association :artist, label_method: :first_name, value_method: :id %>
+         
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :name, label: "Nom" %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.association :artist, label_method: :first_name, value_method: :id %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+               <%= f.input :description, as: :text %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                  <%= f.input :dimensions %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :year, label: "Année" %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :price, label: "Prix" %>
+              </div>
+            </div>
+         
+            
+            
           <hr>
           <input type="hidden" name= "gallery_id" value="<%=gallery.id%>">
         </div>
@@ -65,15 +89,19 @@
 
             <div class="text-center">
               <div class="submit-artwork">
-                <%= f.button :submit, class: 'btn btn-create', value: "Ajouter une Oeuvre d'Art" %>
+                <% if artwork.id.nil? %>
+                  <%= f.button :submit, class: 'btn btn-create', value: "Ajouter une Oeuvre d'Art" %>
+                <% else %>
+                  <%= f.button :submit, class: 'btn btn-create', value: "Modifier l'oeuvre #{artwork.name}" %>
+                <% end %>
               </div>
             </div>
             <br>
           </div>
 
           <div class="prev-nex-button" data-value="<%=artwork.id|| 0%>">
-              <button type="button" id="prevBtn<%=artwork.id || 0%>" onclick="nextPrev(-1,this.parentElement.dataset.value)">Precedent</button>
-              <button type="button" id="nextBtn<%=artwork.id || 0%>" onclick="nextPrev(1, this.parentElement.dataset.value)">Suivant</button>
+              <button type="button" id="prevBtn<%=artwork.id || 0%>" class = "btn btn-primary" onclick="nextPrev(-1,this.parentElement.dataset.value)">Precedent</button>
+              <button type="button" id="nextBtn<%=artwork.id || 0%>" class = "btn btn-primary" onclick="nextPrev(1, this.parentElement.dataset.value)">Suivant</button>
           </div>
 
 
