@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
-    before_action :find_artwork, only: [:show,:edit, :update, :destroy]
+    before_action :find_artwork, only: [:show, :update, :destroy]
 
   def index
     @artworks = policy_scope(Artwork)
@@ -48,7 +48,7 @@ class ArtworksController < ApplicationController
     
     authorize @artwork    
     if @artwork.save
-      if params[:art_photos]['photo'].length > 0
+      if params[:art_photos] != nil
         params[:art_photos]['photo'].each do |a|
             @photo = @artwork.art_photos.create!(photo: a)
          end
@@ -62,15 +62,13 @@ class ArtworksController < ApplicationController
 
     redirect_to user_gallery_path(current_user.id, @artwork.gallery.id)
     else
-      render :new
+    redirect_to user_gallery_path(current_user.id, @artwork.gallery.id)
     end
   end
 
-  def edit
-  end
-
   def update 
-    authorize @artwork    
+    authorize @artwork   
+     
     if @artwork.update (artwork_params)
       if params[:art_photos] != nil
         params[:art_photos]['photo'].each do |a|
@@ -92,7 +90,7 @@ class ArtworksController < ApplicationController
 
     redirect_to user_gallery_path(current_user.id, @artwork.gallery.id)
     else
-      render :new
+    redirect_to user_gallery_path(current_user.id, @artwork.gallery.id)
     end
   end
 
