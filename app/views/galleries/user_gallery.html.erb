@@ -1,6 +1,6 @@
 <!-- Title -->
 <div class="container text-center">
-  <h1> <%= current_user.first_name %>'s gallery <strong> <%= @gallery.name %> </strong></h1>
+  <h1> <%= current_user.first_name %> Gallerie <strong> <%= @gallery.name %> </strong></h1>
 </div>
 <br>
 <br>
@@ -16,23 +16,38 @@
         <th>Année</th>
         <th>Dimensions</th>
         <th>Prix</th>
-        <th>Status</th>
+        <th>Catégories</th>
         <th>Actions</th>
       </tr>
-    <% @gallery.artworks.each do |artwork| %>
+    <% @gallery.artworks.order(created_at: :desc).each do |artwork| %>
       <tr>
-        <td> <%= image_tag artwork.art_photos.first.photo.url(:cards), style: 'height: 70px;' %></td>
+        <td> <% if artwork.art_photos.first != nil %>
+          <%= image_tag artwork.art_photos.first.photo.url(:cards), style: 'height: 70px;'%>
+           <% end %> 
+          </td>
         <td> <%= artwork.name %></td> 
         <td> <%= artwork.artist.first_name %></td>
         <td> <%= artwork.year %></td>
         <td> <%= artwork.dimensions %></td>
         <td> <%= artwork.price %></td>
-        <td>Active</td>
-        <td>   <%= link_to "Modifier", edit_artwork_path(artwork.id), class: "btn btn-create"  %><%= link_to artwork_path(artwork), method: :delete do %> 
+        <td> <ul class="list-unstyled">
+          <% artwork.categories.each do |category| %>
+            <li>
+              <% if category.parent_category != nil %>
+                <%= category.parent_category.name %> , 
+              <% end %>
+              <%= category.name %>
+            </li>
+          <% end %>
+          </ul>
+        </td>
+        <td class = "text-center"><button type="button" class="btn btn-create modal-artwork" data-toggle="modal" data-target=".bs-add-modal-lg<%=artwork.id%>" data-tid = "<%= artwork.id %>">Modifier</button> <br>  <%= link_to artwork_path(artwork), method: :delete , hidden: true do %> 
               <i class="fas fa-trash" style= "color: black;" id= "delete-link-<%=artwork.id%>"></i>
             <% end %>
-              <!-- <span data-id="<%=artwork.id%>" class="btn btn-primary sweet-alert-d"><i class="fas fa-trash"></i></span> </td> -->
+              <span data-id="<%=artwork.id%>" class="sweet-alert-d">  <i class="fas fa-trash"></i></span> </td>
       </tr>
+      <%= render 'galleries/shared/add_artwork_form', artwork: artwork, gallery: @gallery %>
+      <!-- <%= link_to "Modifier", edit_artwork_path(artwork.id), class: "btn btn-create"  %> -->
     <% end %>
     
   
@@ -42,7 +57,66 @@
 
   <!-- Right Side of Page - Add artworks Form  -->
   <div class="container right">
-    <%= render 'galleries/shared/add_artwork_form', gallery: @gallery %>
+    <div class="text-center">
+      <h3>Ajouter une Oeuvre d'Art</h3>
+      <hr>
+      <!-- Large modal -->
+      <button type="button" class="btn btn-create modal-artwork" data-toggle="modal" data-target=".bs-add-modal-lg<%=@artwork.id || 0%>" data-tid = "<%= @artwork.id || 0%>">Ajouter Une Oeuvre</button>
+      <br>
+      <br>
+    </div>
+
+
+    <%= render 'galleries/shared/add_artwork_form', artwork: @artwork, gallery: @gallery %>
+  </div>
 </div>
 
+<script>
 
+currentTab = 0;
+id = 0;
+document.querySelectorAll(".modal-artwork").forEach((modal) => {
+  modal.addEventListener("click", () => {
+    currentTab = 0;
+    id = modal.dataset.tid;
+    showTab(currentTab,id); // Display the current tab
+  });
+});
+
+function showTab(n,id) {
+  // This function will display the specified tab of the form ...
+  x = document.getElementsByClassName(`tab${id}`);
+  document.querySelectorAll(".tabs").forEach((tab) => {tab.style.display = "none";});
+  x[n].style.display = "block";
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById(`prevBtn${id}`).style.display = "none";
+  } else {
+    document.getElementById(`prevBtn${id}`).style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById(`nextBtn${id}`).style.display = "none";
+  } else {
+    document.getElementById(`nextBtn${id}`).innerHTML = "Suivant";
+  }
+}
+
+function nextPrev(n,id) {
+  // This function will figure out which tab to display
+  y = document.getElementsByClassName(`tab${id}`);
+  // Exit the function if any field in the current tab is invalid:
+  // Hide the current tab:
+  document.querySelectorAll(".tabs").forEach((tab) => {tab.style.display = "none";});
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+  if (currentTab >= y.length) {
+    //...the form gets submitted:
+    document.querySelctor(".add-artwork-form").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab,id);
+}
+
+</script>

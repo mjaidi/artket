@@ -5,8 +5,8 @@ class Artwork < ApplicationRecord
   belongs_to :gallery
   belongs_to :exhibition, optional: true
   belongs_to :artist
-  has_many :art_photos
-  has_many :join_art_categories
+  has_many :art_photos, dependent: :destroy
+  has_many :join_art_categories, dependent: :destroy
   has_many :categories, through: :join_art_categories
 
   validates :name, presence: true
