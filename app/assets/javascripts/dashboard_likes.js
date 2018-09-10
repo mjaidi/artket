@@ -74,8 +74,8 @@ $(document).ready(function() {
 
   $('.likes').percentPie({
     width: 200,
-    trackColor: "white",
-    barColor: "#C2A476",
+    trackColor: "#F7F8CB",
+    barColor: "#F9F60D",
     barWeight: 25,
     endPercent: 1,
     fps: 60
@@ -83,8 +83,8 @@ $(document).ready(function() {
 
     $('.views').percentPie({
     width: 200,
-    trackColor: "white",
-    barColor: "#C2A476",
+    trackColor: "#FDEDEC",
+    barColor: "#EF1B09",
     barWeight: 25,
     endPercent: 1,
     fps: 60
@@ -93,8 +93,8 @@ $(document).ready(function() {
 
     $('.artworks').percentPie({
     width: 200,
-    trackColor: "white",
-    barColor: "#C2A476",
+    trackColor: "#FAE5D3",
+    barColor: "#F39C12",
     barWeight: 25,
     endPercent: 1,
     fps: 60
@@ -102,8 +102,8 @@ $(document).ready(function() {
 
     $('.exhibitions').percentPie({
     width: 200,
-    trackColor: "white",
-    barColor: "#C2A476",
+    trackColor: "#EBDEF0",
+    barColor: "#884EA0",
     barWeight: 25,
     endPercent: 1,
     fps: 60
