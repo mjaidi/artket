@@ -71,7 +71,7 @@ gallery1 = Gallery.create!(user_id: test_user.id, name: "Artket", description: F
 gallery1.remote_photo_url = gallery_photos[0]
 gallery1.save
 gallery2 = Gallery.create!(user_id: test_user.id, name: "Thema", description: Faker::Lorem.paragraph(2, false, 6),  address_line: "Maarif", city: "Casablanca",country: "Morocco", email: "thema@thema.ma", phone: "0524512548" )
-gallery2.remote_photo_url = gallery_photos[1]
+gallery2.remote_photo_url = "https://res.cloudinary.com/artket/image/upload/v1536584377/thema-casablanca-maroc.jpg"
 gallery2.save
 
 #seeding Exhibitions

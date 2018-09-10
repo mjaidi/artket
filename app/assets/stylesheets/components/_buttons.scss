@@ -9,14 +9,24 @@ width: 250px;
 
 // Login button
 .log-btn{
-left: 87.43%;
-right: 1.46%;
-top: 25%;
-bottom: 17.86%;
-color: white;
-background: #C2A476;
-border-radius: 5px;
-font-size: 20px;
+  left: 87.43%;
+  right: 1.46%;
+  top: 25%;
+  bottom: 17.86%;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  background: #C2A476;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+    &:hover{
+      color: white;
+      background: #ccc;
+      text-decoration: none;
+    }
 }
 
 // Gallery/show : Button for contact galleries
@@ -42,6 +52,20 @@ font-size: 20px;
 
 .button {
   color:#C2A476;
+}
+
+.form-actions .btn{
+  height: 40px;
+  width: 100px;
+  background: #C2A476;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+    &:hover{
+      color: white;
+      background: #ccc;
+    }
 }
 
 
