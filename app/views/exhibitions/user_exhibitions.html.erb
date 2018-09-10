@@ -1,5 +1,7 @@
 Liste des exhibitions de l'utilisateur <%= current_user.first_name %>
 
 <% @exhibitions.each do |exhibition| %>
+<li>
   <%= exhibition.name %>
+  </li>
 <% end %>
