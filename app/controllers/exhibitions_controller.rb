@@ -35,7 +35,7 @@ class ExhibitionsController < ApplicationController
   def update
     authorize @exhibition
 
-    if @exhibition.update
+    if @exhibition.update(exhibition_params)
       redirect_to user_exhibitions_path(current_user.id)
     else
       redirect_to user_exhibitions_path(current_user.id)

@@ -16,4 +16,8 @@ class GalleryPolicy < ApplicationPolicy
    def user_gallery?
     record.user == user
   end
+
+  def update?
+    record.user == user
+  end
 end

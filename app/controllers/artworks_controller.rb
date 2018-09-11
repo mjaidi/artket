@@ -66,10 +66,17 @@ class ArtworksController < ApplicationController
     end
   end
 
+
   def update
     authorize @artwork
 
     if @artwork.update (artwork_params)
+
+  def update 
+    authorize @artwork   
+     
+    if @artwork.update(artwork_params)
+
       if params[:art_photos] != nil
         params[:art_photos]['photo'].each do |a|
             @photo = @artwork.art_photos.create!(photo: a)
