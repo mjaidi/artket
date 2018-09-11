@@ -8,7 +8,7 @@
   margin-bottom: 20px;
   background-position: center;
   i {
-    font-size: 30px;
+    font-size: 70px;
   }
   a {
     display: flex;
@@ -17,32 +17,13 @@
   }
 }
 
-.btn-modify{
- position: absolute;
- bottom: 0;
- right: 0;
- background: #C2A476;
- color: white;
- text-decoration: none;
- padding: 10px;
-
-  &:hover{
-    color: white;
-    background: #ccc;
-    text-decoration: none;
-  }
-}
-
 .title {
+  margin-top: 10px;
   margin-left: 20px;
   font-size: 25px ;
 }
 
-.btn-gestion{
-  background: #ccc;
-  opacity: 0.6;
-  text-decoration: none;
-  color: white;
-  margin-left: 10px;
+.fa-cogs:before {
+    color: white;
 
 }
