@@ -1,10 +1,28 @@
-Exhibition <%= @exhibition.name %> <%= current_user.first_name %>
-<% @exhibition.artworks.each do |artwork| %>
-<li>
-  <%= artwork.name %>
-  <%= artwork.artist.first_name %>
-</li>
-<% end %>
+  <div class="container">
+    <div class="row">
+        <% @exhibition.artworks.each do |artwork| %>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="card-art">
+            <div class="card-body" style="background-image: url(<%= cl_image_path(artwork.art_photos.first.photo.url(:cards)) %>)">
+            </div>
+
+            <div class="card-footer">
+              <div class="card-title">
+                <p><%= artwork.name %> </p>
+                  <div class="card-desc">
+                <p><%= artwork.artist.first_name %> <%= artwork.artist.last_name %></p>
+                  </div>
+              </div>
+                <div class="controls">
+                  <a href="#"><i class="fas fa-trash"></i></a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
 
  <button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-art-exhib-modal-lg<%=@exhibition.id || 0%>">Ajouter Une Oeuvre</button>
 

@@ -1,7 +1,27 @@
 liste des artists de l'utilisateur <%= current_user.first_name %>
 
-<% @artists.each do |artist| %>
-<li>
-<%= "#{artist.first_name} #{artist.last_name}" %>
-</li>
-  <% end %>
+<div class="title-artistes" id="artists-list">
+  <p> Liste des artistes </p>
+</div>
+
+
+  <div class="container">
+    <div class="row">
+      <% @artists.each do |artist| %>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="card-artist">
+            <div class="card-body" style="background-image: url(<%= cl_image_path(artist.photo.url(:cards)) %>)">
+            </div>
+              <div class="card-footer">
+                <div class="card-title">
+                  <p> <%=artist.first_name%>, <%= artist.last_name %> </p>
+                </div>
+                <div class="controls">
+                  <a href="#"><i class="fas fa-trash"></i></a>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
