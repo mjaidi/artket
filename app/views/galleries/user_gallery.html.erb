@@ -11,7 +11,7 @@
     <table class="table table-hover table-artwork">
       <tr>
         <th>Photo</th>
-        <th>Titre</th> 
+        <th>Titre</th>
         <th>Artist</th>
         <th>Année</th>
         <th>Dimensions</th>
@@ -23,9 +23,9 @@
       <tr>
         <td> <% if artwork.art_photos.first != nil %>
           <%= image_tag artwork.art_photos.first.photo.url(:cards), style: 'height: 70px;'%>
-           <% end %> 
+           <% end %>
           </td>
-        <td> <%= artwork.name %></td> 
+        <td> <%= artwork.name %></td>
         <td> <%= artwork.artist.full_name %></td>
         <td> <%= artwork.year %></td>
         <td> <%= artwork.dimensions %></td>
@@ -34,23 +34,23 @@
           <% artwork.categories.each do |category| %>
             <li>
               <% if category.parent_category != nil %>
-                <%= category.parent_category.name %> , 
+                <%= category.parent_category.name %> ,
               <% end %>
               <%= category.name %>
             </li>
           <% end %>
           </ul>
         </td>
-        <td class = "text-center"><p class="modal-artwork" data-toggle="modal" data-target=".bs-add-modal-lg<%=artwork.id%>" data-tid = "<%= artwork.id %>"><i class="far fa-edit"></i></p> 
-          <%= link_to artwork_path(artwork), method: :delete , hidden: true do %> 
+        <td class = "text-center"><p class="modal-artwork" data-toggle="modal" data-target=".bs-add-modal-lg<%=artwork.id%>" data-tid = "<%= artwork.id %>"><i class="far fa-edit"></i></p>
+          <%= link_to artwork_path(artwork), method: :delete , hidden: true do %>
               <i class="fas fa-trash" style= "color: black;" id= "delete-link-<%=artwork.id%>"></i>
             <% end %>
               <span data-id="<%=artwork.id%>" class="sweet-alert-d">  <i class="fas fa-trash"></i></span>  </td>
       </tr>
       <%= render 'galleries/shared/add_artwork_form', artwork: artwork, gallery: @gallery %>
     <% end %>
-    
-  
+
+
     </table>
 
   </div>
