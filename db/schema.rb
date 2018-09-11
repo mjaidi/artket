@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_104555) do
+ActiveRecord::Schema.define(version: 2018_09_11_160647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_104555) do
     t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "published", default: false
     t.index ["artist_id"], name: "index_artworks_on_artist_id"
     t.index ["exhibition_id"], name: "index_artworks_on_exhibition_id"
     t.index ["gallery_id"], name: "index_artworks_on_gallery_id"
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_104555) do
     t.bigint "gallery_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "published", default: false
     t.index ["gallery_id"], name: "index_exhibitions_on_gallery_id"
   end
 

@@ -41,13 +41,11 @@
     <p> Oeuvres </p>
     </div>
       <div class="container">
-        <% 3.times do %>
           <div class="row">
-            <% @exhibition.artworks.each do |artwork| %>
+            <% @exhibition.artworks.where(published: true).each do |artwork| %>
               <div class="col-xs-12 col-md-6 col-lg-4">
                 <%= render "shared/artwork_card", artwork: artwork %>
               </div>
             <% end %>
           </div>
-        <% end %>
       </div>

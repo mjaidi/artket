@@ -6,7 +6,7 @@ class ArtworkPolicy < ApplicationPolicy
   end
 
   def show?
-     true
+     record.published
   end
 
   def edit?

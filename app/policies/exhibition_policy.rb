@@ -6,7 +6,7 @@ class ExhibitionPolicy < ApplicationPolicy
   end
 
   def show?
-     true
+     record.published
   end
 
   def user_exhibitions?
