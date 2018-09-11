@@ -1,4 +1,6 @@
-liste des artists de l'utilisateur <%= current_user.first_name %>
+<div class="title-artistes" id="artists-list">
+  <p> Liste des artistes </p>
+</div>
 
 <% @artists.each do |artist| %>
 <li>
@@ -16,3 +18,5 @@ liste des artists de l'utilisateur <%= current_user.first_name %>
 
 
  <%= render 'artists/shared/add_artist_form', artist: @artist %>
+
+

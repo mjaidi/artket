@@ -4,7 +4,7 @@ class Artist < ApplicationRecord
   belongs_to :user
 
   mount_uploader :photo, PhotoUploader
-  
+
   validates :first_name, presence: :true
   validates_uniqueness_of :first_name, scope: :last_name
 

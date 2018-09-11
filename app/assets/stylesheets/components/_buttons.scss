@@ -1,70 +1,135 @@
 // Search bar
-.form-control-btn-search{
-display: flex;
-align-item: left;
-border-radius: 8px;
-box-shadow: 2px;
-width: 250px;
-}
+  .form-control-btn-search{
+  display: flex;
+  align-item: left;
+  border-radius: 8px;
+  box-shadow: 2px;
+  width: 250px;
+  }
 
 // Login button
-.log-btn{
-  left: 87.43%;
-  right: 1.46%;
-  top: 25%;
-  bottom: 17.86%;
-  display: flex;
-  justify-content: center;
-  height: 30px;
-  width: 100px;
-  background: #C2A476;
-  border-radius: 5px;
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
+  .log-btn{
+    left: 87.43%;
+    right: 1.46%;
+    top: 25%;
+    bottom: 17.86%;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    width: 100px;
+    background: #C2A476;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+      &:hover{
+        color: white;
+        background: #ccc;
+        text-decoration: none;
+      }
+  }
+
+// Gallery/show : Button for contact galleries
+  .btn-artwork{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1000px;
+    width: 215px;
+    height: 50px;
+    background: #C2A476;
+    align-self: flex-end;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    &:hover{
+      color: white;
+      background: #ccc;
+    }
+  }
+
+  .button {
+    color:#C2A476;
+  }
+
+  .form-actions .btn{
+    height: 40px;
+    width: 100px;
+    background: #C2A476;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+      &:hover{
+        color: white;
+        background: #ccc;
+      }
+    }
+
+// Gallery Dashboard
+  .links{
+    margin-bottom: 60px;
+    margin-top: 40px;
+    .btn-create{
+      padding: 10px;
+      margin-left: 10px;
+      border-radius: 8px;
+         &:hover{
+      color: white;
+      background: #ccc;
+      text-decoration: none;
+      }
+    }
+  }
+
+// ExhibitionS dashboard
+  .btn-modify{
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   background: #C2A476;
+   color: white;
+   text-decoration: none;
+   padding: 10px;
+
     &:hover{
       color: white;
       background: #ccc;
       text-decoration: none;
     }
-}
+  }
 
-// Gallery/show : Button for contact galleries
-.btn-artwork{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 1000px;
-  width: 215px;
-  height: 50px;
-  background: #C2A476;
-  align-self: flex-end;
-  a {
-    color: white;
+  .title {
+    margin-left: 20px;
+    font-size: 25px ;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-gestion{
+    background: #C2A476;
+    opacity: 0.7;
+    padding: 15px;
     text-decoration: none;
-  }
-
-  &:hover{
     color: white;
-    background: #ccc;
-  }
-}
-
-.button {
-  color:#C2A476;
-}
-
-.form-actions .btn{
-  height: 40px;
-  width: 100px;
-  background: #C2A476;
-  border-radius: 5px;
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
+    margin-left: 10px;
     &:hover{
       color: white;
       background: #ccc;
+      text-decoration: none;
     }
-}
+  }
+
+  .addex {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .btn-create {
+      padding: 30px;
+    }
+  }
+
+
 
