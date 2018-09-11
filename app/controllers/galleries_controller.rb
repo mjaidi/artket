@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :contact]
-  before_action :find_gallery, only: [:show, :contact]
+  before_action :find_gallery, only: [:show, :contact, :update]
 
   def index
     @galleries = policy_scope(Gallery)
@@ -29,7 +29,21 @@ class GalleriesController < ApplicationController
     authorize @gallery
   end
 
+  def update 
+    authorize @gallery   
+
+    if @gallery.update(gallery_params)
+      redirect_to user_gallery_dashboard_path(current_user.id)
+    else
+      redirect_to user_gallery_dashboard_path(current_user.id)
+    end
+  end
+
   private
+
+  def gallery_params
+    params.require(:gallery).permit(:name, :photo, :address_line, :city, :country, :description, :phone, :email)
+  end
 
   def find_gallery
     @gallery = Gallery.find(params[:id])
