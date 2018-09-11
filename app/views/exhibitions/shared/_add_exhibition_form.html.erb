@@ -31,6 +31,8 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
+              <h6><strong>Photo de l'Exposition</strong></h6>
+              <%= cl_image_tag(exhibition.cover_photo.url(:cards), width: 100, height: 100, class: "form-image") %>
               <%= f.file_field :cover_photo %>
             </div>
           </div>

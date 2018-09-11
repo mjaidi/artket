@@ -51,6 +51,15 @@ class ExhibitionsController < ApplicationController
     redirect_to user_exhibition_path(current_user.id,exhibition.id)
   end
 
+   def remove_artwork
+    exhibition = Exhibition.find(params[:exhibition_id])
+    authorize exhibition
+    artwork = Artwork.find(params[:artwork_id])
+    artwork.exhibition = nil
+    artwork.save!
+    redirect_to user_exhibition_path(current_user.id,exhibition.id)
+  end
+
   private
 
   def exhibition_params

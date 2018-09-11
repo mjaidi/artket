@@ -1,11 +1,71 @@
-Exhibition <%= @exhibition.name %> <%= current_user.first_name %>
-<% @exhibition.artworks.each do |artwork| %>
-<li>
-  <%= artwork.name %>
-  <%= artwork.artist.first_name %>
-</li>
-<% end %>
+<!-- Title -->
+<div class="container text-center">
+  <h1>Exposition <strong> <%= @exhibition.name %> </strong></h1>
+</div>
+<br>
+<br>
 
- <button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-art-exhib-modal-lg<%=@exhibition.id || 0%>">Ajouter Une Oeuvre</button>
+<div class="wrapper" id="main-user-gallery-show">
+  <!-- Left Side of Page -->
+  <div class="container left">
+    <table class="table table-hover table-artwork">
+      <tr>
+        <th>Photo</th>
+        <th>Titre</th> 
+        <th>Artist</th>
+        <th>Année</th>
+        <th>Dimensions</th>
+        <th>Prix</th>
+        <th>Catégories</th>
+        <th>Actions</th>
+      </tr>
+    <% @exhibition.artworks.order(created_at: :desc).each do |artwork| %>
+      <tr>
+        <td> <% if artwork.art_photos.first != nil %>
+          <%= image_tag artwork.art_photos.first.photo.url(:cards), style: 'height: 70px;'%>
+           <% end %> 
+          </td>
+        <td> <%= artwork.name %></td> 
+        <td> <%= artwork.artist.full_name %></td>
+        <td> <%= artwork.year %></td>
+        <td> <%= artwork.dimensions %></td>
+        <td> <%= artwork.price %></td>
+        <td> <ul class="list-unstyled">
+          <% artwork.categories.each do |category| %>
+            <li>
+              <% if category.parent_category != nil %>
+                <%= category.parent_category.name %> , 
+              <% end %>
+              <%= category.name %>
+            </li>
+          <% end %>
+          </ul>
+        </td>
+        <td class = "text-center"> <%= link_to user_exhibition_artwork_remove_path(current_user, @exhibition, artwork), method: :patch , hidden: true do %> 
+              <i class="fas fa-trash" style= "color: black;" id= "delete-link-<%=@exhibition.id%><%=artwork.id%>"></i>
+            <% end %>
+              <span data-id="<%=@exhibition.id%><%=artwork.id%>" class="sweet-alert-rm">  <i class="fas fa-trash"></i></span> </td>
+      </tr>
+    <% end %>
+    
+  
+    </table>
 
- <%= render 'exhibitions/shared/add_art_to_exhibition', exhibition: @exhibition, user: current_user %>
+  </div>
+
+  <!-- Right Side of Page - Add artworks Form  -->
+  <div class="container right">
+    <div class="text-center">
+      <h3>Ajouter une Oeuvre à L'Exposition</h3>
+      <hr>
+      <!-- Large modal -->
+      <button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-art-exhib-modal-lg<%=@exhibition.id || 0%>">Ajouter Une Oeuvre</button>
+
+      <br>
+      <br>
+    </div>
+
+
+     <%= render 'exhibitions/shared/add_art_to_exhibition', exhibition: @exhibition, user: current_user %>
+  </div>
+</div>

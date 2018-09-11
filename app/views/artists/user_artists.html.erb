@@ -2,6 +2,17 @@ liste des artists de l'utilisateur <%= current_user.first_name %>
 
 <% @artists.each do |artist| %>
 <li>
-<%= "#{artist.first_name} #{artist.last_name}" %>
+<%= artist.full_name %>
+<button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-artist-modal-lg<%=artist.id || 0%>">Modifier</button>
 </li>
+ <%= render 'artists/shared/add_artist_form', artist: artist %>
   <% end %>
+
+
+
+
+<button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-artist-modal-lg<%=@artist.id || 0%>">Ajouter Un Artist</button>
+
+
+
+ <%= render 'artists/shared/add_artist_form', artist: @artist %>
