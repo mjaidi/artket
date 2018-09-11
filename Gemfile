@@ -10,9 +10,11 @@ gem 'rails', '5.2.1'
 gem 'redis'
 gem 'jquery-rails'
 
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '1.4.0'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
-gem 'font-awesome-sass', '~> 5.0.9'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
