@@ -15,11 +15,13 @@ Liste des expositions de l'utilisateur <%= current_user.first_name %>
     <div class="col-xs-12">
       <% @exhibitions.order(start_date: :desc).each do |exhibition| %>
         <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
-            <%= link_to "Modifier", user_exhibitions_path(current_user.id), class: "btn-modify" %>
-            <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
-              <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
+
+         <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
+          <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
+            <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
             <% end %>
         </div>
+         <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
       <% end %>
     </div>
   </div>

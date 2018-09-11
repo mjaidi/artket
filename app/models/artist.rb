@@ -11,4 +11,8 @@ class Artist < ApplicationRecord
   algoliasearch do
     # all attributes will be sent
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

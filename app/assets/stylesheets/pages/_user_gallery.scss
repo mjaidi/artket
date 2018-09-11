@@ -14,10 +14,26 @@
 
 .table > tbody > tr > td {
   vertical-align: middle;
+  font-size: 14px;
+  text-transform: lowercase;
+  .btn-create {
+    font-size: 15px;
+  }
 }
 
 .fa-trash {
   color: $red;
+  font-size: 15px;
+  margin-top: 5px;
+  &:hover {
+    color: #ccc;
+  }
+}
+
+.fa-edit {
+  color: $green;
+  font-size: 15px;
+  margin-top: 5px;
   &:hover {
     color: #ccc;
   }

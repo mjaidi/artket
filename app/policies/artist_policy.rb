@@ -8,4 +8,12 @@ class ArtistPolicy < ApplicationPolicy
   def user_artists?
     true
   end
+
+  def create?
+    record.user == user
+  end
+
+  def update?
+    record.user == user
+  end
 end

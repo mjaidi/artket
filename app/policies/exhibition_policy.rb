@@ -28,4 +28,8 @@ class ExhibitionPolicy < ApplicationPolicy
   def add_artwork?
     record.gallery.user == user
   end
+
+  def remove_artwork?
+    record.gallery.user == user
+  end
 end

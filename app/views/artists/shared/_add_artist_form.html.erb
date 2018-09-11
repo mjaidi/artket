@@ -1,19 +1,19 @@
 <!-- Large Modal Target -->
-<div class="modal fade bs-artist-modal-lg<%=exhibition.id || 0%>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-artist-modal-lg<%=artist.id || 0%>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="add-form">
-        <%= simple_form_for(exhibition) do |f| %>
+        <%= simple_form_for(artist) do |f| %>
           <div class="text-center">
             <h4>Informations sur l'Artiste</h4>
           </div>
           <hr>
           <div class="row">
             <div class="col-xs-12 col-md-6">
-              <%= f.association :gallery, as: :collection_select, collection: Gallery.where('user_id = ?', current_user.id), label_method: :name, value_method: :id, label: "Galerie",  default: current_user.galleries.first %>
+              <%= f.input :first_name, label: "Nom" %>
             </div>
             <div class="col-xs-12 col-md-6">
-              <%= f.input :name, label: "Nom" %>
+              <%= f.input :last_name, label: "Nom" %>
             </div>
           </div>
           <div class="row">
@@ -23,15 +23,17 @@
           </div>
           <div class="row">
             <div class="col-xs-12 col-md-6">
-              <%= f.input :start_date,  as: :string, input_html: {type: :date}, label: "Date de Début" %>
+              <%= f.input :birth_date,  as: :string, input_html: {type: :date}, label: "Date Naissance" %>
             </div>
             <div class="col-xs-12 col-md-6">
-              <%= f.input :end_date,  as: :string, input_html: {type: :date}, label: "Date de Fin" %>
+              <%= f.input :death_date,  as: :string, input_html: {type: :date}, label: "Date Décès" %>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <%= f.file_field :cover_photo %>
+              <h6><strong>Photo de l'Artist</strong></h6>
+              <%= cl_image_tag(artist.photo.url(:cards), width: 100, height: 100, class: "form-image") %>
+               <%= f.file_field :photo %>
             </div>
           </div>
             
@@ -39,10 +41,10 @@
 
             <div class="text-center">
               <div class="submit-exhibition">
-                <% if exhibition.id.nil? %>
-                  <%= f.button :submit, class: 'btn btn-create', value: "Ajouter une Exposition" %>
+                <% if artist.id.nil? %>
+                  <%= f.button :submit, class: 'btn btn-create', value: "Ajouter un Artist" %>
                 <% else %>
-                  <%= f.button :submit, class: 'btn btn-create', value: "Modifier l'Exposition #{exhibition.name}" %>
+                  <%= f.button :submit, class: 'btn btn-create', value: "Modifier l'Artist #{artist.full_name}" %>
                 <% end %>
               </div>
             </div>
