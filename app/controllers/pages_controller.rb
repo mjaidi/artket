@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @galleries = Gallery.all
-    @artworks = Artwork.all
+    @artworks = Artwork.where(published: true)
     @artists = Artist.all
     @exhibitions = Exhibition.all
   end

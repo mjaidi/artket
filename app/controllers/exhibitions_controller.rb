@@ -3,7 +3,7 @@ class ExhibitionsController < ApplicationController
   before_action :find_exhibition, only: [:show, :update]
 
   def index
-    @exhibitions = policy_scope(Exhibition)
+    @exhibitions = policy_scope(Exhibition).where(published: true)
   end
 
 
@@ -23,8 +23,8 @@ class ExhibitionsController < ApplicationController
 
   def create
     @exhibition = Exhibition.new(exhibition_params)
-        
-    authorize @exhibition    
+
+    authorize @exhibition
     if @exhibition.save
       redirect_to user_exhibitions_path(current_user.id)
     else
@@ -32,8 +32,8 @@ class ExhibitionsController < ApplicationController
     end
   end
 
-  def update 
-    authorize @exhibition   
+  def update
+    authorize @exhibition
 
     if @exhibition.update(exhibition_params)
       redirect_to user_exhibitions_path(current_user.id)

@@ -3,10 +3,10 @@ class ArtworksController < ApplicationController
     before_action :find_artwork, only: [:show, :update, :destroy]
 
   def index
-    @artworks = policy_scope(Artwork)
+    @artworks = policy_scope(Artwork).where(published: true);
 
     if params[:query].present?
-      @artworks = Artwork.global_search("%#{params[:query]}%")
+      @artworks = @artworks.global_search("%#{params[:query]}%")
       @galleries = @artworks.map {|artwork| artwork.gallery}
       @markers = @galleries.uniq.map do |gallery|
         {
@@ -16,7 +16,7 @@ class ArtworksController < ApplicationController
         }
       end
     else
-      @artworks = Artwork.all
+      @artworks = @artworks
       @galleries = @artworks.map {|artwork| artwork.gallery}
       @markers = @galleries.uniq.map do |gallery|
         {
@@ -45,8 +45,8 @@ class ArtworksController < ApplicationController
   def create
     @artwork = Artwork.new(artwork_params)
     @artwork.gallery_id = params["gallery_id"]
-    
-    authorize @artwork    
+
+    authorize @artwork
     if @artwork.save
       if params[:art_photos] != nil
         params[:art_photos]['photo'].each do |a|
@@ -66,10 +66,17 @@ class ArtworksController < ApplicationController
     end
   end
 
+
+  def update
+    authorize @artwork
+
+    if @artwork.update (artwork_params)
+
   def update 
     authorize @artwork   
      
     if @artwork.update(artwork_params)
+
       if params[:art_photos] != nil
         params[:art_photos]['photo'].each do |a|
             @photo = @artwork.art_photos.create!(photo: a)
