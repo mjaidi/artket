@@ -12,31 +12,36 @@
       <tr>
         <th>Photo</th>
         <th>Prénom</th>
-        <th>Nom</th> 
+        <th>Nom</th>
         <th>Année Naissance</th>
         <th>Année Décès</th>
         <th>Actions</th>
       </tr>
-    <% @artists.order(last_name: :asc).each do |artist| %>
-      <tr>
-        <td> <% if artist.photo != nil %>
-          <%= image_tag artist.photo.url(:cards), style: 'height: 70px;'%>
-           <% end %> 
-          </td>
-        <td> <%= artist.first_name %></td> 
-        <td> <%= artist.last_name %></td>
-        <td> <%= artist.birth_date %></td>
-        <td> <%= artist.death_date %></td>
-        <td class = "text-center"><p class="modal-artwork" data-toggle="modal" data-target=".bs-artist-modal-lg<%=artist.id%>"><i class="far fa-edit"></i></p> 
-          <%= link_to artist_path(artist), method: :delete , hidden: true do %> 
-              <i class="fas fa-trash" style= "color: black;" id= "delete-link-artist<%=artist.id%>"></i>
-            <% end %>
-              <span data-id="artist<%=artist.id%>" class="sweet-alert-d">  <i class="fas fa-trash"></i></span>  </td>
-      </tr>
-        <%= render 'artists/shared/add_artist_form', artist: artist %>
-    <% end %>
-    
-  
+
+      <% if !@artists.empty? %>
+        <% @artists.order(last_name: :asc).each do |artist| %>
+          <tr>
+            <td> <% if artist.photo != nil %>
+              <%= image_tag artist.photo.url(:cards), style: 'height: 70px;'%>
+               <% end %>
+              </td>
+            <td> <%= artist.first_name %></td>
+            <td> <%= artist.last_name %></td>
+            <td> <%= artist.birth_date %></td>
+            <td> <%= artist.death_date %></td>
+            <td class = "text-center"><p class="modal-artwork" data-toggle="modal" data-target=".bs-artist-modal-lg<%=artist.id%>"><i class="far fa-edit"></i></p>
+              <%= link_to artist_path(artist), method: :delete , hidden: true do %>
+                  <i class="fas fa-trash" style= "color: black;" id= "delete-link-artist<%=artist.id%>"></i>
+                <% end %>
+                  <span data-id="artist<%=artist.id%>" class="sweet-alert-d">  <i class="fas fa-trash"></i></span>  </td>
+          </tr>
+            <%= render 'artists/shared/add_artist_form', artist: artist %>
+        <% end %>
+      <% else %>
+        <p>No artists</p>
+      <% end %>
+
+
     </table>
 
   </div>

@@ -3,7 +3,7 @@ class ArtworksController < ApplicationController
     before_action :find_artwork, only: [:show, :update, :destroy]
 
   def index
-    @artworks = policy_scope(Artwork).where(published: true);
+    @artworks = policy_scope(Artwork).where(published: true)
 
     if params[:query].present?
       @artworks = @artworks.global_search("%#{params[:query]}%")
@@ -66,15 +66,9 @@ class ArtworksController < ApplicationController
     end
   end
 
-
   def update
     authorize @artwork
 
-    if @artwork.update (artwork_params)
-
-  def update 
-    authorize @artwork   
-     
     if @artwork.update(artwork_params)
 
       if params[:art_photos] != nil
