@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :find_artist, only: [ :update]
+  before_action :find_artist, only: [ :update, :destroy]
 
   def user_artists # list des artists de l'utilisateur
     @artists = Artist.where("user_id = ?", current_user)
@@ -21,12 +21,20 @@ class ArtistsController < ApplicationController
   def update 
     authorize @artist   
 
-    if @artist.update
+    if @artist.update(artist_params)
       redirect_to user_artists_path(current_user.id)
     else
       redirect_to user_artists_path(current_user.id)
     end
   end
+
+
+  def destroy
+    authorize @artist
+    @artist.destroy
+    redirect_to user_artists_path(current_user.id)
+  end
+
 
   private 
 

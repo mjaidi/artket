@@ -20,7 +20,7 @@ function bindSweetAlertButtonDelete() {
             document.getElementById(`delete-link-${b.dataset.id}`).click();
             swal(
               'Supprimé!',
-              'Votre oeuvre a été supprimé.',
+              `L'objet à bien été supprimé.`,
               'success'
             )
           }
