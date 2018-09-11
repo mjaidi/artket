@@ -9,9 +9,12 @@
   <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
   <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
   <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+  <script src="https://cdn.rawgit.com/sachinchoolur/lg-thumbnail.js/master/dist/lg-thumbnail.js"></script>
   <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
   <script>
-    lightGallery(document.getElementById('lightgallery'));
+    lightGallery(document.getElementById('lightgallery'), {
+      thumbnail: true
+    });
   </script>
 <% end %>
 
@@ -66,21 +69,24 @@
       </div>
     </div>
 
-<hr>
-
 <!-- Other artworks from same artist -->
+<% if @artworks.where(published: true).length > 1 %>
+  <hr>
   <div class="title-others">
     <h4>Autres oeuvres de l'artiste</h4>
-      </div>
-        <div class="container">
-         <div class="row">
-            <% @artworks.each do |artwork| %>
-              <div class="col-xs-12 col-md-6 col-lg-4">
-                <%= render "shared/artwork_card", artwork: artwork %>
-              </div>
-            <% end %>
-        </div>
-      </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @artworks.where(published: true).each do |artwork| %>
+        <% if artwork != @artwork %>
+          <div class="col-xs-12 col-md-6 col-lg-4">
+            <%= render "shared/artwork_card", artwork: artwork %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 
 <!-- Modal for artork -->

@@ -30,11 +30,11 @@
     </div>
     <div class="col-xs-12 col-md-6">
       <div class="links">
-
-        <button type="button" class="btn btn-create modal-artwork" data-toggle="modal" data-target=".bs-gallery-modal-lg<%=@gallery.id%>">Informations</button>
-      <% if @gallery %>  
-      <%= link_to "Oeuvres", user_gallery_path(current_user.id, @gallery.id), class: "btn-create" %>
-      <% end %>
+        <% if @gallery %>
+          <button type="button" class="btn btn-create modal-artwork" data-toggle="modal" data-target=".bs-gallery-modal-lg<%=@gallery.id%>">Informations</button>
+          <%= link_to "Oeuvres", user_gallery_path(current_user.id, @gallery.id), class: "btn-create" %>
+          <%= render 'galleries/shared/gallery_information_form',  gallery: @gallery %>
+        <% end %>
 
         <%= link_to "Expositions", user_exhibitions_path(current_user.id), class: "btn-create" %>
         <%= link_to "Artistes", user_artists_path(current_user.id), class: "btn-create" %>
@@ -47,4 +47,3 @@
   </div>
 </div>
 
-<%= render 'galleries/shared/gallery_information_form',  gallery: @gallery %>
