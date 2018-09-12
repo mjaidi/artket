@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_065511) do
+ActiveRecord::Schema.define(version: 2018_09_12_114631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 2018_09_12_065511) do
     t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 
+  create_table "gallery_likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "gallery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_gallery_likes_on_gallery_id"
+    t.index ["user_id"], name: "index_gallery_likes_on_user_id"
+  end
+
   create_table "join_art_categories", force: :cascade do |t|
     t.bigint "artwork_id"
     t.bigint "category_id"
@@ -142,6 +151,8 @@ ActiveRecord::Schema.define(version: 2018_09_12_065511) do
   add_foreign_key "artworks", "galleries"
   add_foreign_key "exhibitions", "galleries"
   add_foreign_key "galleries", "users"
+  add_foreign_key "gallery_likes", "galleries"
+  add_foreign_key "gallery_likes", "users"
   add_foreign_key "join_art_categories", "artworks"
   add_foreign_key "join_art_categories", "categories"
 end

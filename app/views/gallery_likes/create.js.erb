@@ -1,0 +1,4 @@
+controls = document.getElementById("controls-user<%=current_user.id%>gallery<%=@gallery.id%>");
+console.log(controls);
+controls.innerHTML = "";
+controls.insertAdjacentHTML("beforeend", "<%= j render 'shared/gallery_controls', gallery: @gallery%>");

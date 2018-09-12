@@ -1,6 +1,6 @@
 <div class="card-art">
   <div class="card-body" style="background-image: url(<%= cl_image_path(gallery.photo.url(:cards)) %>)">
-    <%= link_to "", gallery_path(gallery.id), class: "card-link" %>
+    <%= link_to "", gallery_path(gallery.id), class: "card-link2" %>
   </div>
   <div class="card-footer">
     <div class="card-title">
@@ -9,10 +9,14 @@
         <p> <%= gallery.city %> </p>
       </div>
     </div>
-    <div class="controls">
-      <a href="#"><i class="black fab fa-facebook"></i></a>
-      <a href="#"><i class="black fab fa-twitter"></i></a>
-      <a href="#"><i class="black fab fa-instagram"></i></a>
-    </div>
+    <% if user_signed_in? %>
+      <div class="controls" id= "controls-user<%=current_user.id%>gallery<%=gallery.id%>">
+        <%= render "shared/gallery_controls", gallery: gallery %>
+      </div>
+      <% else %>
+      <div class="controls" id= "controls-usergallery<%=gallery.id%>">
+        <%= render "shared/gallery_controls", gallery: gallery %>
+      </div>
+    <% end %>
   </div>
 </div>
