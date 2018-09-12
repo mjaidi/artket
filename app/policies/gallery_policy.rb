@@ -14,10 +14,12 @@ class GalleryPolicy < ApplicationPolicy
   end
 
    def user_gallery?
+    user.gallerist == true
     record.user == user
   end
 
   def update?
+    user.gallerist == true
     record.user == user
   end
 end

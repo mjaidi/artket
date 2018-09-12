@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <% if artwork.artwork_likes.where(user_id: current_user.id)[0].nil? %>
+    <%= link_to create_artwork_like_path(current_user.id, artwork.id), remote: true do %>
+      <i class="black fas fa-heart" id="user<%=current_user.id%>art<%=artwork.id%>"></i>
+    <% end %>
+  <% else %>
+    <%= link_to destroy_artwork_like_path(current_user.id, artwork.id), remote: true, method: :delete do %>
+    <i class="red fas fa-heart" id="user<%=current_user.id%>art<%=artwork.id%>"></i>
+    <% end %>
+  <% end %>  
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <i class="black fas fa-heart" id="userart<%=artwork.id%>"></i>
+  <% end %>
+<% end %>

@@ -6,6 +6,7 @@ class ArtPhotoPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    user.gallerist == true
+    record.artwork.gallery.user == user
   end
 end

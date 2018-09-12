@@ -101,6 +101,9 @@ class ArtworksController < ApplicationController
     redirect_to user_gallery_path(current_user.id, @artwork.gallery.id)
   end
 
+  def like
+  end
+
   private
 
   def artwork_params
