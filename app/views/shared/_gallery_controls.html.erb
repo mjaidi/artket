@@ -3,22 +3,22 @@
     <%= link_to create_gallery_like_path(current_user.id, gallery.id), remote: true do %>
       <i class="black fas fa-heart" id="user<%=current_user.id%>gallery<%=gallery.id%>"></i>
     <% end %>
-      <a href="#"><i class="black fab fa-facebook"></i></a>
+      <a href="http://www.facebook.com/sharer.php?u=https://artket.herokuapp.com/galleries/<%= gallery.id %>"><i class="black fab fa-facebook"></i></a>
       <a href="#"><i class="black fab fa-twitter"></i></a>
       <a href="#"><i class="black fab fa-instagram"></i></a>
   <% else %>
     <%= link_to destroy_gallery_like_path(current_user.id, gallery.id), remote: true, method: :delete do %>
     <i class="red fas fa-heart" id="user<%=current_user.id%>gallery<%=gallery.id%>"></i>
     <% end %>
-      <a href="#"><i class="black fab fa-facebook"></i></a>
+      <a href="http://www.facebook.com/sharer.php?u=https://artket.herokuapp.com/galleries/<%= gallery.id %>"><i class="black fab fa-facebook"></i></a>
       <a href="#"><i class="black fab fa-twitter"></i></a>
       <a href="#"><i class="black fab fa-instagram"></i></a>
-  <% end %>  
+  <% end %>
 <% else %>
   <%= link_to new_user_session_path do %>
     <i class="black fas fa-heart" id="usergallery<%=gallery.id%>"></i>
   <% end %>
-      <a href="#"><i class="black fab fa-facebook"></i></a>
+      <a href="http://www.facebook.com/sharer.php?u=https://artket.herokuapp.com/galleries/<%= gallery.id %>"><i class="black fab fa-facebook"></i></a>
       <a href="#"><i class="black fab fa-twitter"></i></a>
       <a href="#"><i class="black fab fa-instagram"></i></a>
 <% end %>
