@@ -12,10 +12,15 @@
           <p><%= artwork.artist.first_name %> <%= artwork.artist.last_name %></p>
         </div>
       </div>
-
-        <div class="controls">
-          <a href="#"><i class="fas fa-heart"></i></a>
-        </div>
+        <% if user_signed_in? %>
+          <div class="controls" id= "controls-user<%=current_user.id%>art<%=artwork.id%>">
+            <%= render "shared/artwork_controls", artwork: artwork %>
+          </div>
+          <% else %>
+            <div class="controls" id= "controls-userart<%=artwork.id%>">
+              <%= render "shared/artwork_controls", artwork: artwork %>
+            </div>
+          <% end %>
       </div>
     </div>
 <% end %>

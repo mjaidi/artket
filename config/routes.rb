@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   patch "users/:user_id/exhibitions/:exhibition_id/:artwork_id", to: "exhibitions#remove_artwork", as: :user_exhibition_artwork_remove
 
   get "users/:user_id/dashboard", to: "pages#user_dashboard", as: :user_dashboard
+  get "users/:user_id/artworks/:artwork_id", to: "artwork_likes#create", as: :create_artwork_like
+  delete "users/:user_id/artworks/:artwork_id", to: "artwork_likes#destroy", as: :destroy_artwork_like
 end
 
 
