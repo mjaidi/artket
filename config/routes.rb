@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get "users/:user_id/dashboard", to: "pages#user_dashboard", as: :user_dashboard
   get "users/:user_id/artworks/:artwork_id", to: "artwork_likes#create", as: :create_artwork_like
   delete "users/:user_id/artworks/:artwork_id", to: "artwork_likes#destroy", as: :destroy_artwork_like
+  get "users/:user_id/gallery/:gallery_id", to: "gallery_likes#create", as: :create_gallery_like
+  delete "users/:user_id/gallery/:gallery_id", to: "gallery_likes#destroy", as: :destroy_gallery_like
 end
 
 

@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+  <% if gallery.gallery_likes.where(user_id: current_user.id)[0].nil? %>
+    <%= link_to create_gallery_like_path(current_user.id, gallery.id), remote: true do %>
+      <i class="black fas fa-heart" id="user<%=current_user.id%>gallery<%=gallery.id%>"></i>
+    <% end %>
+      <a href="#"><i class="black fab fa-facebook"></i></a>
+      <a href="#"><i class="black fab fa-twitter"></i></a>
+      <a href="#"><i class="black fab fa-instagram"></i></a>
+  <% else %>
+    <%= link_to destroy_gallery_like_path(current_user.id, gallery.id), remote: true, method: :delete do %>
+    <i class="red fas fa-heart" id="user<%=current_user.id%>gallery<%=gallery.id%>"></i>
+    <% end %>
+      <a href="#"><i class="black fab fa-facebook"></i></a>
+      <a href="#"><i class="black fab fa-twitter"></i></a>
+      <a href="#"><i class="black fab fa-instagram"></i></a>
+  <% end %>  
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <i class="black fas fa-heart" id="usergallery<%=gallery.id%>"></i>
+  <% end %>
+      <a href="#"><i class="black fab fa-facebook"></i></a>
+      <a href="#"><i class="black fab fa-twitter"></i></a>
+      <a href="#"><i class="black fab fa-instagram"></i></a>
+<% end %>

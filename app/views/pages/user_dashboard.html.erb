@@ -1,14 +1,39 @@
-<h1>Bienvenu <%= current_user.email %></h1>
+<h1>Bienvenue <%= current_user.email %></h1>
 
-<h2>Mes Likes</h2>
-<div class="container">
-  <div class="row">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#artwork" aria-controls="artwork" role="tab" data-toggle="tab">Mes Oeuvres</a></li>
+    <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Mes Galeries</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="artwork">
+      <div class="container">
+        <div class="row">
+             
+          <% @artworks.each do  |artwork|%>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+              <%= render "shared/artwork_card", artwork: artwork %>
+            </div>
+          <% end %>
        
-    <% @artworks.each do  |artwork|%>
-      <div class="col-xs-12 col-md-6 col-lg-4">
-        <%= render "shared/artwork_card", artwork: artwork %>
+        </div>
       </div>
-    <% end %>
- 
+    </div>
+    <div role="tabpanel" class="tab-pane fade in" id="gallery">
+      <div class="container">
+        <div class="row">
+             
+          <% @galleries.each do  |gallery|%>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+              <%= render "shared/gallery_card", gallery: gallery %>
+            </div>
+          <% end %>
+       
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
