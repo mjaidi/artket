@@ -1,6 +1,9 @@
 
-<% @artworks = Artwork.global_search("%#{params[:search_query]}%") %>
-
+<% if params["search_query"] = "" %>
+  <% @artworks = Artwork.where(published: true) %>
+<% else %>
+  <% @artworks = Artwork.where(published: true).global_search("%#{params[:search_query]}%") %>
+<% end %>
 
 <% if params["city"] == ""  && params["categories"] == "" %>
   <% @artworks %>
@@ -20,5 +23,11 @@
 
 
 document.getElementById("search-render").innerHTML = "";
-document.getElementById("search-render").insertAdjacentHTML("beforeend",   
+
+<%  if @artworks[0].nil? %>
+  document.getElementById("search-render").insertAdjacentHTML("beforeend",   
+  "<br><br><h4 class = 'text-center'>Aucun Résultat</h4><br><br>");
+<% else %>
+  document.getElementById("search-render").insertAdjacentHTML("beforeend",   
   "<%= j render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, markers: @markers %>");
+<% end %>
