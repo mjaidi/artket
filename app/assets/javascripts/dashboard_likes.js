@@ -48,10 +48,10 @@
                 canvas.clearRect(0, 0, canvasWidth, canvasHeight);
 
                 var grad = canvas.createRadialGradient(238, 50, 10, 238, 50, 300);
-                grad.addColorStop(1, "#D4CFC8");
-                grad.addColorStop(0.6, "#C2A476");
-                grad.addColorStop(0.4, "#AC782F");
-                grad.addColorStop(0, "#E5911C");
+                grad.addColorStop(1, "#F9D0A8");
+                grad.addColorStop(0.6, "#F26A9B");
+                grad.addColorStop(0.4, "#F99028");
+                grad.addColorStop(0.3, "#F9D0A8");
 
                 settings.barColor = grad;
 
@@ -83,7 +83,7 @@ $(document).ready(function() {
 
     $('.likes').percentPie({
         width: 200,
-        trackColor: "#DDDDDD",
+        trackColor: "white",
         barColor: "#F9F60D",
         barWeight: 25,
         endPercent: 1,
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
     $('.views').percentPie({
         width: 200,
-        trackColor: "#DDDDDD",
+        trackColor: "white",
         barColor: "#EF1B09",
         barWeight: 25,
         endPercent: 1,
@@ -102,7 +102,7 @@ $(document).ready(function() {
 
     $('.artworks').percentPie({
         width: 200,
-        trackColor: "#DDDDDD",
+        trackColor: "white",
         barColor: "#F39C12",
         barWeight: 25,
         endPercent: 1,
@@ -111,7 +111,7 @@ $(document).ready(function() {
 
     $('.exhibitions').percentPie({
         width: 200,
-        trackColor: "#DDDDDD",
+        trackColor: "white",
         barColor: "#884EA0",
         barWeight: 25,
         endPercent: 1,
