@@ -40,6 +40,7 @@
   }
   .card-footer .controls .black:hover {
     opacity: 0.4;
+    color: blue;
   }
 
   .card-title p {
@@ -61,7 +62,8 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100%;
+  width: 87%;
+  height: 70%;
   z-index:2;
   background: black;
   opacity: 0;
