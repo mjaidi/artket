@@ -2,6 +2,8 @@ require 'date'
 
 puts "Cleaning Database"
 
+ArtworkLike.destroy_all
+GalleryLike.destroy_all
 ArtPhoto.destroy_all
 JoinArtCategory.destroy_all
 Artwork.destroy_all
@@ -53,8 +55,8 @@ a_millenia_ago = now - 365*200
 puts "Adding Data"
 
 #seeding users
-user1 = User.create!(first_name: "Majid", last_name: "Jaidi", email: "majid@gmail.com", password: "123456789")
-user2 = User.create!(first_name: "Yasmina", last_name: "Hannaoui", email: "yas@gmail.com", password: "123456789")
+user1 = User.create!(first_name: "Majid", last_name: "Jaidi", email: "majid@gmail.com", password: "123456789", gallerist: true)
+user2 = User.create!(first_name: "Yasmina", last_name: "Hannaoui", email: "yas@gmail.com", password: "123456789", gallerist: true)
 
 #seeding categories
 categories.each_with_index do |category, index|
@@ -76,10 +78,10 @@ gallery2.remote_photo_url = "https://res.cloudinary.com/artket/image/upload/v153
 gallery2.save
 
 #seeding Exhibitions
-exhibition1 = Exhibition.create!(gallery_id: gallery1.id, name: "Artket Peinture", description: Faker::Lorem.paragraph(2, false, 6), start_date: (now - 10), end_date: (now + 50))
+exhibition1 = Exhibition.create!(gallery_id: gallery1.id, name: "Artket Peinture", description: Faker::Lorem.paragraph(2, false, 6), start_date: (now - 10), end_date: (now + 50), published: true)
 exhibition1.remote_cover_photo_url = exhibition_photos[0]
 exhibition1.save
-exhibition2 = Exhibition.create!(gallery_id: gallery2.id, name: "Thema Photographie", description: Faker::Lorem.paragraph(2, false, 6), start_date: (now + 15), end_date: (now + 95))
+exhibition2 = Exhibition.create!(gallery_id: gallery2.id, name: "Thema Photographie", description: Faker::Lorem.paragraph(2, false, 6), start_date: (now + 15), end_date: (now + 95), published: true)
 exhibition2.remote_cover_photo_url = exhibition_photos[1]
 exhibition2.save
 
@@ -131,6 +133,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist1.id,
                         name: "Sans titre", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -144,6 +147,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist2.id,
                         name: "Sans titre", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -157,6 +161,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist2.id,
                         name: "Portrait jeune homme", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -170,6 +175,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist2.id,
                         name: "Nature morte", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -209,6 +215,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist3.id,
                         name: "Sans titre", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -222,6 +229,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist3.id,
                         name: "Sans titre", description: "Gouache sur papier", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -235,6 +243,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist3.id,
                         name: "Sans titre", description: "Gouache sur papier", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -248,6 +257,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist4.id,
                         name: "Sans titre", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -287,6 +297,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery1.id, exhibition_id: exhibition1.id, artist_id: artist5.id,
                         name: "Make art not war", description: "Sérigraphie signée", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -300,6 +311,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery1.id, exhibition_id: exhibition1.id, artist_id: artist5.id,
                         name: "Dark Wave", description: "Sérigraphie signée", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -313,6 +325,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery1.id, exhibition_id: exhibition1.id, artist_id: artist6.id,
                         name: "Large multi tags", description: "Aerosol sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -339,6 +352,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery1.id, exhibition_id: exhibition1.id, artist_id: artist7.id,
                         name: "Portrait", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -352,6 +366,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery1.id, exhibition_id: exhibition1.id, artist_id: artist7.id,
                         name: "Portrait", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -365,6 +380,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery1.id, exhibition_id: exhibition1.id, artist_id: artist7.id,
                         name: "Composition", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -378,6 +394,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery1.id, exhibition_id: exhibition1.id, artist_id: artist8.id,
                         name: "Portrait d'une jeune fille", description: "Huile sur toile", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -430,6 +447,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist11.id,
                         name: "Composition", description: "Gouache sur papier", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -443,6 +461,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist11.id,
                         name: "Composition", description: "Gouache sur papier", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -456,6 +475,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist11.id,
                         name: "Composition", description: "Gouache sur papier", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
@@ -469,6 +489,7 @@ exhibition2.save
   art = Artwork.create!(gallery_id: gallery2.id, exhibition_id: exhibition2.id, artist_id: artist11.id,
                         name: "Composition", description: "Gouache sur papier", dimensions: "#{rand(50..5000)}mm x #{rand(50..5000)}mm", price: rand(1000..50000))
   art.year = rand(art.artist.birth_date..art.artist.death_date).year
+  art.published = true
   art.save
 
   photo = ArtPhoto.new(artwork_id: art.id)
