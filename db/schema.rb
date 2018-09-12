@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_160647) do
+ActiveRecord::Schema.define(version: 2018_09_12_065511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 2018_09_11_160647) do
     t.string "photo"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_artists_on_user_id"
+  end
+
+  create_table "artwork_likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "artwork_id"
+    t.index ["artwork_id"], name: "index_artwork_likes_on_artwork_id"
+    t.index ["user_id"], name: "index_artwork_likes_on_user_id"
   end
 
   create_table "artworks", force: :cascade do |t|
@@ -121,12 +128,15 @@ ActiveRecord::Schema.define(version: 2018_09_11_160647) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "admin", default: false, null: false
+    t.boolean "gallerist", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "art_photos", "artworks"
   add_foreign_key "artists", "users"
+  add_foreign_key "artwork_likes", "artworks"
+  add_foreign_key "artwork_likes", "users"
   add_foreign_key "artworks", "artists"
   add_foreign_key "artworks", "exhibitions"
   add_foreign_key "artworks", "galleries"

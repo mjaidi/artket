@@ -10,6 +10,10 @@ class PagePolicy < ApplicationPolicy
   end
 
   def user_gallery_dashboard?
+    user.gallerist == true
+  end
+
+  def user_dashboard?
     true
   end
 end

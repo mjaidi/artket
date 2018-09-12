@@ -8,6 +8,7 @@ class Artwork < ApplicationRecord
   has_many :art_photos, dependent: :destroy
   has_many :join_art_categories, dependent: :destroy
   has_many :categories, through: :join_art_categories
+  has_many :artwork_likes
 
   validates :name, presence: true
   validates :gallery, presence: true

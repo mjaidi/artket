@@ -10,18 +10,22 @@ class ArtworkPolicy < ApplicationPolicy
   end
 
   def edit?
+    user.gallerist == true
     record.gallery.user == user
   end
 
   def update?
+    user.gallerist == true
     record.gallery.user == user
   end
 
   def create?
+    user.gallerist == true
     record.gallery.user == user
   end
 
   def destroy?
+    user.gallerist == true
     record.gallery.user == user
   end
 end

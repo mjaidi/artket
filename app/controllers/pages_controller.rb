@@ -11,4 +11,8 @@ class PagesController < ApplicationController
   def user_gallery_dashboard
     @gallery = Gallery.where("user_id = ?", current_user.id).first
   end
+
+  def user_dashboard
+    @artworks = Artwork.joins(:artwork_likes).where("user_id = ?", current_user.id)
+  end
 end
