@@ -3,8 +3,8 @@
   display: flex;
   align-item: left;
   border-radius: 8px;
-  box-shadow: 2px;
   width: 250px;
+  font-family: 'Nanum Myeongjo';
   }
 
 // Login button
@@ -39,6 +39,7 @@
     height: 50px;
     background: #C2A476;
     align-self: flex-end;
+    margin-bottom: 10px;
     a {
       color: white;
       text-decoration: none;
