@@ -48,10 +48,10 @@
                 canvas.clearRect(0, 0, canvasWidth, canvasHeight);
 
                 var grad = canvas.createRadialGradient(238, 50, 10, 238, 50, 300);
-                grad.addColorStop(1, "#F9D0A8");
-                grad.addColorStop(0.6, "#F26A9B");
-                grad.addColorStop(0.4, "#F99028");
-                grad.addColorStop(0.3, "#F9D0A8");
+                grad.addColorStop(1, "#E8E7F9");
+                grad.addColorStop(0.6, "#9894CE");
+                grad.addColorStop(0.4, "#4F49A2");
+                grad.addColorStop(0.3, "#1A147A");
 
                 settings.barColor = grad;
 

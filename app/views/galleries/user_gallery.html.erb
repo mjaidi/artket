@@ -5,22 +5,21 @@
   <br>
   <br>
 
-
+<!-- Tab settings -->
   <div id="tabs-container" style="width: 80%; display: inline-block;">
 
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
-        <a href="#published" aria-controls="published" role="tab" data-toggle="tab">Publiés</a>
+        <a href="#published" aria-controls="published" role="tab" data-toggle="tab">Publiées</a>
       </li>
       <li role="presentation">
         <a href="#pending" aria-controls="pending" role="tab" data-toggle="tab">En attente</a>
       </li>
     </ul>
 
+<!-- Tab published -->
     <div class="tab-content">
-
       <div role="tabpanel" class="tab-pane active fade in" id="published">
-
         <div class="wrapper">
             <!-- Left Side of Page -->
           <div class="container left">
@@ -70,10 +69,10 @@
       </div>
       </div>
 
+<!-- Tab pending -->
       <div role="tabpanel" class="tab-pane fade in" id="pending">
           <div class="wrapper">
             <!-- Left Side of Page -->
-
             <div class="container left">
               <table class="table table-hover table-artwork">
                 <tr>
@@ -123,7 +122,8 @@
     </div>
   </div>
 
-  <!-- Right Side of Page - Add artworks Form  -->
+
+<!-- Right Side of Page - Add artworks Form  -->
   <div class="container right artwork-button-container" style="width: 19%; display: inline-block; position: absolute; margin-top: 20px;">
     <div class="text-center">
       <h3>Ajouter une Oeuvre d'Art</h3>
@@ -138,51 +138,51 @@
 
 
 
-<script>
+  <script>
 
-  currentTab = 0;
-  id = 0;
-  document.querySelectorAll(".modal-artwork").forEach((modal) => {
-    modal.addEventListener("click", () => {
-      currentTab = 0;
-      id = modal.dataset.tid;
-      showTab(currentTab,id); // Display the current tab
+    currentTab = 0;
+    id = 0;
+    document.querySelectorAll(".modal-artwork").forEach((modal) => {
+      modal.addEventListener("click", () => {
+        currentTab = 0;
+        id = modal.dataset.tid;
+        showTab(currentTab,id); // Display the current tab
+      });
     });
-  });
 
-  function showTab(n,id) {
-    // This function will display the specified tab of the form ...
-    x = document.getElementsByClassName(`tab${id}`);
-    document.querySelectorAll(".tabs").forEach((tab) => {tab.style.display = "none";});
-    x[n].style.display = "block";
-    // ... and fix the Previous/Next buttons:
-    if (n == 0) {
-      document.getElementById(`prevBtn${id}`).style.display = "none";
-    } else {
-      document.getElementById(`prevBtn${id}`).style.display = "inline";
+    function showTab(n,id) {
+      // This function will display the specified tab of the form ...
+      x = document.getElementsByClassName(`tab${id}`);
+      document.querySelectorAll(".tabs").forEach((tab) => {tab.style.display = "none";});
+      x[n].style.display = "block";
+      // ... and fix the Previous/Next buttons:
+      if (n == 0) {
+        document.getElementById(`prevBtn${id}`).style.display = "none";
+      } else {
+        document.getElementById(`prevBtn${id}`).style.display = "inline";
+      }
+      if (n == (x.length - 1)) {
+        document.getElementById(`nextBtn${id}`).style.display = "none";
+      } else {
+        document.getElementById(`nextBtn${id}`).innerHTML = "Suivant";
+      }
     }
-    if (n == (x.length - 1)) {
-      document.getElementById(`nextBtn${id}`).style.display = "none";
-    } else {
-      document.getElementById(`nextBtn${id}`).innerHTML = "Suivant";
-    }
-  }
 
-  function nextPrev(n,id) {
-    // This function will figure out which tab to display
-    y = document.getElementsByClassName(`tab${id}`);
-    // Exit the function if any field in the current tab is invalid:
-    // Hide the current tab:
-    document.querySelectorAll(".tabs").forEach((tab) => {tab.style.display = "none";});
-    // Increase or decrease the current tab by 1:
-    currentTab = currentTab + n;
-    // if you have reached the end of the form... :
-    if (currentTab >= y.length) {
-      //...the form gets submitted:
-      document.querySelctor(".add-artwork-form").submit();
-      return false;
+    function nextPrev(n,id) {
+      // This function will figure out which tab to display
+      y = document.getElementsByClassName(`tab${id}`);
+      // Exit the function if any field in the current tab is invalid:
+      // Hide the current tab:
+      document.querySelectorAll(".tabs").forEach((tab) => {tab.style.display = "none";});
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab + n;
+      // if you have reached the end of the form... :
+      if (currentTab >= y.length) {
+        //...the form gets submitted:
+        document.querySelctor(".add-artwork-form").submit();
+        return false;
+      }
+      // Otherwise, display the correct tab:
+      showTab(currentTab,id);
     }
-    // Otherwise, display the correct tab:
-    showTab(currentTab,id);
-  }
-</script>
+  </script>
