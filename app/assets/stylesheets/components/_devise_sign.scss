@@ -1,0 +1,66 @@
+.sign-btn {
+  width: 100%;
+  margin-top: 10px;
+  input[type="submit"] {
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: #1ab188;
+    border-radius: 0;
+  }
+}
+.signup {
+  background-color: #c1bdba;
+}
+.login {
+  background-color: #c1bdba;
+}
+.new_user {
+  background-color: #13232f;
+  padding: 20px;
+  color: white;
+  box-shadow: 1px 1px 2px #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  width: 40%;
+  input {
+    background-color: inherit;
+    border: 1px solid white;
+    color: white;
+  }
+}
+
+.log-btn-custom {
+  background-color: #1ab188;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 20px;
+  line-height: 2.5;
+  a {
+    width: 100%;
+    color: white;
+    text-decoration: none;
+  }  
+
+}
+.dark {
+      background-color: rgba(26, 177, 136, 0.2);
+  &:hover {
+    background-color: rgba(26, 177, 136, 1);
+  }
+}
+
+.forgot-password {
+  text-align: center;
+  a {
+    color: white;
+    &:hover {
+      color: $blue;
+      text-decoration: none; 
+    }
+  }
+}
