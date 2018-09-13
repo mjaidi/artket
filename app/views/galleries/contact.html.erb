@@ -7,11 +7,12 @@
 
       <div class="col-xs-12 col-md-6">
         <div class="form contact-form">
-          <form action="mailto:mail@mail.com" method="GET" enctype="text/plain" style="width: 90%; margin: 0 auto;">
-            <input name="name" type="text" class="f-input" placeholder="What's your name?">
-              <input name="email" type="text" class="f-input" placeholder="Email">
-                <textarea name="text" class="f-input" placeholder="Type a comment "></textarea>
-                  <button type="button" value="Send">Send</button>
+          <form action="/users/<%= current_user.id %>/conversations" method="POST" style="width: 90%; margin: 0 auto;">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+            <textarea name="body" class="f-input" placeholder="Type a comment"></textarea>
+            <input type="hidden" name="sender_id" value="<%= current_user.id %>">
+            <input type="hidden" name="receiver_id" value="<%= @gallery.user_id %>">
+            <button type="submit" value="send">Send message</button>
           </form>
         </div>
       </div>
