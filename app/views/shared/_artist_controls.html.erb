@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <% if artist.artist_likes.where(user_id: current_user.id)[0].nil? %>
+    <%= link_to create_artist_like_path(current_user.id, artist.id), remote: true do %>
+      <i class="black fas fa-heart" id="user<%=current_user.id%>artist<%=artist.id%>"></i>
+    <% end %>
+  <% else %>
+    <%= link_to destroy_artist_like_path(current_user.id, artist.id), remote: true, method: :delete do %>
+    <i class="red fas fa-heart" id="user<%=current_user.id%>artist<%=artist.id%>"></i>
+    <% end %>
+  <% end %>  
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <i class="black fas fa-heart" id="userartist<%=artist.id%>"></i>
+  <% end %>
+<% end %>

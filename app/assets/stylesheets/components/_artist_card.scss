@@ -24,15 +24,23 @@
   .card-footer .controls {
     display: flex;
     align-self: flex-start;
+    .red {
+       padding: 0 10px;
+       color: $red;
+       opacity: 1;
+    }
   }
-  .card-footer .controls i {
+  .card-footer .controls .black{
     padding: 0 10px;
     color: black;
     opacity: 0.2;
+
   }
-  .card-footer .controls i:hover {
+  .card-footer .controls .black:hover {
     opacity: 0.4;
+    color: blue;
   }
+
   .card-title p {
     display: flex;
     font-size: 20px;
