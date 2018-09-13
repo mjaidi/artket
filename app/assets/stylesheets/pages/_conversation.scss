@@ -1,0 +1,93 @@
+#conversation-wrapper {
+  margin: 40px 0;
+}
+
+.conversation {
+  color: black;
+  cursor: pointer;
+}
+.messages {
+  display: none;
+  padding: 20px;
+}
+.messages-active {
+  font-family: "Nanum Myeongjo", serif;
+  display: block;
+  background-color: #eee;
+  border-radius: 0 10px 10px 10px;
+  height: 70vh;
+  overflow: scroll;
+  position: relative;
+}
+
+.convo-left {
+    background: #ddd;
+    display: block;
+    text-align: center;
+    padding: 15px;
+    border-radius: 20px 0px 0px 20px;
+    overflow: hidden;
+    
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    &:hover {
+      background-color: #ccc;
+      text-decoration: none;
+      color: white;
+    }
+    p {
+      font-weight: bold;
+    }
+}
+
+.message-body {
+  padding: 6px 15px;
+  background-color: $gold;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.conversation-active {
+  opacity: 1;
+  background-color: $gold;
+}
+
+.message-left {
+  text-align: right;
+  .message-body{  
+    background-color: #888;
+    color: white;
+    text-align: left;
+  }
+}
+
+.no-margin {
+  margin: 0;
+  padding: 0;
+}
+
+.f-input input, select, textarea {
+  flex: 0 0 90%;
+  border: 1px solid $gold;
+  font-family: "Nanum Myeongjo", serif;
+  }
+
+.flex {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.flex input, button {
+  width: 10%;
+  background-color: $gold;
+  color: white;
+  border: none;
+  font-size: 30px;
+  &:hover{
+    background-color: #ccc;
+  }
+}
