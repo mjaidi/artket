@@ -6,7 +6,7 @@ class ArtworksController < ApplicationController
     @artworks = policy_scope(Artwork).where(published: true)
 
     if params[:query].present?
-      @artworks = @artworks.global_search("%#{params[:query]}%")
+      @artworks = Artwork.where(published: true).global_search("%#{params[:query]}%")
       @galleries = @artworks.map {|artwork| artwork.gallery}
       @markers = @galleries.uniq.map do |gallery|
         {

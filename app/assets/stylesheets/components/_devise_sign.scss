@@ -4,18 +4,18 @@
   input[type="submit"] {
     width: 100%;
     margin-bottom: 5px;
-    background-color: #1ab188;
+    background-color: #777777;
     border-radius: 0;
   }
 }
 .signup {
-  background-color: #c1bdba;
+  background-color: white;
 }
 .login {
-  background-color: #c1bdba;
+  background-color: white;
 }
 .new_user {
-  background-color: #13232f;
+  background-color: $gold;
   padding: 20px;
   color: white;
   box-shadow: 1px 1px 2px #ccc;
@@ -30,7 +30,7 @@
 }
 
 .log-btn-custom {
-  background-color: #1ab188;
+  background-color: #777777;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -48,9 +48,9 @@
 
 }
 .dark {
-      background-color: rgba(26, 177, 136, 0.2);
+      background-color: rgba(119, 119, 119, 0.4);
   &:hover {
-    background-color: rgba(26, 177, 136, 1);
+    background-color: rgba(119, 119, 119, 1);
   }
 }
 

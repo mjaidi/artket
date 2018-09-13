@@ -1,5 +1,5 @@
 
-<% if params["search_query"] = "" %>
+<% if params[:search_query] == "" %>
   <% @artworks = Artwork.where(published: true) %>
 <% else %>
   <% @artworks = Artwork.where(published: true).global_search("%#{params[:search_query]}%") %>

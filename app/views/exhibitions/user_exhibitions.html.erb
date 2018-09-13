@@ -1,75 +1,77 @@
-<!-- Title -->
-<div class="title">
-Liste des expositions de l'utilisateur <%= current_user.first_name %>
-</div>
+<div class="full-height">
+  <!-- Title -->
+  <div class="title">
+  Liste des expositions de l'utilisateur <%= current_user.first_name %>
+  </div>
 
-<div>
-  <!-- Create button -->
-        <div class="addex">
-          <button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=@exhibition.id || 0%>">Ajouter Une Exposition</button>
+  <div>
+    <!-- Create button -->
+          <div class="addex">
+            <button type="button" class="btn btn-create" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=@exhibition.id || 0%>">Ajouter Une Exposition</button>
+          </div>
+
+    <!-- Tab settings -->
+      <div id="tabs-container">
+
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#published" aria-controls="published" role="tab" data-toggle="tab">Publiées</a>
+          </li>
+          <li role="presentation">
+            <a href="#pending" aria-controls="pending" role="tab" data-toggle="tab">En attente</a>
+          </li>
+        </ul>
+
+
+    <!-- Tab published -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active fade in" id="published">
+          <div class="wrapper">
+          <!-- Exhibition cards -->
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12">
+                  <% @exhibitions.where(published: true).order(start_date: :desc).each do |exhibition| %>
+                    <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
+
+                     <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
+                      <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
+                        <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
+                        <% end %>
+                    </div>
+                     <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <div role="tabpanel" class="tab-pane fade in" id="pending">
+          <div class="wrapper">
+          <!-- Exhibition cards -->
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12">
+                  <% @exhibitions.where(published: false).order(start_date: :desc).each do |exhibition| %>
+                    <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
 
-  <!-- Tab settings -->
-    <div id="tabs-container">
-
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
-          <a href="#published" aria-controls="published" role="tab" data-toggle="tab">Publiées</a>
-        </li>
-        <li role="presentation">
-          <a href="#pending" aria-controls="pending" role="tab" data-toggle="tab">En attente</a>
-        </li>
-      </ul>
-
-
-  <!-- Tab published -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active fade in" id="published">
-        <div class="wrapper">
-        <!-- Exhibition cards -->
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-                <% @exhibitions.where(published: true).order(start_date: :desc).each do |exhibition| %>
-                  <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
-
-                   <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
-                    <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
-                      <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
-                      <% end %>
-                  </div>
-                   <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
-                <% end %>
+                     <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
+                      <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
+                        <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
+                        <% end %>
+                    </div>
+                     <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="tab-pane fade in" id="pending">
-        <div class="wrapper">
-        <!-- Exhibition cards -->
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-                <% @exhibitions.where(published: false).order(start_date: :desc).each do |exhibition| %>
-                  <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
 
-                   <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
-                    <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
-                      <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
-                      <% end %>
-                  </div>
-                   <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
+
+
+   <%= render 'exhibitions/shared/add_exhibition_form', exhibition: @exhibition %>
 
 </div>
-
-
- <%= render 'exhibitions/shared/add_exhibition_form', exhibition: @exhibition %>
-
