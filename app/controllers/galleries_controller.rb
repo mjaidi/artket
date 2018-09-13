@@ -21,16 +21,17 @@ class GalleriesController < ApplicationController
       lat: @gallery.latitude,
       lng: @gallery.longitude
     }
+
   end
-  
+
   def user_gallery
     @artwork = Artwork.new
     @gallery = Gallery.find(params[:gallery_id])
     authorize @gallery
   end
 
-  def update 
-    authorize @gallery   
+  def update
+    authorize @gallery
 
     if @gallery.update(gallery_params)
       redirect_to user_gallery_dashboard_path(current_user.id)

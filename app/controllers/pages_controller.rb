@@ -6,6 +6,8 @@ class PagesController < ApplicationController
     @artworks = Artwork.where(published: true)
     @artists = Artist.all
     @exhibitions = Exhibition.all
+    # Home banner gallery
+    @gallery = Gallery.find(22)
   end
 
   def user_gallery_dashboard

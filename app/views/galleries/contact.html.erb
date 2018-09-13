@@ -1,3 +1,4 @@
+
 <div class="full-height">
   <!-- Form contact -->
   <div class="container container-contacts">
@@ -16,18 +17,17 @@
       </div>
 
 
-      <div class="col-xs-12 col-md-6">
-        <div
-          id="map-contact"
-          style="height: 400px; width: 100%;"
-          data-markers="<%= @markers.to_json %>"
-          ></div>
-          <div class="adress">
-            <p><%= @gallery.full_address %></p>
-            <p><%= @gallery.phone %></p>
-            <p><%= @gallery.email %></p>
-          </div>
-      </div>
+    <div class="col-xs-12 col-md-6">
+      <div
+        id="map-contact"
+        style="height: 400px; width: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        ></div>
+        <div class="adress">
+          <p><%= @gallery.full_address %></p>
+          <p><%= @gallery.phone %></p>
+          <p><%= @gallery.email %></p>
+        </div>
     </div>
   </div>
 </div>
