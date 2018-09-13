@@ -1,0 +1,4 @@
+controls = document.getElementById("controls-user<%=current_user.id%>artist<%=@artist.id%>");
+console.log(controls);
+controls.innerHTML = "";
+controls.insertAdjacentHTML("beforeend", "<%= j render 'shared/artist_controls', artist: @artist%>");

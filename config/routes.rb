@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :artists, only: [:create, :update, :destroy]
   resources :art_photos, only: [:destroy]
 
+
+# Logged In Gallerist Routes - dashboard, and lists
   get "users/:user_id/galleries/:gallery_id", to: "galleries#user_gallery", as: :user_gallery
   get "users/:user_id/gallerist_dashboard", to: "pages#user_gallery_dashboard", as: :user_gallery_dashboard
   get "users/:user_id/exhibitions/:exhibition_id", to: "exhibitions#user_exhibition", as: :user_exhibition
@@ -22,11 +24,15 @@ Rails.application.routes.draw do
   patch "users/:user_id/exhibitions/:exhibition_id", to: "exhibitions#add_artwork", as: :user_exhibition_artwork
   patch "users/:user_id/exhibitions/:exhibition_id/:artwork_id", to: "exhibitions#remove_artwork", as: :user_exhibition_artwork_remove
 
+
+# Logged In user Routes - Likes and Dashboard
   get "users/:user_id/dashboard", to: "pages#user_dashboard", as: :user_dashboard
   get "users/:user_id/artworks/:artwork_id", to: "artwork_likes#create", as: :create_artwork_like
   delete "users/:user_id/artworks/:artwork_id", to: "artwork_likes#destroy", as: :destroy_artwork_like
   get "users/:user_id/gallery/:gallery_id", to: "gallery_likes#create", as: :create_gallery_like
   delete "users/:user_id/gallery/:gallery_id", to: "gallery_likes#destroy", as: :destroy_gallery_like
+  get "users/:user_id/artist/:artist_id", to: "artist_likes#create", as: :create_artist_like
+  delete "users/:user_id/artist/:artist_id", to: "artist_likes#destroy", as: :destroy_artist_like
 end
 
 

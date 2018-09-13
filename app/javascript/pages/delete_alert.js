@@ -2,7 +2,6 @@ import swal from 'sweetalert2';
 
 function bindSweetAlertButtonDelete() {
   const swalButton = document.querySelectorAll('.sweet-alert-d');
-  console.log(swalButton);
   swalButton.forEach((b) => {
     if (b) { // protect other pages
       b.addEventListener('click', (e) => {

@@ -5,8 +5,14 @@
     <div class="card-title">
       <p> <%=artist.first_name%>, <%= artist.last_name %> </p>
     </div>
-    <div class="controls">
-      <a href="#"><i class=" black fas fa-heart"></i></a>
-    </div>
+    <% if user_signed_in? %>
+      <div class="controls" id= "controls-user<%=current_user.id%>artist<%=artist.id%>">
+        <%= render "shared/artist_controls", artist: artist %>
+      </div>
+      <% else %>
+        <div class="controls" id= "controls-userartist<%=artist.id%>">
+          <%= render "shared/artist_controls", artist: artist %>
+        </div>
+    <% end %>
   </div>
 </div>

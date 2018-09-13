@@ -5,14 +5,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
      i.nextElementSibling.classList.add('active-category');
      };
   })
- console.log(e);
 });
   
   
 document.querySelectorAll(".category-choice").forEach((l) => {
   l.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(l);
     l.classList.toggle("active-category");
     if(l.previousElementSibling.checked == false) {
         l.previousElementSibling.checked = true; 

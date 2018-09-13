@@ -63,8 +63,8 @@
                 <%= exhibition.name %>
               </div>
               <div class="expo-dates">
-                <%= exhibition.start_date %>
-                <%= exhibition.end_date %>
+                du <%= exhibition.start_date.strftime("%d/%m/%Y") %> au
+                <%= exhibition.end_date.strftime("%d/%m/%Y") %>
               </div>
             </div>
           </div>
