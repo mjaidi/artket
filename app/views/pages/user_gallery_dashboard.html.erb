@@ -1,49 +1,53 @@
-<h1>Welcome to <%= current_user.first_name %> Dashboard</h1>
+<div class="full-height">
+  <div class="container text-center">
+    <h1>Tableau de Bord <strong> <%= "#{current_user.first_name}, #{current_user.last_name}"  %> </strong></h1>
+  </div>
 
-<div class="container">
-<!-- Container chart -->
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <div class="container-chart">
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <div class="likes chart">
-                <div class="tag">52 Likes</div>
+  <div class="container">
+  <!-- Container chart -->
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div class="container-chart">
+          <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <div class="likes chart">
+                  <div class="tag"><h1><%=@total_likes%></h1> Likes</div>
+                </div>
+
+                <div class="views chart">
+                  <div class="tag"><h1>121</h1> Vues</div>
+                </div>
               </div>
 
-              <div class="views chart">
-                <div class="tag">121 Vues</div>
-              </div>
-            </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="artworks chart">
+                  <div class="tag"><h1><%=@gallery.artworks.length%></h1> Oeuvres</div>
+                </div>
 
-            <div class="col-xs-12 col-md-6">
-              <div class="artworks chart">
-                <div class="tag">34 Oeuvres</div>
+                <div class="exhibitions chart">
+                  <div class="tag"><h1><%=@gallery.exhibitions.length%></h1> Expositions</div>
+                </div>
               </div>
-
-              <div class="exhibitions chart">
-                <div class="tag">2 Expositions</div>
-              </div>
-            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-md-6">
-      <div class="links">
-        <% if @gallery %>
-          <button type="button" class="btn btn-create modal-artwork" data-toggle="modal" data-target=".bs-gallery-modal-lg<%=@gallery.id%>">Informations</button>
-          <%= link_to "Oeuvres", user_gallery_path(current_user.id, @gallery.id), class: "btn-create" %>
-          <%= render 'galleries/shared/gallery_information_form',  gallery: @gallery %>
-        <% end %>
+      <div class="col-xs-12 col-md-6">
+        <div class="links">
+          <% if @gallery %>
+            <button type="button" class="btn btn-create modal-artwork" data-toggle="modal" data-target=".bs-gallery-modal-lg<%=@gallery.id%>">Informations</button>
+            <%= link_to "Oeuvres", user_gallery_path(current_user.id, @gallery.id), class: "btn-create" %>
+            <%= render 'galleries/shared/gallery_information_form',  gallery: @gallery %>
+          <% end %>
 
-        <%= link_to "Expositions", user_exhibitions_path(current_user.id), class: "btn-create" %>
-        <%= link_to "Artistes", user_artists_path(current_user.id), class: "btn-create" %>
+          <%= link_to "Expositions", user_exhibitions_path(current_user.id), class: "btn-create" %>
+          <%= link_to "Artistes", user_artists_path(current_user.id), class: "btn-create" %>
+        </div>
+        <h2> Notifications clients </h2>
+        <hr>
+        <h2> Notifications plateforme </h2>
+        <hr>
       </div>
-      <h2> Notifications clients </h2>
-      <hr>
-      <h2> Notifications plateforme </h2>
-      <hr>
     </div>
   </div>
-</div>
 
+</div>

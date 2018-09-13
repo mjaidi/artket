@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_093135) do
+
+ActiveRecord::Schema.define(version: 2018_09_13_112916) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +23,15 @@ ActiveRecord::Schema.define(version: 2018_09_13_093135) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artwork_id"], name: "index_art_photos_on_artwork_id"
+  end
+
+  create_table "artist_likes", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_likes_on_artist_id"
+    t.index ["user_id"], name: "index_artist_likes_on_user_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -39,6 +50,8 @@ ActiveRecord::Schema.define(version: 2018_09_13_093135) do
   create_table "artwork_likes", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "artwork_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["artwork_id"], name: "index_artwork_likes_on_artwork_id"
     t.index ["user_id"], name: "index_artwork_likes_on_user_id"
   end
@@ -161,6 +174,8 @@ ActiveRecord::Schema.define(version: 2018_09_13_093135) do
   end
 
   add_foreign_key "art_photos", "artworks"
+  add_foreign_key "artist_likes", "artists"
+  add_foreign_key "artist_likes", "users"
   add_foreign_key "artists", "users"
   add_foreign_key "artwork_likes", "artworks"
   add_foreign_key "artwork_likes", "users"

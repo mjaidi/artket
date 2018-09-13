@@ -1,27 +1,67 @@
+
+
 <div class="signup">
-<h2>Créer un compte</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="row">
+  <div class="col-xs-12 col-md-6" style="padding-right: 0;">
+  <h5 class = "log-btn-custom">Nouveau Compte</h5>
+  </div>
+  <div class="col-xs-12 col-md-6"style="padding-left: 0;">
+    <h5 class="log-btn-custom dark"><%= link_to "Log in", new_session_path(resource_name) %></h5>
+  </div>
+</div>
+<h3 class = "text-center">S'inscrire Gratuitement</h3>
+<br>
   <%= f.error_notification %>
+<!--   <div class="container"> -->
 
   <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <%= f.input :first_name,
+                  required: true,
+                  label: "Prénom" %>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <%= f.input :last_name,
+                  required: true,
+                  label: "Nom" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+         <%= f.input :email,
+                  required: true,
+                  autofocus: true ,
+                  input_html: { autocomplete: "email" }%>
+      </div>            
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" },
+                  label: "Mot de passe" %>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-xs-12">
+        <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" },
+                  label: "Mot de passe" %>
+        </div>
+      </div>      
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up"%>
-  </div>
-<% end %>
+    <div class="form-actions sign-btn">
+      <%= f.button :submit, "Sign up"%>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+
+
+<!--   </div> -->
 </div>

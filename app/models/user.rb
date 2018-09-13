@@ -8,9 +8,13 @@ class User < ApplicationRecord
   has_many :artists
   has_many :artwork_likes
   has_many :gallery_likes
+
   has_many :conversations
   has_many :messages, through: :conversations
 
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
+  has_many :artist_likes
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
 end

@@ -18,10 +18,14 @@
             <!-- Artwork card Result -->
             <div class="container" id="results-container">
               <div class="row">
-                <% artworks.each do |artwork| %>
-                  <div class="col-xs-12 col-md-6 col-lg-4">
-                    <%= render "shared/artwork_card", artwork: artwork %>
-                  </div>
+                <% if artworks[0].nil?%>
+                <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
+                <% else %>
+                  <% artworks.each do |artwork| %>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                      <%= render "shared/artwork_card", artwork: artwork %>
+                    </div>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -35,11 +39,15 @@
             <!-- Gallery card Result -->
             <div class="container" id="results-container">
               <div class="row">
-                <% galleries.uniq.each do |gallery| %>
-                  <div class="col-xs-12 col-md-6 col-lg-6">
-                    <%= render "shared/gallery_card", gallery: gallery %>
-                  </div>
-                <% end %>
+                <% if galleries[0].nil?%>
+                <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
+                <% else %>
+                  <% galleries.uniq.each do |gallery| %>
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                      <%= render "shared/gallery_card", gallery: gallery %>
+                    </div>
+                  <% end %>
+                <% end %>  
               </div>
             </div>
           </div> 
@@ -58,12 +66,16 @@
           <div class="wrapper-first" id="art-results-wrapper">
             <!-- Artwork card Result -->
             <div class="container" id="results-container">
-              <div class="row">         
-                <% artists.uniq.each do |artist| %>
-                  <div class="col-xs-12 col-md-6 col-lg-4">
-                    <%= render "shared/artist_card", artist: artist %>
-                  </div>
-                <% end %>
+              <div class="row"> 
+                <% if artists[0].nil?%>
+                <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
+                <% else %>        
+                  <% artists.uniq.each do |artist| %>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                      <%= render "shared/artist_card", artist: artist %>
+                    </div>
+                  <% end %>
+                <% end %>  
               </div>
             </div>
           </div> 

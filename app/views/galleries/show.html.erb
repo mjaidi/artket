@@ -1,96 +1,99 @@
-<!-- Gallery name -->
-  <div class="title-galeries">
-    <p><%= @gallery.name %></p>
-  </div>
+<div class="full-height">
+  <!-- Gallery name -->
+    <div class="title-galeries">
+      <p><%= @gallery.name %></p>
 
-<!-- Gallery banner -->
-  <div class="ban-gallery" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@gallery.photo.url(:banner)) %>);">
-  </div>
-
-<!-- Social -->
-  <div class="social">
-<!--     <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a> -->
-    <a href="https://www.facebook.com/themadouieb/" target="_blank"><i class="fab fa-facebook"></i></a>
-  </div>
-
-<!-- Informtions Paragraph -->
-  <div class="information">
-    <div class="info-title">
-      <p>INFORMATIONS</p>
     </div>
-    <div class="info-text">
-      <p><%= @gallery.description %></p>
+
+  <!-- Gallery banner -->
+    <div class="ban-gallery" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@gallery.photo.url(:banner)) %>);">
     </div>
-  </div>
 
-<hr >
+  <!-- Social -->
+    <div class="social">
+  <!--     <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a> -->
+      <a href="https://www.facebook.com/themadouieb/" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
 
-<!-- Shorcuts -->
-  <div class="shortcuts">
-    <a href="#artworks">OEUVRES</a>
-    <a href="#exhibition">EXPOSITIONS</a>
-    <a href="#artists-list">ARTISTES</a>
-    <%= link_to "CONTACT", contact_gallery_path(@gallery) %>
-  </div>
-
-<hr>
-
-<!-- Artworks cards -->
-  <div class="title-galeries" id="artworks">
-  <p> Oeuvres </p>
-  </div>
-    <div class="container">
-      <div class="row">
-          <% @gallery.artworks.where(published: true).each do |artwork| %>
-            <div class="col-xs-12 col-md-6 col-lg-4">
-              <%= render "shared/artwork_card", artwork: artwork %>
-            </div>
-          <% end %>
+  <!-- Informtions Paragraph -->
+    <div class="information">
+      <div class="info-title">
+        <p>INFORMATIONS</p>
+      </div>
+      <div class="info-text">
+        <p><%= @gallery.description %></p>
       </div>
     </div>
 
+  <hr >
 
-<!-- Expositions -->
-<% if !@gallery.exhibitions.where(published: true).empty? %>
-<hr>
-  <div class="container-expo" id="exhibition">
-      <% @gallery.exhibitions.where(published: true).each do |exhibition| %>
+  <!-- Shorcuts -->
+    <div class="shortcuts">
+      <a href="#artworks">OEUVRES</a>
+      <a href="#exhibition">EXPOSITIONS</a>
+      <a href="#artists-list">ARTISTES</a>
+      <%= link_to "CONTACT", contact_gallery_path(@gallery) %>
+    </div>
+
+  <hr>
+
+  <!-- Artworks cards -->
+    <div class="title-galeries" id="artworks">
+    <p> Oeuvres </p>
+    </div>
+      <div class="container">
         <div class="row">
-          <div class="col-xs-12 col-md-6">
-            <div class="expo-left">
-              <div class="expo-title">
-                <%= exhibition.name %>
+            <% @gallery.artworks.where(published: true).each do |artwork| %>
+              <div class="col-xs-12 col-md-6 col-lg-4">
+                <%= render "shared/artwork_card", artwork: artwork %>
               </div>
-              <div class="expo-dates">
-                <%= exhibition.start_date %>
-                <%= exhibition.end_date %>
+            <% end %>
+        </div>
+      </div>
+
+
+  <!-- Expositions -->
+  <% if !@gallery.exhibitions.where(published: true).empty? %>
+  <hr>
+    <div class="container-expo" id="exhibition">
+        <% @gallery.exhibitions.where(published: true).each do |exhibition| %>
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <div class="expo-left">
+                <div class="expo-title">
+                  <%= exhibition.name %>
+                </div>
+                <div class="expo-dates">
+                  du <%= exhibition.start_date.strftime("%d/%m/%Y") %> au
+                  <%= exhibition.end_date.strftime("%d/%m/%Y") %>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-xs-12 col-md-6">
-            <div class="expo-right" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>)">
+            <div class="col-xs-12 col-md-6">
+              <div class="expo-right" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>)">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
-<% end %>
-
-<hr>
-
-
-<!-- Liste des artistes -->
-  <div class="title-artistes" id="artists-list">
-    <p> Liste des artistes </p>
+    <% end %>
   </div>
-    <div class="container">
-      <div class="row">
-        <% @gallery.artists.uniq.each do |artist| %>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <%= render "shared/artist_card", artist: artist %>
-          </div>
-        <% end %>
-      </div>
+  <% end %>
+
+  <hr>
+
+
+  <!-- Liste des artistes -->
+    <div class="title-artistes" id="artists-list">
+      <p> Liste des artistes </p>
     </div>
+      <div class="container">
+        <div class="row">
+          <% @gallery.artists.uniq.each do |artist| %>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+              <%= render "shared/artist_card", artist: artist %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+</div>

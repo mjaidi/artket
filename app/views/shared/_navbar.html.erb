@@ -11,11 +11,13 @@
 
         <!-- Search -->
         <form class="navbar-form navbar-left form-inline" action="/artworks" method= "get" autocomplete="off">
-          <div class="form-group">
-            <input type="search" name= "query" class="form-control-btn-search"  placeholder="Recherche">
+          <div class="form-group searchform group">
+            <input type="search" name= "query" class="search-bar hidden"  id="search-box" placeholder="Recherche">
+              <label for="search-box" id="search-icon"> <span class="fa fa-2x fa-search"data-toggle="tooltip" data-placement="left" title="Rechercher oeuvres, galleries, styles, artistes ..." data-delay="0"></span></label>
           </div>
         </form>
       </div>
+      <!-- form-control-btn-search -->
       <!-- Right Navigation -->
       <div class="right-part hidden-xs hidden-sm">
         <%= link_to "Galeries", galleries_path, class: "navbar-wagon-item navbar-wagon-link" %>
