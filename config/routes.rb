@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'conversations/index'
+  get 'conversations/create'
+  get 'messages/index'
+  get 'messages/create'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users 
+  devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -27,6 +31,10 @@ Rails.application.routes.draw do
   delete "users/:user_id/artworks/:artwork_id", to: "artwork_likes#destroy", as: :destroy_artwork_like
   get "users/:user_id/gallery/:gallery_id", to: "gallery_likes#create", as: :create_gallery_like
   delete "users/:user_id/gallery/:gallery_id", to: "gallery_likes#destroy", as: :destroy_gallery_like
+
+  get "users/:user_id/conversations", to: "conversations#index", as: :conversations
+  post "users/:user_id/conversations", to: "conversations#create", as: :create_conversation
+  post "users/:user_id/conversations/:conversation_id/messages", to: "messages#create", as: :create_conversation_message
 end
 
 
