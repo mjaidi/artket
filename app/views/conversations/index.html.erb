@@ -1,80 +1,78 @@
 <div class="full-height">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-2">
-        <div id="conversations">
-          <% if @conversations.empty? %>
-            <p>You have no conversations</p>
-          <% else %>
-            <% @conversations.each do |conversation| %>
-              <a class="conversation" id="conversation<%= conversation.id %>" data-conversation-number="<%= conversation.id %>">
-                Conversation with
-                <% if current_user == conversation.sender %>
-                  <% if conversation.receiver.galleries.empty? %>
-                    <%= conversation.receiver.first_name %> <%= conversation.receiver.last_name %>
-                  <% else %>
-                    <%= conversation.receiver.galleries.first.name %>
-                  <% end %>
-                <% else %>
-                  <% if conversation.sender.galleries.empty? %>
-                    <%= conversation.sender.first_name %> <%= conversation.sender.last_name %>
-                  <% else %>
-                    <%= conversation.sender.galleries.first.name %>
-                  <% end %>
-                <% end %>
-              </a>
-              <hr>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="col-xs-12 col-md-10">
-        <% unless @conversations.empty? %>
-          <% @conversations.each do |conversation| %>
-            <div class="messages" id="messages<%= conversation.id %>">
-              <% if conversation.messages.empty? %>
-                <p>You have no messages in this conversation</p>
+  <div id="conversation-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-2 no-margin">
+            <div id="conversations" class= "">
+              <% if @conversations.empty? %>
+                <p>Vous n'avez aucune conversation</p>
               <% else %>
-                <% conversation.messages.each do |message| %>
-                  <div class="message">
-                    <% if message.user.galleries.empty? %>
-                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                <% @conversations.each do |conversation| %>
+                  <a class="conversation convo-left" id="conversation<%= conversation.id %>" data-conversation-number="<%= conversation.id %>">
+                    <h6>Conversation</h6>
+                    <p>
+                    <% if current_user == conversation.sender %>
+                      <% if conversation.receiver.galleries.empty? %>
+                        <%= conversation.receiver.first_name %> <%= conversation.receiver.last_name %>
+                      <% else %>
+                        <%= conversation.receiver.galleries.first.name %>
+                      <% end %>
                     <% else %>
-                      <strong><%= message.user.first_name %> <%= message.user.last_name %> (<%= message.user.galleries.first.name %> gallery)</strong>
+                      <% if conversation.sender.galleries.empty? %>
+                        <%= conversation.sender.first_name %> <%= conversation.sender.last_name %>
+                      <% else %>
+                        <%= conversation.sender.galleries.first.name %>
+                      <% end %>
                     <% end %>
-                      <p><%= message.body %></p>
-                      <small><%= message.message_time %></small>
-                  </div>
+                    </p>
+                  </a>
+                  <hr>
                 <% end %>
               <% end %>
-              <form action="/users/<%= current_user.id %>/conversations/<%= conversation.id %>/messages" method="POST" style="width: 90%; margin: 0 auto;">
-                <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-                <textarea name="body" class="f-input" placeholder="Type a comment"></textarea>
-                <input type="hidden" name="conversation_id" value="<%= conversation.id %>">
-                <button type="submit" value="send">Send message</button>
-              </form>
             </div>
-          <% end %>
-        <% end %>
+          </div>
+
+          <div class="col-xs-12 col-md-10 no-margin">
+            <% unless @conversations.empty? %>
+              <% @conversations.each do |conversation| %>
+                <div class="messages" id="messages<%= conversation.id %>">
+                  <% if conversation.messages.empty? %>
+                    <p>You have no messages in this conversation</p>
+                  <% else %>
+                    <% conversation.messages.order(updated_at: :desc).each do |message| %>
+                      <div class="message">
+                        <% if message.user == conversation.receiver %>
+                          <div class="col-xs-12 col-md-9 col-md-offset-3 message-left">
+                            <small class=" left-message"><%= message.message_time %></small>
+                            <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                            <div class="message-body">
+                              <p><%= message.body %></p>       
+                            </div>  
+                          </div>
+                        <% else %>
+                          <div class= "col-xs-12 col-md-9 message-right">
+                            <strong><%= message.user.first_name %> <%= message.user.last_name %> (<%= message.user.galleries.first.name %> gallery)</strong>
+                            <small class=" left-message"><%= message.message_time %></small>
+                            <div class="message-body">
+                              <p><%= message.body %></p>       
+                            </div>  
+                          </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+                <form action="/users/<%= current_user.id %>/conversations/<%= conversation.id %>/messages" class="flex" method="POST">
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                  <textarea name="body" class="f-input" placeholder="Type a comment"></textarea>
+                  <input type="hidden" name="conversation_id" value="<%= conversation.id %>">
+                  <button type="submit" value="send"><i class="fab fa-pushed"></i></button>
+                </form>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 </div>
-<style>
-  .conversation {
-    color: black;
-    cursor: pointer;
-  }
-  .conversation-active {
-    color: blue;
-    opacity: 1;
-  }
-  .messages {
-    display: none;
-  }
-  .messages-active {
-    display: block;
-  }
-</style>
 

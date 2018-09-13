@@ -12,4 +12,4 @@ if(document.querySelector(".conversation")) {
       document.getElementById(`messages${conversationNumber}`).classList.add("messages-active");
     });
   });
-};
+};  
