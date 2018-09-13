@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_many :gallery_likes
   has_many :artist_likes
   
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true    
+  validates :first_name, presence: true
+  validates :last_name, presence: true    
 end

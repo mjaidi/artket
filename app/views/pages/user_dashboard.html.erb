@@ -1,53 +1,75 @@
-<h1>Bienvenue <%= current_user.first_name %></h1>
-<div class = "container">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#artwork" aria-controls="artwork" role="tab" data-toggle="tab">Mes Oeuvres</a></li>
-    <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Mes Galeries</a></li>
-    <li role="presentation"><a href="#artist" aria-controls="artist" role="tab" data-toggle="tab">Mes Artists</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active fade in" id="artwork">
-      <div class="container">
-        <div class="row">
-             
-          <% @artworks.each do  |artwork|%>
-            <div class="col-xs-12 col-md-6 col-lg-4">
-              <%= render "shared/artwork_card", artwork: artwork %>
-            </div>
-          <% end %>
-       
-        </div>
-      </div>
-    </div>
-    <div role="tabpanel" class="tab-pane fade in" id="gallery">
-      <div class="container">
-        <div class="row">
-             
-          <% @galleries.each do  |gallery|%>
-            <div class="col-xs-12 col-md-6 col-lg-4">
-              <%= render "shared/gallery_card", gallery: gallery %>
-            </div>
-          <% end %>
-       
-        </div>
-      </div>
-    </div>
-    <div role="tabpanel" class="tab-pane fade in" id="artist">
-      <div class="container">
-        <div class="row">
-             
-          <% @artists.each do  |artist|%>
-            <div class="col-xs-12 col-md-6 col-lg-4">
-              <%= render "shared/artist_card", artist: artist %>
-            </div>
-          <% end %>
-       
-        </div>
-      </div>
-    </div>    
+<div class="full-height">
+  <div class="container text-center">
+    <h1>Page Personalisé <strong> <%= "#{current_user.first_name}, #{current_user.last_name}"  %> </strong></h1>
   </div>
 
+  <div class = "container">
+    <% if @artworks[0].nil? && @galleries[0].nil? && @artists[0].nil? %>
+      <div class="text-center">
+        
+      </div>
+    <% else %>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#artwork" aria-controls="artwork" role="tab" data-toggle="tab">Mes Oeuvres</a></li>
+        <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Mes Galeries</a></li>
+        <li role="presentation"><a href="#artist" aria-controls="artist" role="tab" data-toggle="tab">Mes Artists</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active fade in" id="artwork">
+          <div class="container">
+            <div class="row">
+                 
+              <% if @artworks[0].nil?%>
+              <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
+              <% else %>
+                <% @artworks.each do  |artwork|%>
+                  <div class="col-xs-12 col-md-6 col-lg-4">
+                    <%= render "shared/artwork_card", artwork: artwork %>
+                  </div>
+                <% end %>
+              <% end %>
+           
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in" id="gallery">
+          <div class="container">
+            <div class="row">
+                 
+              <% if @galleries[0].nil?%>
+              <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
+              <% else %>
+                <% @galleries.each do  |gallery|%>
+                  <div class="col-xs-12 col-md-6 col-lg-4">
+                    <%= render "shared/gallery_card", gallery: gallery %>
+                  </div>
+                <% end %>
+              <% end %>
+           
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in" id="artist">
+          <div class="container">
+            <div class="row">
+                 
+              <% if @artists[0].nil?%>
+              <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
+              <% else %>
+                <% @artists.each do  |artist|%>
+                  <div class="col-xs-12 col-md-6 col-lg-4">
+                    <%= render "shared/artist_card", artist: artist %>
+                  </div>
+                <% end %>
+              <% end %>
+           
+            </div>
+          </div>
+        </div>    
+      </div>
+    <% end %>
+  </div>
 </div>

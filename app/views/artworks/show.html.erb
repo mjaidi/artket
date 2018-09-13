@@ -2,93 +2,101 @@
   <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css">
 <% end %>
 
-<% content_for :after_js do %>
-  <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
-  <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
-  <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
-  <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
-  <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
-  <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
-  <script src="https://cdn.rawgit.com/sachinchoolur/lg-thumbnail.js/master/dist/lg-thumbnail.js"></script>
-  <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
-  <script>
-    lightGallery(document.getElementById('lightgallery'), {
-      thumbnail: true
-    });
-  </script>
-<% end %>
+<div class="full-height">
+  <% content_for :after_js do %>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-thumbnail.js/master/dist/lg-thumbnail.js"></script>
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script>
+      lightGallery(document.getElementById('lightgallery'), {
+        thumbnail: true
+      });
+    </script>
+  <% end %>
 
-<!-- Artwork page -->
-  <div class="container-art">
-    <div class="row">
-      <div class="col-xs-12 col-md-12 flex-main">
-<!-- Artwork picture -->
-        <div id="lightgallery" class="art-left">
-          <a href="<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>">
-              <img src="<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>">
-          </a>
+  <!-- Artwork page -->
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 text-center">
+            <!-- Artwork picture -->
+            <div id="lightgallery">
+              <a href="<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>">
+                  <img src="<%= cl_image_path(@artwork.art_photos.first.photo.url(:cards))%>">
+              </a>
+                <% if @artwork.art_photos.length > 0 %>
+                <% @artwork.art_photos[1..@artwork.art_photos.length].each do |photo|  %>
+                  <a href="<%= cl_image_path(photo.photo.url(:cards))%>" class="thumbnail">
+                    <%= cl_image_tag(photo.photo.url(:cards)) %>
+                  </a>
+                <% end %> 
+                <% end %>
+            </div>
         </div>
+  <!-- Info about artwork -->
+        <div class="col-xs-12 col-md-6">
+          <div class="art-right">
+              <div class="cat-art">
+              <p>Artiste: </div>
+              <%= @artwork.artist.first_name %> <%= @artwork.artist.last_name %></p>
 
-<!-- Info about artwork -->
-        <div class="art-right">
-            <div class="cat-art">
-            <p>Artiste: </div>
-            <%= @artwork.artist.first_name %> <%= @artwork.artist.last_name %></p>
+              <hr>
 
-            <hr>
+              <div class="cat-art">
+              <p>Titre: </div>
+              <%= @artwork.name %> <%= @artwork.artist.last_name %></p>
 
-            <div class="cat-art">
-            <p>Titre: </div>
-            <%= @artwork.name %> <%= @artwork.artist.last_name %></p>
+              <hr>
 
-            <hr>
+              <div class="cat-art">
+              <p>Description: </div><%= @artwork.description %></p>
 
-            <div class="cat-art">
-            <p>Description: </div><%= @artwork.description %></p>
+              <hr>
+              <div class="cat-art">
+              <p>Année: </div><%= @artwork.year %></p>
 
-            <hr>
-            <div class="cat-art">
-            <p>Année: </div><%= @artwork.year %></p>
+              <hr>
+              <div class="cat-art">
+              <p>Dimensions: </div><%= @artwork.dimensions %></p>
 
-            <hr>
-            <div class="cat-art">
-            <p>Dimensions: </div><%= @artwork.dimensions %></p>
-
-            <hr>
-            <div class="cat-art">
-            <p>Prix: </div><%= @artwork.price %></p>
+              <hr>
+              <div class="cat-art">
+              <p>Prix: </div><%= @artwork.price %></p>
+          </div>
+          <!-- Button contact gallery -->
+          <div class="art-btns text-center">
+            <div class="btn-artwork">
+              <%= link_to "Contacter la galerie", contact_gallery_path(@gallery), class: "button" %>
+            </div>
           </div>
         </div>
-    </div>
-  </div>
-
-<!-- Button contact gallery -->
-    <div class="art-btns">
-      <div class="btn-artwork">
-        <%= link_to "Contacter la galerie", contact_gallery_path(@gallery), class: "button" %>
       </div>
     </div>
 
-<!-- Other artworks from same artist -->
-<% if @artworks.where(published: true).length > 1 %>
-  <hr>
-  <div class="title-others">
-    <h4>Autres oeuvres de l'artiste</h4>
-  </div>
-  <div class="container">
-    <div class="row">
-      <% @artworks.where(published: true).each do |artwork| %>
-        <% if artwork != @artwork %>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <%= render "shared/artwork_card", artwork: artwork %>
-          </div>
-        <% end %>
-      <% end %>
+
+  <!-- Other artworks from same artist -->
+  <% if @artworks.where(published: true).length > 1 %>
+    <hr>
+    <div class="title-others text-center">
+      <h4>Autres oeuvres de l'artiste</h4>
     </div>
-  </div>
-<% end %>
-
-
+    <div class="container">
+      <div class="row">
+        <% @artworks.where(published: true).each do |artwork| %>
+          <% if artwork != @artwork %>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+              <%= render "shared/artwork_card", artwork: artwork %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 <!-- Modal for artork -->
 <!--   <div class="modal modal-artwork fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg" role="document">

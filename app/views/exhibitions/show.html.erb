@@ -1,51 +1,53 @@
-<!-- CSS in gallery.scss -->
-<!-- CSS in gallery.scss -->
-<!-- CSS in gallery.scss -->
+<div class="full-height">
+  <!-- CSS in gallery.scss -->
+  <!-- CSS in gallery.scss -->
+  <!-- CSS in gallery.scss -->
 
-<!-- Galerie & Exhibition names -->
-  <div class="title-galeries">
-    <p><%= @exhibition.name %></p>
-    <p><%= @exhibition.gallery.name %> </p>
-  </div>
-
-<!-- Exhibition banner -->
-  <div class="ban-gallery" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@exhibition.cover_photo.url(:banner)) %>);">
-  </div>
-
-<hr>
-
-<!-- Exhibition Desription -->
-  <div class="container-expo">
-        <div class="row">
-          <div class="col-xs-12 col-md-6">
-            <div class="expo-left">
-              <div class="expo-title">
-                <%= @exhibition.name %>
-              </div>
-              <div class="expo-description">
-                <%= @exhibition.description %>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-md-6">
-            <div class="expo-right" style="background-image: url(<%= cl_image_path(@exhibition.cover_photo.url(:banner)) %>)">
-            </div>
-          </div>
-        </div>
-  </div>
-
-<hr>
-
-<!-- Exhibition Artworks  -->
-  <div class="title-galeries">
-    <p> Oeuvres </p>
+  <!-- Galerie & Exhibition names -->
+    <div class="title-galeries">
+      <p><%= @exhibition.name %></p>
+      <p><%= @exhibition.gallery.name %> </p>
     </div>
-      <div class="container">
+
+  <!-- Exhibition banner -->
+    <div class="ban-gallery" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@exhibition.cover_photo.url(:banner)) %>);">
+    </div>
+
+  <hr>
+
+  <!-- Exhibition Desription -->
+    <div class="container-expo">
           <div class="row">
-            <% @exhibition.artworks.where(published: true).each do |artwork| %>
-              <div class="col-xs-12 col-md-6 col-lg-4">
-                <%= render "shared/artwork_card", artwork: artwork %>
+            <div class="col-xs-12 col-md-6">
+              <div class="expo-left">
+                <div class="expo-title">
+                  <%= @exhibition.name %>
+                </div>
+                <div class="expo-description">
+                  <%= @exhibition.description %>
+                </div>
               </div>
-            <% end %>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <div class="expo-right" style="background-image: url(<%= cl_image_path(@exhibition.cover_photo.url(:banner)) %>)">
+              </div>
+            </div>
           </div>
+    </div>
+
+  <hr>
+
+  <!-- Exhibition Artworks  -->
+    <div class="title-galeries">
+      <p> Oeuvres </p>
       </div>
+        <div class="container">
+            <div class="row">
+              <% @exhibition.artworks.where(published: true).each do |artwork| %>
+                <div class="col-xs-12 col-md-6 col-lg-4">
+                  <%= render "shared/artwork_card", artwork: artwork %>
+                </div>
+              <% end %>
+            </div>
+        </div>
+</div>
