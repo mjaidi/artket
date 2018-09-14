@@ -31,17 +31,21 @@
             <div class="container">
               <div class="row">
                 <div class="col-xs-12">
-                  <% @exhibitions.where(published: true).order(start_date: :desc).each do |exhibition| %>
-                    <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
+                  <% if @exhibitions.where(published: true) [0].nil?%>
+                    <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
+                  <% else %>
+                    <% @exhibitions.where(published: true).order(start_date: :desc).each do |exhibition| %>
+                      <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
 
-                     <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
-                      <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
-                        <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
-                        <% end %>
-                    </div>
-                     <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
-                  <% end %>
-                </div>
+                       <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
+                        <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
+                          <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
+                          <% end %>
+                      </div>
+                       <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
@@ -52,17 +56,21 @@
             <div class="container">
               <div class="row">
                 <div class="col-xs-12">
-                  <% @exhibitions.where(published: false).order(start_date: :desc).each do |exhibition| %>
-                    <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
+                  <% if @exhibitions.where(published: false) [0].nil?%>
+                    <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
+                  <% else %>
+                    <% @exhibitions.where(published: false).order(start_date: :desc).each do |exhibition| %>
+                      <div class="card-exhibition" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>);">
 
-                     <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
-                      <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
-                        <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
-                        <% end %>
-                    </div>
-                     <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
-                  <% end %>
-                </div>
+                       <button type="button" class="btn btn-modify" data-toggle="modal" data-target=".bs-exhib-modal-lg<%=exhibition.id || 0%>">Modifier</button>
+                        <%= link_to user_exhibition_path(current_user.id, exhibition.id) do %>
+                          <i class="fas fa-cogs"></i><p class="btn-gestion">Gérer l'exposition</p>
+                          <% end %>
+                      </div>
+                       <%= render 'exhibitions/shared/add_exhibition_form', exhibition: exhibition %>
+                    <% end %>
+                  </div>
+                <% end %>  
               </div>
             </div>
           </div>

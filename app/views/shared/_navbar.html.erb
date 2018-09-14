@@ -31,7 +31,7 @@
           <% if current_user.gallerist %>
             <%= link_to "Tableau de bord", user_gallery_dashboard_path(current_user.id), class: "navbar-wagon-item navbar-wagon-link"  %>
           <% else %>
-            <%= link_to "Ma Page Personalisé", user_dashboard_path(current_user.id), class: "navbar-wagon-item navbar-wagon-link"  %>
+            <%= link_to "Ma Page Personnalisée", user_dashboard_path(current_user.id), class: "navbar-wagon-item navbar-wagon-link"  %>
           <% end %>
         <%= link_to destroy_user_session_path, method: :delete, class: "log-btn" do %>
                 <!-- <i class="fas fa-sign-out-alt"></i> -->  <%= t(".sign_out", default: "Log out") %>
