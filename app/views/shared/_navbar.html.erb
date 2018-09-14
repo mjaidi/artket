@@ -12,7 +12,11 @@
         <!-- Search -->
         <form class="navbar-form navbar-left form-inline" action="/artworks" method= "get" autocomplete="off">
           <div class="form-group searchform group">
-            <input type="search" name= "query" class="search-bar hidden"  id="search-box" placeholder="Recherche">
+            <% if current_page?('/') %>
+              <input type="search" name= "query" class="search-bar"  id="search-box" placeholder="Recherche">
+            <% else %>
+              <input type="search" name= "query" class="search-bar hidden"  id="search-box" placeholder="Recherche">
+            <% end %>
               <label for="search-box" id="search-icon"> <span class="fa fa-2x fa-search"data-toggle="tooltip" data-placement="left" title="Rechercher oeuvres, galleries, styles, artistes ..." data-delay="0"></span></label>
           </div>
         </form>
