@@ -6,14 +6,14 @@
   <div class = "container">
     <% if @artworks[0].nil? && @galleries[0].nil? && @artists[0].nil? %>
       <div class="text-center">
-        
+
       </div>
     <% else %>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#artwork" aria-controls="artwork" role="tab" data-toggle="tab">Mes Oeuvres</a></li>
         <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Mes Galeries</a></li>
-        <li role="presentation"><a href="#artist" aria-controls="artist" role="tab" data-toggle="tab">Mes Artists</a></li>
+        <li role="presentation"><a href="#artist" aria-controls="artist" role="tab" data-toggle="tab">Mes Artistes</a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -21,7 +21,7 @@
         <div role="tabpanel" class="tab-pane active fade in" id="artwork">
           <div class="container">
             <div class="row">
-                 
+
               <% if @artworks[0].nil?%>
               <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
               <% else %>
@@ -31,14 +31,14 @@
                   </div>
                 <% end %>
               <% end %>
-           
+
             </div>
           </div>
         </div>
         <div role="tabpanel" class="tab-pane fade in" id="gallery">
           <div class="container">
             <div class="row">
-                 
+
               <% if @galleries[0].nil?%>
               <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
               <% else %>
@@ -48,14 +48,14 @@
                   </div>
                 <% end %>
               <% end %>
-           
+
             </div>
           </div>
         </div>
         <div role="tabpanel" class="tab-pane fade in" id="artist">
           <div class="container">
             <div class="row">
-                 
+
               <% if @artists[0].nil?%>
               <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
               <% else %>
@@ -65,10 +65,10 @@
                   </div>
                 <% end %>
               <% end %>
-           
+
             </div>
           </div>
-        </div>    
+        </div>
       </div>
     <% end %>
   </div>

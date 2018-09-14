@@ -13,8 +13,8 @@
       <table class="table table-hover table-artwork">
         <tr>
           <th>Photo</th>
-          <th>Titre</th> 
-          <th>Artist</th>
+          <th>Titre</th>
+          <th>Artiste</th>
           <th>Année</th>
           <th>Dimensions</th>
           <th>Prix</th>
@@ -25,9 +25,9 @@
         <tr>
           <td> <% if artwork.art_photos.first != nil %>
             <%= image_tag artwork.art_photos.first.photo.url(:cards), style: 'height: 70px;'%>
-             <% end %> 
+             <% end %>
             </td>
-          <td> <%= artwork.name %></td> 
+          <td> <%= artwork.name %></td>
           <td> <%= artwork.artist.full_name %></td>
           <td> <%= artwork.year %></td>
           <td> <%= artwork.dimensions %></td>
@@ -36,21 +36,21 @@
             <% artwork.categories.each do |category| %>
               <li>
                 <% if category.parent_category != nil %>
-                  <%= category.parent_category.name %> , 
+                  <%= category.parent_category.name %> ,
                 <% end %>
                 <%= category.name %>
               </li>
             <% end %>
             </ul>
           </td>
-          <td class = "text-center"> <%= link_to user_exhibition_artwork_remove_path(current_user, @exhibition, artwork), method: :patch , hidden: true do %> 
+          <td class = "text-center"> <%= link_to user_exhibition_artwork_remove_path(current_user, @exhibition, artwork), method: :patch , hidden: true do %>
                 <i class="fas fa-trash" style= "color: black;" id= "delete-link-<%=@exhibition.id%><%=artwork.id%>"></i>
               <% end %>
                 <span data-id="<%=@exhibition.id%><%=artwork.id%>" class="sweet-alert-rm">  <i class="fas fa-trash"></i></span> </td>
         </tr>
       <% end %>
-      
-    
+
+
       </table>
 
     </div>
@@ -71,4 +71,4 @@
        <%= render 'exhibitions/shared/add_art_to_exhibition', exhibition: @exhibition, user: current_user %>
     </div>
   </div>
- </div> 
+ </div>
