@@ -11,7 +11,6 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create(conversation_params)
     end
-
     authorize @conversation
 
     if params[:body]
@@ -19,8 +18,7 @@ class ConversationsController < ApplicationController
       @message.conversation = @conversation
       @message.save
     end
-
-    redirect_to conversations_path(@conversation)
+    redirect_to conversations_path(current_user.id)
   end
 
   private
