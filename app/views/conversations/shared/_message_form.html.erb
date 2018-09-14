@@ -1,7 +1,9 @@
-<%= form_tag("/users/#{current_user.id}/conversations/#{conversation.id}/messages", method: "post", remote: true, class: "flex", id: "new-message") %> 
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-  <%= text_area_tag("body", nil, class: "f-input", placeholder: "ecrivez votre message") %>
-  <%= hidden_field_tag("conversation_id", conversation.id) %>
-  <%= button_tag(type: "submit", class: "btn btn-warning", value: "send") do %>
-      <i class="fab fa-pushed"></i>
-  <% end %>
+<div class= " flex flex-active", id= "new-message<%=conversation.id%>">
+  <form action="/users/<%= current_user.id %>/conversations/<%= conversation.id %>/messages" class="flex" method="POST">
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                  <textarea name="body" class="f-input" placeholder="Type a comment"></textarea>
+                  <input type="hidden" name="conversation_id" value="<%= conversation.id %>">
+                  <button type="submit" value="send"><i class="fab fa-pushed"></i></button>
+                </form>
+  </div>
+

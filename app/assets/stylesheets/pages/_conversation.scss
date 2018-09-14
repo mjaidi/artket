@@ -20,6 +20,9 @@
   position: relative;
 }
 
+.flex {
+  display: none;
+}
 .convo-left {
     background: #ddd;
     display: block;
@@ -69,19 +72,21 @@
   padding: 0;
 }
 
-.f-input input, select, textarea {
-  flex: 0 0 90%;
-  border: 1px solid $gold;
-  font-family: "Nanum Myeongjo", serif;
-  }
-
-.flex {
+.flex-active {
+  display: block;
+form {
+  width: 100%;
     display: flex;
     margin: 0;
     padding: 0;
 }
 
-.flex input, button {
+.f-input input, select, textarea {
+  flex: 0 0 90%;
+  border: 1px solid $gold;
+  font-family: "Nanum Myeongjo", serif;
+  }
+  input, button {
   width: 10%;
   background-color: $gold;
   color: white;
@@ -90,4 +95,5 @@
   &:hover{
     background-color: #ccc;
   }
+}
 }
