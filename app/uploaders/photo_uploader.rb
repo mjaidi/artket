@@ -2,10 +2,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
  include Cloudinary::CarrierWave
 
 version :cards do
-  resize_to_fit 500, 500
+  cloudinary_transformation :width=>500, :crop=>"scale"
 end
 
 version :banner do
-  resize_to_fit 2000, 1750
+  cloudinary_transformation :width=>2000, :crop=>"scale"
 end
 end

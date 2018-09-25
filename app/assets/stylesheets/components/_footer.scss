@@ -1,39 +1,67 @@
-.footer {
-    bottom: 0;
+.footer-top {
     width: 100%;
-    height: 125px;
     background-color: #3D3D3D;
     padding-top: 10px;
     font-family: 'Nanum Myeongjo', serif;
     position: relative;
     bottom: 0;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    margin-top: 50px;
+    li {
+     &:hover {
+      color: $gold;
+     } 
+    }
   }
 
-.fields-main {
-  display: flex;
-  flex-direction: row;
-  align-items: top;
-  justify-content: center;
-  justify-content: space-around;
-  margin-left: 40px;
-  margin-right: 40px;
-}
-.fields :hover{
-  color: white;
+
+.col-title {
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
-.cat {
-  display: flex;
-  flex-direction: column;
-  color: #FFF;
-  font-size: 20px;
-  font-weight: bold;
+.footer-bottom {
+  // border-top: 5px solid black;
+  // border-bottom: 5px solid black;
+  width: 100%;
+  font-family: 'Nanum Myeongjo', serif;
+  background-color: #fff;
+  position: relative;
+  bottom: 0;
+  color: black;
+  padding: 25px 50px 25px 50px;
+  .flex-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    p {
+      margin: 10px;
+      &:hover {
+        color: $gold;
+      }
+    }
+  }
+  .flex-footer-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    p {
+      margin: 10px;
+      a {
+        font-size: 25px;
+        color: black;
+        &:hover {
+          color: $gold;
+        }
+      }
+    }
+  }
 }
 
-.sub-cat {
-  color: #C4C4C4;
-  font-size: 18px;
-}
+
 
 .full-height {
   min-height: 100vh;

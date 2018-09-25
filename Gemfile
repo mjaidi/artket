@@ -41,6 +41,9 @@ gem "algoliasearch-rails"
 gem 'pg_search'
 
 
+# Jquery Masonry for grid layout
+gem 'masonry-rails'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem "better_errors"
