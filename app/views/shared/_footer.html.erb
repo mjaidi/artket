@@ -1,36 +1,64 @@
-  <!--[ footer ] -->
-  <div class="footer">
-    <div class="fields-main">
-
-      <div class="cat">
-        <p>À propos d'Artket</p>
-          <div class="fields sub-cat">
-            <p>Comment ca marche?</p>
-          </div>
+<!-- Footer Top Part   -->
+  <div class="container footer-top">
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">
+        <div class="col-title">
+          A propos d'Artket
+        </div>
+        <ul class="list-unstyled">
+          <li>Comment ça marche?</li>
+          <li>Press</li>
+        </ul>
       </div>
-
-      <div class="cat">
-        <p>Galeries</p>
-          <div class="fields sub-cat">
-            <p>Devenir membre</p>
-          </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="col-title">
+          Galeries
+        </div>
+        <ul class="list-unstyled">
+          <li>Devenir Membre</li>
+        </ul>
       </div>
-
-      <div class="cat">
-        <p>Services</p>
-          <div class="fields sub-cat">
-            <p>Expertise</p>
-            <p>Photos Pro</p>
-          </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="col-title">
+          Services
+        </div>
+        <ul class="list-unstyled">
+          <li>Expertise</li>
+          <li>Photo Pro</li>
+        </ul>
       </div>
-
-      <div class="cat">
-        <p>Contact</p>
+      <div class="col-xs-6 col-sm-3">
+        <div class="col-title">
+          Questions et Suggestions
+        </div>
+        <ul class="list-unstyled">
+          <li>Contacter Artket</li>
+          <li>Envoyer une Suggestion</li>
+        </ul>
       </div>
+    </div> <!-- Row end -->
+  </div> <!-- Container end -->
 
-      <div class="cat">
-        <p>CGU</p>
+<!-- Footer Bottom Part  -->
+  <div class="container footer-bottom">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 float-left">
+        <div class="flex-footer">
+              <!-- Logo -->
+              <%= link_to root_path, class: "navbar-brand" do %>
+                <%= image_tag ("logo.png") %>
+              <% end %>
+            <p>2018 Artket</p>
+            <p>CGU</p>
+            <p>Sécurité</p>
+        </div>
       </div>
-
-    </div>
-  </div>
+      <div class="col-xs-12 col-sm-6 float-right">
+        <div class="flex-footer-right">
+            <p><a href="http://www.facebook.com/sharer.php?u=https://www.artket.ma"><i class="fab fa-facebook"></i></a></p>
+            <p><a href="#"><i class="fab fa-instagram"></i></a></p>
+          </ul>
+        </div>
+      </div>
+    </div> <!-- Row End -->
+  </div> <!-- Container end -->

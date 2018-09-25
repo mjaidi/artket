@@ -1,6 +1,6 @@
 .card-art {
   margin: 10px;
-  min-height: 300px;
+  // min-height: 300px;
   color: black;
   box-shadow: 2px 2px 5px rgba(0,0,0, .3);
   transition: 0.2s;
@@ -9,6 +9,8 @@
     background-size: cover;
     background-position: center;
     width: 100%;
+  }
+  .gallery-card {
     height: 220px;
   }
   .card-footer {
