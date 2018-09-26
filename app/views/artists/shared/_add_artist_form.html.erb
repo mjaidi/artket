@@ -31,6 +31,11 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
+              <%= f.input :biographie, as: :text %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
               <h6><strong>Photo de l'Artist</strong></h6>
               <%= cl_image_tag(artist.photo.url(:cards), width: 100, height: 100, class: "form-image") %>
                 <%= f.file_field :photo, class: "inputfile input-file-5 image-upload", id: "artist#{artist.id}"  %>

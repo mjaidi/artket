@@ -1,0 +1,67 @@
+  <!-- Artist page -->
+    <div class="container top-artwork-container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 text-center">
+            <!-- Artist picture -->              
+              <img src="<%= cl_image_path(@artist.photo.url(:cards))%>">
+                
+        </div>
+      <!-- Info about Artist -->
+        <div class="col-xs-12 col-md-6">
+          <div class="art-right">
+              <div class="cat-art">
+              <p>Nom: </div>
+              <%= @artist.first_name %> <%= @artist.last_name %></p>
+
+              <hr>
+              <div class="row">
+                <div class="col-sm-6">
+                   <div class="cat-art">
+                    <p>Année de Naissance: </div>
+                    <%= @artist.birth_date.strftime("%d/%m/%Y") %></p>
+                </div>
+                <div class="col-sm-6">
+                   <div class="cat-art">
+                    <p>Année de Décès: </div>
+                    <%= @artist.death_date.strftime("%d/%m/%Y") %></p>
+                </div>
+              </div>
+              <hr>
+
+              <div class="cat-art">
+              <p>Description: </div><%= @artist.description %></p>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  <!-- Biographie de l'Artiste -->
+  <hr>
+  <div class="title-others text-center">
+    <h4>Biographie de <%= @artist.full_name %> </h4>
+  </div>
+  <div class="container">
+    <p><%=@artist.biographie%></p>
+  </div>
+
+  <!-- Other artworks from same artist -->
+  <% if @artworks.where(published: true).length > 1 %>
+    <hr>
+    <div class="title-others text-center">
+      <h4>Autres oeuvres de l'artiste</h4>
+    </div>
+    <div class="container">
+      <div class="row">
+        <% @artworks.where(published: true).each do |artwork| %>
+          <% if artwork != @artwork %>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+              <%= render "shared/artwork_card", artwork: artwork %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

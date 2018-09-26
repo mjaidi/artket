@@ -5,9 +5,12 @@ class ArtistPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def user_artists?
     user.gallerist == true
-    true
   end
 
   def create?

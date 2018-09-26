@@ -9,7 +9,7 @@
   align-items: center;
   margin-top: 0px;
   color: white;
-  height: 100vh;
+  height: 90vh;
   font-style: normal;
   font-weight: normal;
   line-height: normal;
@@ -54,4 +54,34 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+}
+
+
+.carrousel-controler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-arrow {
+  font-size: 30px;
+}
+
+.carousel-indicators li { 
+  width: 60px;
+  height: 2px;
+  border-radius: 2px;
+  border: 1px solid #aaaaaa
+}
+
+.carousel-indicators .active {
+    margin: 0;
+    width: 62px;
+    height: 4px;
+    background-color: #fff;
+}
+
+.item a:visited {
+  color: white;
+  text-decoration: none;
 }

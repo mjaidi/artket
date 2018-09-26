@@ -5,14 +5,14 @@
   <% @artworks = Artwork.where(published: true).global_search("%#{params[:search_query]}%") %>
 <% end %>
 
-<% if params["city"] == ""  && params["categories"] == "" %>
+<% if params["city"] == ""  && params["categories"] == [] %>
   <% @artworks %>
 <% elsif params["city"] == "" %>
-    <% @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["categories"].to_i } %>
-<% elsif params["categories"] == "" %>
+    <% @artworks = @artworks.select { |artwork| artwork.categories.ids.any?  { |i| params["categories"].map {|cat| cat.to_i}.include? i }  } %>
+<% elsif params["categories"] == [] %>
   <% @artworks = @artworks.select { |artwork| artwork.gallery.city == params["city"]} %>
 <% else %>
-  <% @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["categories"].to_i }.select { |artwork| artwork.gallery.city == params["city"]} %>
+  <% @artworks = @artworks.select { |artwork| artwork.categories.ids.any?  { |i| params["categories"].map {|cat| cat.to_i}.include? i }}.select { |artwork| artwork.gallery.city == params["city"]} %>
 <% end %>
 
 <% @galleries = @artworks.map {|artwork| artwork.gallery} %>
@@ -31,3 +31,5 @@ document.getElementById("search-render").innerHTML = "";
   document.getElementById("search-render").insertAdjacentHTML("beforeend",   
   "<%= j render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, markers: @markers %>");
 <% end %>
+
+document.getElementById('first-result-tab').click();

@@ -9,9 +9,6 @@ class Artist < ApplicationRecord
   validates :first_name, presence: :true
   validates_uniqueness_of :first_name, scope: :last_name
 
-  algoliasearch do
-    # all attributes will be sent
-  end
 
   def full_name
     "#{first_name} #{last_name}"

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
   resources :exhibitions, only: [:index, :show, :create, :update]
-  resources :artists, only: [:create, :update, :destroy]
+  resources :artists, only: [:show, :create, :update, :destroy]
   resources :art_photos, only: [:destroy]
 
 
