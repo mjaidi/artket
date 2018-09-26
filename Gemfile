@@ -43,6 +43,7 @@ gem 'pg_search'
 
 # Jquery Masonry for grid layout
 gem 'masonry-rails'
+gem 'bootstrap-multiselect-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

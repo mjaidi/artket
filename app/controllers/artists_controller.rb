@@ -1,10 +1,15 @@
 class ArtistsController < ApplicationController
-  before_action :find_artist, only: [ :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show]
+  before_action :find_artist, only: [ :show, :update, :destroy]
 
   def user_artists # list des artists de l'utilisateur
     @artists = Artist.where("user_id = ?", current_user)
     authorize @artists
     @artist = Artist.new
+  end
+
+  def show
+    @artworks = Artwork.where(artist_id: params[:id])
   end
 
  def create
@@ -39,7 +44,7 @@ class ArtistsController < ApplicationController
   private 
 
   def artist_params
-    params.require(:artist).permit(:first_name, :last_name, :photo, :birth_date, :death_date, :description)
+    params.require(:artist).permit(:first_name, :last_name, :biographie, :photo, :birth_date, :death_date, :description)
   end
 
   def find_artist
