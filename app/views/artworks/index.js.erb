@@ -31,3 +31,5 @@ document.getElementById("search-render").innerHTML = "";
   document.getElementById("search-render").insertAdjacentHTML("beforeend",   
   "<%= j render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, markers: @markers %>");
 <% end %>
+
+document.getElementById('first-result-tab').click();

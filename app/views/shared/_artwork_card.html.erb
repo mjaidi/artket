@@ -1,8 +1,9 @@
 <!--   CARD -->
 
 <%= link_to artwork_path(artwork.id) do %>
-  <div class="card-art">
-    <div class="card-body gallery-card" style="background-image: url(<%= cl_image_path(artwork.art_photos.first.photo.url(:cards)) %>);">
+  <div class="card-art card-result">
+    <div class="card-body">
+      <%= cl_image_tag(artwork.art_photos.first.photo.url(:cards), style: "width: 100%") %>
       
     </div>
 

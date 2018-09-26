@@ -13,7 +13,7 @@
   }
   #art-results-wrapper-map {
     width: 100%;
-    #results-container {
+    .results-container {
       width: 100%;
     }
   }  
@@ -30,7 +30,7 @@
 @media (min-width: 1200px) {
  #art-results-wrapper-map {
     width: 100%;
-    #results-container {
+    .results-container {
     width: 100%
     }
   }
@@ -40,5 +40,4 @@
   color: $gold;
   font-weight: bold;
 }
-
 
