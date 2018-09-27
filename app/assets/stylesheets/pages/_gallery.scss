@@ -34,6 +34,9 @@
     background-color: #FCF8F8;
     margin-left: 50px;
     margin-right: 50px;
+    a {
+      color: black;
+    }
 
     .expo-left {
       display: flex;
@@ -57,12 +60,7 @@
 
   // Gallery/show Shortcuts
   .shortcuts{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 200px;
-    margin-right: 200px;
+    text-align: center;
     a {
       color: #C2A476;
     }

@@ -1,5 +1,5 @@
 <div class="card-art">
-  <div class="card-body" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:cards)) %>)">
+  <div class="card-body gallery-card" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:cards)) %>)">
     <%= link_to "", exhibition_path(exhibition.id), class: "card-link" %>
   </div>
   <div class="card-footer">
