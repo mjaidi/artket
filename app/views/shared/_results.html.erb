@@ -8,7 +8,6 @@
       <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Galeries</a></li>
       <li role="presentation"><a href="#artist" aria-controls="artist" role="tab" data-toggle="tab">Artistes</a></li>
     </ul>
-
     <!-- Tab panes -->
     <div class="tab-content">
 
@@ -85,4 +84,5 @@
     </div>
 
   </div>
+  <%= will_paginate artworks, :previous_label => 'Précédent', :next_label => 'Suivant' %>
 </div>

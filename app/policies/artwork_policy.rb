@@ -4,6 +4,9 @@ class ArtworkPolicy < ApplicationPolicy
       scope.all
     end
   end
+  def get_subcategories?
+    true
+  end
 
   def show?
      record.published

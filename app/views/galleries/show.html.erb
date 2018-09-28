@@ -30,16 +30,20 @@
 
   <!-- Shorcuts -->
     <div class="shortcuts">
-      <a href="#artworks">OEUVRES</a>
-      <a href="#exhibition">EXPOSITIONS</a>
-      <a href="#artists-list">ARTISTES</a>
-      <%= link_to "CONTACT", contact_gallery_path(@gallery) %>
+      <div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3"><a href="#artworks">OEUVRES</a></div>
+          <div class="col-xs-6 col-sm-3"> <a href="#exhibition">EXPOSITIONS</a></div>
+          <div class="col-xs-6 col-sm-3"><a href="#artists-list">ARTISTES</a></div>
+          <div class="col-xs-6 col-sm-3"><%= link_to "CONTACT", contact_gallery_path(@gallery) %></div>
+        </div>
+      </div>
     </div>
 
   <hr>
-
+  <div id="artworks" style="margin-top: -80px; padding-top: 80px;"></div>
   <!-- Artworks cards -->
-    <div class="title-galeries" id="artworks">
+    <div class="title-galeries" id="" >
     <p> Oeuvres </p>
     </div>
       <div class="container">
@@ -54,28 +58,32 @@
 
 
   <!-- Expositions -->
+  <div id="exhibition" style="margin-top: -80px; padding-top: 80px;"></div>
+
   <% if !@gallery.exhibitions.where(published: true).empty? %>
   <hr>
-    <div class="container-expo" id="exhibition">
+    <div class="container-expo">
         <% @gallery.exhibitions.where(published: true).each do |exhibition| %>
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <div class="expo-left">
-                <div class="expo-title">
-                  <%= exhibition.name %>
-                </div>
-                <div class="expo-dates">
-                  du <%= exhibition.start_date.strftime("%d/%m/%Y") %> au
-                  <%= exhibition.end_date.strftime("%d/%m/%Y") %>
+          <%= link_to exhibition_path(exhibition) do %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <div class="expo-left">
+                  <div class="expo-title">
+                    <%= exhibition.name %>
+                  </div>
+                  <div class="expo-dates">
+                    du <%= exhibition.start_date.strftime("%d/%m/%Y") %> au
+                    <%= exhibition.end_date.strftime("%d/%m/%Y") %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <div class="expo-right" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>)">
+              <div class="col-xs-12 col-md-6">
+                <div class="expo-right" style="background-image: url(<%= cl_image_path(exhibition.cover_photo.url(:banner)) %>)">
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <% end %>
     <% end %>
   </div>
   <% end %>
@@ -84,7 +92,9 @@
 
 
   <!-- Liste des artistes -->
-    <div class="title-artistes" id="artists-list">
+    <div id="artists-list" style="margin-top: -80px; padding-top: 80px;"></div>
+
+    <div class="title-artistes">
       <p> Liste des artistes </p>
     </div>
       <div class="container">

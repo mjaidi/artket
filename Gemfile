@@ -42,6 +42,7 @@ gem 'faker'
 #search
 gem "algoliasearch-rails"
 gem 'pg_search'
+gem 'will_paginate', '~> 3.1.0'
 
 
 # Jquery Masonry for grid layout
