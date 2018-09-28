@@ -1,6 +1,6 @@
 <div class="full-height">
 <!-- Home banner -->
- <div id="home-banner-carousel" class="carousel slide" data-ride="carousel">
+ <div id="home-banner-carousel" class="carousel slide" data-ride="carousel" data-interval="10000">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#home-banner-carousel" data-slide-to="0" class="active"></li>
@@ -11,41 +11,41 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <a class="banner-home" href="#" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path('173.jpg') %>);">
-            <div class="banner-subtitle">
-              <p>Decouverez l'art au Maroc sur</p>
-            </div>
-
+        <div class="banner-home" href="#" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= image_path('173.jpg') %>);">
+          <br><br>
             <div class="banner-title">
               <p> ARTKET </p>
             </div>
-
-            <div class="presente">
+            <br>
+            <div class="banner-subtitle">
               <p>Première plateforme pour les galeries d'art au Maroc</p>
             </div>
-
-            <div class="galerie-name">
-              <p></p>
-            </div>
-        </a>
+            <% if user_signed_in? %>
+            <% else %>
+                <div class="banner-text">
+                  <p>Inscrivez-vous pour reçevoir les dernières nouvelles de vos artistes préférés</p>
+                </div>
+                  <%= link_to "Sign In", new_user_session_path, class: "log-btn-banner" %>
+            <% end %>
+        </div>
       </div>
 
        <%  @exhibitions.first(2).each do |exhibition| %>
        <div class="item">
           <a class="banner-home" href="/exhibitions/<%=exhibition.id%>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(exhibition.cover_photo.url(:cards)) %>);", target = "_blank">
               <div class="banner-subtitle">
-                <p><%= "Nouvelle exposition à partir du #{exhibition.start_date.strftime('%d/%m/%Y')}" %></p>
+                <p>Nouvelle exposition à partir du <strong> <%= " #{ exhibition.start_date.strftime('%d/%m/%Y')}" %></strong></p>
               </div>
 
               <div class="banner-title">
                 <p><%= exhibition.name %> </p>
               </div>
 
-              <div class="presente">
+              <div class="banner-subtitle">
                 <p>Présentée par la galerie</p>
               </div>
 
-              <div class="galerie-name">
+              <div class="banner-title">
                 <p><%= exhibition.gallery.name %></p>
               </div>
           </a>
@@ -64,8 +64,45 @@
     </a>
   </div>
 
-
-
+<!-- Quick Search Buttons -->
+  <div class="title-galeries">
+  <p> Recherche Par Catégories </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <br>
+      <div class="col-xs-6 col-sm-4 flex-home">
+        <%= link_to artworks_path(category: Category.find_by_name("Peinture").id) do %>
+           <button class="btn btn-home">Peinture</button>
+        <% end %>
+      </div>
+      <div class="col-xs-6 col-sm-4 flex-home">
+        <%= link_to artworks_path(category: Category.find_by_name("Sculpture").id) do %>
+           <button class="btn btn-home">Sculpture</button>
+        <% end %>
+      </div>
+      <div class="col-xs-6 col-sm-4 flex-home">
+        <%= link_to artworks_path(category: Category.find_by_name("Photographie").id) do %>
+           <button class="btn btn-home">Photographie</button>
+        <% end %> 
+      </div>
+      <div class="col-xs-6 col-sm-4 flex-home">  
+        <%= link_to artworks_path(category: Category.find_by_name("Editions").id) do %>
+           <button class="btn btn-home">Editions</button>
+        <% end %>
+      </div>
+      <div class="col-xs-6 col-sm-4 flex-home">   
+        <%= link_to artworks_path(category: Category.find_by_name("Dessin").id) do %>
+           <button class="btn btn-home">Dessin</button>
+        <% end %>
+      </div>
+      <div class="col-xs-6 col-sm-4 flex-home">   
+        <%= link_to artworks_path do %>
+           <button class="btn btn-home">Tous</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 
 

@@ -42,8 +42,11 @@
   <div class="title-others text-center">
     <h4>Biographie de <%= @artist.full_name %> </h4>
   </div>
-  <div class="container">
-    <p><%=@artist.biographie%></p>
+  <br>
+  <div class="biographie">
+    <div class="container">
+      <p><%=raw(@artist.biographie)%></p>
+    </div>
   </div>
 
   <!-- Other artworks from same artist -->

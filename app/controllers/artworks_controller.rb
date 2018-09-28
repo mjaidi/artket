@@ -1,5 +1,6 @@
+require 'will_paginate/array'
 class ArtworksController < ApplicationController
-    skip_before_action :authenticate_user!, only: [:index, :show]
+    skip_before_action :authenticate_user!, only: [:index, :show, :get_subcategories]
     before_action :find_artwork, only: [:show, :update, :destroy]
 
   def index
@@ -7,31 +8,36 @@ class ArtworksController < ApplicationController
 
     if params[:query].present?
       @artworks = Artwork.where(published: true).global_search("%#{params[:query]}%")
-      @galleries = @artworks.map {|artwork| artwork.gallery}
-      @markers = @galleries.uniq.map do |gallery|
-        {
-          lat: gallery.latitude,
-          lng: gallery.longitude#,
-          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-        }
-      end
     else
       @artworks = @artworks
-      @galleries = @artworks.map {|artwork| artwork.gallery}
-      @markers = @galleries.uniq.map do |gallery|
-        {
-          lat: gallery.latitude,
-          lng: gallery.longitude#,
-          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-        }
-      end
     end
 
-    @artists = @artworks.map {|artwork| artwork.artist}
+    if (params["city"] == nil || params["city"] == "")  && (params["category"] == nil || params["category"] == "" ) && (params["subcategory"] == nil || params["subcategory"] == "")
+      @artworks
+    elsif (params["city"] == nil || params["city"] == "") && (params["subcategory"] == nil || params["subcategory"] == "")
+      @artworks = @artworks.select {|artwork| artwork.categories.ids.any?  { |i| Category.where(parent_id: params["category"]).map {|cat| cat.id}.include? i }  }  
+    elsif (params["category"] == nil || params["category"] == "" )
+      @artworks = @artworks.select { |artwork| artwork.gallery.city == params["city"]} 
+    elsif (params["subcategory"] == nil || params["subcategory"] == "")
+      @artworks = @artworks.select { |artwork| artwork.categories.ids.any?  { |i| Category.where(parent_id: params["category"]).map {|cat| cat.id}.include? i } }.select { |artwork| artwork.gallery.city == params["city"]} 
+    elsif (params["city"] == nil || params["city"] == "")
+      @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["subcategory"].to_i} 
+    else 
+      @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["subcategory"].to_i}.select { |artwork| artwork.gallery.city == params["city"]} 
+    end 
+
+    @artists = @artworks.map {|artwork| artwork.artist}.paginate(:page => params[:page], :per_page => 9)
+    @galleries = @artworks.map {|artwork| artwork.gallery}.paginate(:page => params[:page], :per_page => 9)
+    @artworks = @artworks.paginate(:page => params[:page], :per_page => 9)
     @categories = Category.all
+    @selected_category = 0
+      @markers = @galleries.uniq.map do |gallery|
+        { lat: gallery.latitude, lng: gallery.longitude }
+    end
 
     respond_to do |format|
       format.html
+      format.json { render json: @artworks }
       format.js
     end
   end
@@ -102,6 +108,10 @@ class ArtworksController < ApplicationController
   end
 
   def like
+  end
+
+  def get_subcategories
+    @selected_category =  params[:category_id]
   end
 
   private

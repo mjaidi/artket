@@ -1,35 +1,44 @@
+<% require 'will_paginate/array' %>
+<% if params[:page] == nil %>
+  <% if params[:search_query] == nil %>
+    <% @artworks = Artwork.where(published: true) %>
+  <% elsif params[:search_query] == "" %>
+    <% @artworks = Artwork.where(published: true) %>
+  <% else %>
+    <% @artworks = Artwork.where(published: true).global_search("%#{params[:search_query]}%") %>
+  <% end %>
 
-<% if params[:search_query] == "" %>
-  <% @artworks = Artwork.where(published: true) %>
-<% else %>
-  <% @artworks = Artwork.where(published: true).global_search("%#{params[:search_query]}%") %>
-<% end %>
+  <% if (params["city"] == nil || params["city"] == "")  && (params["category"] == nil || params["category"] == "" ) && (params["subcategory"] == nil || params["subcategory"] == "") %>
+    <% @artworks %>
+  <% elsif (params["city"] == nil || params["city"] == "") && (params["subcategory"] == nil || params["subcategory"] == "") %>
+      <% @artworks = @artworks.select {|artwork| artwork.categories.ids.any?  { |i| Category.where(parent_id: params["category"]).map {|cat| cat.id}.include? i }  }  %>
+  <% elsif (params["category"] == nil || params["category"] == "" ) %>
+    <% @artworks = @artworks.select { |artwork| artwork.gallery.city == params["city"]} %>
+  <% elsif (params["subcategory"] == nil || params["subcategory"] == "") %>
+    <% @artworks = @artworks.select { |artwork| artwork.categories.ids.any?  { |i| Category.where(parent_id: params["category"]).map {|cat| cat.id}.include? i } }.select { |artwork| artwork.gallery.city == params["city"]} %>
+  <% elsif(params["city"] == nil || params["city"] == "")%>
+    <% @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["subcategory"].to_i} %>
+  <% else %>
+    <% @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["subcategory"].to_i}.select { |artwork| artwork.gallery.city == params["city"]} %>
+  <% end %>
 
-<% if params["city"] == ""  && params["categories"] == [] %>
-  <% @artworks %>
-<% elsif params["city"] == "" %>
-    <% @artworks = @artworks.select { |artwork| artwork.categories.ids.any?  { |i| params["categories"].map {|cat| cat.to_i}.include? i }  } %>
-<% elsif params["categories"] == [] %>
-  <% @artworks = @artworks.select { |artwork| artwork.gallery.city == params["city"]} %>
-<% else %>
-  <% @artworks = @artworks.select { |artwork| artwork.categories.ids.any?  { |i| params["categories"].map {|cat| cat.to_i}.include? i }}.select { |artwork| artwork.gallery.city == params["city"]} %>
-<% end %>
-
-<% @galleries = @artworks.map {|artwork| artwork.gallery} %>
-<% @artists = @artworks.map {|artwork| artwork.artist} %>
-<% @markers = @galleries.uniq.map do |gallery| %>
-  <% {lat: gallery.latitude, lng: gallery.longitude  } %>
+  <% @galleries = @artworks.map {|artwork| artwork.gallery}.paginate(:page => params[:page], :per_page => 9) %>
+  <% @artists = @artworks.map {|artwork| artwork.artist}.paginate(:page => params[:page], :per_page => 9) %>
+  <% @markers = @galleries.uniq.map do |gallery| %>
+    <% {lat: gallery.latitude, lng: gallery.longitude  } %>
+  <% end %>
+  <% @artworks = @artworks.paginate(:page => params[:page], :per_page => 9) %>
 <% end %>
 
 
 document.getElementById("search-render").innerHTML = "";
 
+
 <%  if @artworks[0].nil? %>
   document.getElementById("search-render").insertAdjacentHTML("beforeend",   
   "<br><br><h4 class = 'text-center'>Aucun Résultat</h4><br><br>");
 <% else %>
-  document.getElementById("search-render").insertAdjacentHTML("beforeend",   
-  "<%= j render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, markers: @markers %>");
+  $("#search-render").html("<%= j render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, markers: @markers %>");
 <% end %>
 
 document.getElementById('first-result-tab').click();

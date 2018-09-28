@@ -19,20 +19,47 @@
     color: white;
     text-decoration: none;
   }
+
 .banner-title p{
-  font-size: 72px;
+  font-size: 40px;
+  font-weight: bold;
 }
 
-.galerie-name p{
-  font-size: 72px;
-}
-
-.presente p{
-  font-size: 36px;
-}
 .banner-subtitle p{
-  font-size: 36px;
+  font-size: 22px;
+  font-family: 'Nanum Myeongjo', serif;
 }
+.banner-text p{
+  font-size: 18px;
+  font-family: 'Nanum Myeongjo', serif;
+}
+
+.log-btn-banner {
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  background-color: $gold;
+  color: white;
+  font-size: 18px;
+  &:hover {
+    background-color: #ccc;
+    text-decoration: none;
+  }
+}
+  @media (min-width: 992px) {
+  .banner-title p{
+    font-size: 60px;
+  }
+  .banner-subtitle p{
+    font-size: 36px;
+  }
+  .banner-text p{
+    font-size: 24px;
+  }
+  .log-btn-banner {
+    font-size: 25px;
+  }
+}
+
 }
 
 .ban-expo {
