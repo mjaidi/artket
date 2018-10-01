@@ -1,0 +1,33 @@
+<!-- Large Modal Target -->
+<div class="modal fade modal-contact" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg modal-round" role="document">
+    <div class="modal-content modal-round">
+      <div class="background-grey">
+       <div class="title-galeries">
+        <%= image_tag ("ArtKet.svg"),  style: "width: 150px;" %>
+        <p> Envoyez une Suggestion </p>
+        </div>
+      </div>
+      <div class="get-in-touch">
+         <form class="contact-form row">
+            <div class="form-field col-xs-6">
+               <input id="name" class="input-text js-input" type="text" required>
+               <label class="label" for="name">Nom</label>
+            </div>
+            <div class="form-field col-xs-6">
+               <input id="email" class="input-text js-input" type="email" required>
+               <label class="label" for="email">E-mail</label>
+            </div>
+            <div class="form-field col-xs-12">
+               <textarea id="message" class="input-text js-input" cols="40" rows="5" required></textarea>
+               <label class="label" for="message">Suggestion</label>
+            </div>
+            <div class="form-field col-xs-12 align-center">
+               <input class="btn btn-create" type="submit" value="Suggestion">
+            </div>
+         </form>
+      </div>
+
+    </div>
+  </div>
+</div>

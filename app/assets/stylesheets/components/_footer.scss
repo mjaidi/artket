@@ -12,6 +12,7 @@
     li {
      &:hover {
       color: $gold;
+      cursor: pointer;
      } 
     }
   }
@@ -21,6 +22,8 @@
   margin-bottom: 15px;
   font-weight: 700;
   text-decoration: underline;
+  text-underline-position: under;
+  font-family: "Cinzel", "serif";
 }
 
 .footer-bottom {
@@ -65,4 +68,20 @@
 
 .full-height {
   min-height: 100vh;
+}
+
+.modal-width {
+  width: 100%;
+  p {
+    padding: 40px;
+  }
+}
+
+.background-grey {
+  background: #ddd;
+  padding: 10px 0;
+}
+
+.modal-round {
+  border-radius: 15px !important;
 }
