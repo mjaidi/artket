@@ -31,8 +31,11 @@ class ArtworksController < ApplicationController
     @artworks = @artworks.paginate(:page => params[:page], :per_page => 9)
     @categories = Category.all
     @selected_category = 0
-      @markers = @galleries.uniq.map do |gallery|
-        { lat: gallery.latitude, lng: gallery.longitude }
+
+    @hash = Gmaps4rails.build_markers(@galleries) do |gallery, marker|
+      marker.lat gallery.latitude
+      marker.lng gallery.longitude
+      marker.infowindow render_to_string(partial: "artworks/shared/artworks_map_box", locals: {  gallery: gallery })
     end
 
     respond_to do |format|
