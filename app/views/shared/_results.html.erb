@@ -1,7 +1,7 @@
-<div class="container">
-  <!-- Tab Pannels -->
-  <div>
 
+<div class="main-results-page-grid">
+<!-- Tab Pannels -->
+  <div class="results-tabs">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs tab-title" role="tablist" id="#search_tabs">
       <li role="presentation" class="active"><a href="#art" aria-controls="art" role="tab" data-toggle="tab" id="first-result-tab">Oeuvres</a></li>
@@ -12,8 +12,7 @@
     <div class="tab-content">
 
       <div role="tabpanel" class="tab-pane fade active in" id="art">
-        <div id="main-results-page-grid">
-          <div class="wrapper-first" id="art-results-wrapper">
+          <div class="wrapper-first art-results-wrapper">
             <!-- Artwork card Result -->
             <div class="container results-container">
               <div class="row masonry-row">
@@ -30,19 +29,17 @@
             </div>
           </div>  
         </div> 
-      </div>
 
       <div role="tabpanel" class="tab-pane fade" id="gallery">
-        <div id="main-results-page-grid">
-          <div class="wrapper-first" id="art-results-wrapper-map">
+          <div class="wrapper-first art-results-wrapper">
             <!-- Gallery card Result -->
-            <div class="results-container">
+            <div class="container results-container">
               <div class="row  masonry-row">
                 <% if galleries[0].nil?%>
                 <br><br><div class="text-center"><h4>Aucun Resultat</h4></div><br><br>
                 <% else %>
                   <% galleries.uniq.each do |gallery| %>
-                    <div class="col-xs-12 col-md-6 col-lg-6 masonry-item">
+                    <div class="col-xs-12 col-md-6 col-lg-4 masonry-item">
                       <%= render "shared/gallery_card", gallery: gallery %>
                     </div>
                   <% end %>
@@ -50,19 +47,10 @@
               </div>
             </div>
           </div> 
-          <div class="" id="map-wrapper">
-            <div
-              id="map"
-              style=""
-              data-markers="<%= markers.to_json %>"
-              ></div>
-          </div>  
         </div> 
-      </div>
 
       <div role="tabpanel" class="tab-pane fade" id="artist">
-        <div id="main-results-page-grid">
-          <div class="wrapper-first" id="art-results-wrapper">
+          <div class="wrapper-first art-results-wrapper">
             <!-- Artwork card Result -->
             <div class="container results-container">
               <div class="row  masonry-row"> 
@@ -79,10 +67,34 @@
             </div>
           </div> 
         </div> 
-      </div>
-
     </div>
-
+    <div>
+      <%= will_paginate artworks, :previous_label => 'Précédent', :next_label => 'Suivant' %>
+    </div>
   </div>
-  <%= will_paginate artworks, :previous_label => 'Précédent', :next_label => 'Suivant' %>
+
+  <div class="" id="map-wrapper">
+    <div
+      id="map"
+      style=""
+      ></div>
+  </div>  
+
 </div>
+
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+    var handler = Gmaps.build('Google');
+
+    handler.buildMap({internal: { id: 'map' } }, function(){
+      markers = handler.addMarkers(<%= raw hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  </script>
+  <% end %>

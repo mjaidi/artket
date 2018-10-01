@@ -144,3 +144,12 @@
     }
 }
 }
+
+@media (min-width: 992px) {
+  .searchform {
+    width: 150%;
+    input[type="search"] {
+      width: 90%;
+    }
+  }
+}

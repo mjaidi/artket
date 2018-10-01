@@ -35,6 +35,11 @@ gem 'carrierwave', '~> 1.2'
 
 # Maps Setup - geocode and display
 gem "geocoder"
+gem "gmaps4rails"
+
+source "https://rails-assets.org" do
+  gem "rails-assets-underscore"
+end
 
 # Seeding Fake Data
 gem 'faker'

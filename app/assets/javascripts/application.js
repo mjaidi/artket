@@ -5,4 +5,6 @@
 //= require algolia/v3/algoliasearch.min
 //= require masonry/jquery.masonry
 //= require masonry/masonry.min
+//= require underscore
+//= require gmaps/google
 //= require_tree .

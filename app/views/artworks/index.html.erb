@@ -39,7 +39,7 @@
     <%  if @artworks[0].nil? %>
       <br><br><h4 class = 'text-center'>Aucun Résultat</h4><br><br>
     <% else %>
-      <%= render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, markers: @markers %>
+      <%= render 'shared/results', artworks: @artworks, galleries: @galleries, artists: @artists, hash: @hash %>
     <% end %>
   </div>
 
