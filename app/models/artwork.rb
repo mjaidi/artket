@@ -14,12 +14,6 @@ class Artwork < ApplicationRecord
   validates :gallery, presence: true
   validates :artist, presence: true
 
-
-
-  algoliasearch do
-    # all attributes will be sent
-  end
-
   pg_search_scope :global_search,
     against: [ :name, :description ],
     associated_against: {
