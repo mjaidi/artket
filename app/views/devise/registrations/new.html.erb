@@ -43,13 +43,13 @@
                   required: true,
                   autofocus: true ,
                   input_html: { autocomplete: "email" }%>
-      </div>            
+      </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
       <%= f.input :password,
                   required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" },
                   label: "Mot de passe" %>
       </div>
@@ -61,11 +61,11 @@
                   input_html: { autocomplete: "new-password" },
                   label: "Mot de passe" %>
         </div>
-      </div>      
+      </div>
     </div>
 
     <div class="form-actions sign-btn">
-      <%= f.button :submit, "Sign up"%>
+      <%= f.button :submit, "S'inscrire"%>
     </div>
   <% end %>
 

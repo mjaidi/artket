@@ -37,11 +37,11 @@
               <% @conversations.each do |conversation| %>
               <div class="messages" id="messages<%= conversation.id %>">
                 <% if conversation.messages.empty? %>
-                  <p>You have no messages in this conversation</p>
+                  <p>Vous n'avez pas de message dans cette conversation</p>
                 <% else %>
                   <%= render "conversations/shared/messages", conversation: conversation %>
                 <% end %>
-              </div>  
+              </div>
               <%= render "conversations/shared/message_form", conversation: conversation %>
             <% end %>
             <% end %>
