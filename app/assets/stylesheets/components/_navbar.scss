@@ -15,12 +15,19 @@
     font-family: 'Cinzel', serif;
   }
 
-  .navbar-brand{
-    padding: 0;
-    img {
-      height: 100%;
-    }
+.navbar-brand{
+  padding: 0;
+  img {
+    height: 50px;
   }
+}
+
+.navbar-brand-small {
+  padding: 0;
+  img {
+    height: 30px;
+  }
+}
 
   .left-part{
     display: flex;
@@ -143,13 +150,4 @@
       color: $gold;
     }
 }
-}
-
-@media (min-width: 992px) {
-  .searchform {
-    width: 150%;
-    input[type="search"] {
-      width: 90%;
-    }
-  }
 }

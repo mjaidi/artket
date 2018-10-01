@@ -7,7 +7,9 @@
         </div>
         <ul class="list-unstyled">
           <li>Comment ça marche?</li>
-          <li>Qui sommes nous?</li>
+          <li>
+            <p class="" data-toggle="modal" data-target=".modal-nous">Qui sommes nous?</p>
+          </li>
         </ul>
       </div>
       <div class="col-xs-6 col-sm-3">
@@ -23,8 +25,12 @@
           Services
         </div>
         <ul class="list-unstyled">
-          <li>Expertise</li>
-          <li>Photo Pro</li>
+          <li>
+            <p class="" data-toggle="modal" data-target=".modal-expertise">Expertise</p>
+          </li>
+          <li>
+            <p class="" data-toggle="modal" data-target=".modal-photo">Photo Pro</p>
+          </li>
         </ul>
       </div>
       <div class="col-xs-6 col-sm-3">
@@ -33,7 +39,9 @@
         </div>
         <ul class="list-unstyled">
           <li>Contacter Artket</li>
-          <li>Envoyer une Suggestion</li>
+          <li>
+            <p class="" data-toggle="modal" data-target=".modal-contact">Envoyer une Suggestion</p>
+          </li>
         </ul>
       </div>
     </div> <!-- Row end -->
@@ -48,7 +56,7 @@
               <%= link_to root_path, class: "navbar-brand" do %>
                 <%= image_tag ("logo.png") %>
               <% end %>
-            <p>2018 Artket</p>
+            <p>© 2018 Artket</p>
             <p>CGU</p>
             <p>Sécurité</p>
         </div>
@@ -62,3 +70,9 @@
       </div>
     </div> <!-- Row End -->
   </div> <!-- Container end -->
+
+
+<%= render 'shared/modal_nous' %>
+<%= render 'shared/modal_expertise' %>
+<%= render 'shared/modal_photo_pro' %>
+<%= render 'shared/modal_contact' %>
