@@ -1,0 +1,45 @@
+<div class="full-height">
+ <!-- Form contact -->
+  <div class="container container-contacts">
+    <div class="row">
+      <h1>Contactez Artket</h1>
+
+      <div class="col-xs-12 col-md-6">
+        <div class="content-wrapper">
+         <form name="contact-form" class="" id="contact-form">
+          <div class="contact-form row">
+            <div class="form-field col-xs-12">
+               <input id="name" class="input-text js-input" type="text" >
+               <label class="label" for="name">Nom</label>
+            </div>
+            <div class="form-field col-xs-12">
+               <input id="email" class="input-text js-input" type="email" >
+               <label class="label" for="email">E-mail</label>
+            </div>
+            <div class="form-field col-xs-12">
+               <textarea id="message" class="input-text js-input" cols="40" rows="5" ></textarea>
+               <label class="label" for="message">Message</label>
+            </div>
+            <div class="form-field col-xs-12 align-center">
+               <input class="btn btn-create" type="submit" value="Contactez Nous">
+            </div>
+          </div>
+         </form>
+      </div>
+    </div>
+
+
+    <div class="col-xs-12 col-md-6">
+      <div
+        id="map-contact"
+        style="height: 400px; width: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        ></div>
+        <div class="adress">
+          <p>Addresse de la Galerie</p>
+          <p>Notre Numéro de Téléphone</p>
+          <p>Notre Email</p>
+        </div>
+    </div>
+  </div>
+</div>
