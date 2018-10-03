@@ -27,6 +27,10 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @markers = {
+      lat: 33.593466,
+      lng: -7.642547
+    }
   end
 
   def comment_marche
