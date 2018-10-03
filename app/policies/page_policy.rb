@@ -16,4 +16,15 @@ class PagePolicy < ApplicationPolicy
   def user_dashboard?
     true
   end
+
+  def gallery_info?
+    true
+  end
+
+  def contact?
+    true
+  end
+
+  def comment_marche?
+  end
 end

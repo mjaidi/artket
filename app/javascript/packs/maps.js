@@ -28,5 +28,7 @@ if (mapElementContact) { // don't try to build a map if there's no div#map to in
   const markers = JSON.parse(mapElementContact.dataset.markers);
   const map = new GMaps({ el: '#map-contact', lat: markers.lat, lng: markers.lng });
   map.addMarker(markers);
+  map.setCenter(markers[0].lat, markers[0].lng);
+  map.setZoom(14);
 };
 

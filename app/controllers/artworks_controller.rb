@@ -25,7 +25,7 @@ class ArtworksController < ApplicationController
     else 
       @artworks = @artworks.select { |artwork| artwork.categories.ids.include? params["subcategory"].to_i}.select { |artwork| artwork.gallery.city == params["city"]} 
     end 
-
+    
     @artists = @artworks.map {|artwork| artwork.artist}.paginate(:page => params[:page], :per_page => 9)
     @galleries = @artworks.map {|artwork| artwork.gallery}.paginate(:page => params[:page], :per_page => 9)
     @artworks = @artworks.paginate(:page => params[:page], :per_page => 9)
