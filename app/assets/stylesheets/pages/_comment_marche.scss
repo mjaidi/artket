@@ -1,0 +1,49 @@
+.info-banner {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  .title-galeries {
+    color: white;
+    margin-bottom: 0;
+  }
+  .nav-links {
+    margin-top: 20px;
+  }
+  .nav-links li a{
+    padding: 6px;
+    margin: 2px 2px;
+    border: 1px solid white;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    &:hover {
+      background-color: $gold;
+      text-decoration: none;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .info-banner {
+    .nav-links li a{
+      padding: 8px;
+      margin: 10px 10px;
+      font-size: 18px;
+    }
+  }
+}
+
+.no-style {
+  background: none;
+  border: none;
+}
+
+.small {
+  font-size: 35px;
+}

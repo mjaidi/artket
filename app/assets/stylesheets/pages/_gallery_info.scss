@@ -1,0 +1,57 @@
+.banner-subtitle p{
+  font-size: 18px;
+  font-family: 'Nanum Myeongjo', serif;
+  color: rgb(230,230,230);
+}
+
+.log-btn-banner {
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  background-color: $gold;
+  color: white;
+  font-size: 15px;
+  &:hover {
+    background-color: #ccc;
+    text-decoration: none;
+    color: white;
+  }
+}
+  @media (min-width: 992px) {
+  .banner-subtitle p{
+    font-size: 30px;
+  }
+  .log-btn-banner {
+    font-size: 20px;
+  }
+}
+.title-info {
+  font-size: 25px;
+}
+
+.gallery-content-wrapper {
+  padding: 50px 0;
+}
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  padding: 50px 0;
+}
+
+.border-bottom {
+  border-bottom: 2px solid $gold;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: rgba(194, 164, 118, 0.4); // Choose your own color here
+ }

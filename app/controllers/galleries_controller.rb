@@ -4,12 +4,10 @@ class GalleriesController < ApplicationController
 
   def index
     @galleries = policy_scope(Gallery)
-    @markers = @galleries.map do |gallery|
-      {
-        lat: gallery.latitude,
-        lng: gallery.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-      }
+    @hash = Gmaps4rails.build_markers(@galleries) do |gallery, marker|
+      marker.lat gallery.latitude
+      marker.lng gallery.longitude
+      marker.infowindow render_to_string(partial: "artworks/shared/artworks_map_box", locals: {  gallery: gallery })
     end
   end
 
