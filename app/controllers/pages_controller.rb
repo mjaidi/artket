@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :gallery_info, :contact, :comment_marche]
 
   def home
     @galleries = Gallery.all
@@ -21,5 +21,18 @@ class PagesController < ApplicationController
     @artworks = Artwork.joins(:artwork_likes).where("user_id = ?", current_user.id)
     @galleries = Gallery.joins(:gallery_likes).where("gallery_likes.user_id = ?", current_user.id)
     @artists = Artist.joins(:artist_likes).where("artist_likes.user_id = ?", current_user.id)
+  end
+
+  def gallery_info
+  end
+
+  def contact
+    @markers = {
+      lat: 33.593466,
+      lng: -7.642547
+    }
+  end
+
+  def comment_marche
   end
 end

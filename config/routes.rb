@@ -18,6 +18,11 @@ Rails.application.routes.draw do
 #Subcategories Routes
   get "categories/:id/get_subcategories", to: "artworks#get_subcategories", as: :get_subcategories , defaults: { format: "js" }
 
+# Contact Page and Gallery Sign Up Page Routes 
+  get "contact", to: "pages#contact", as: :contact_page
+  get "gallery_info", to: "pages#gallery_info", as: :gallery_info
+  get "comment_marche", to: "pages#comment_marche", as: :comment_marche
+
 
 # Logged In Gallerist Routes - dashboard, and lists
   get "users/:user_id/galleries/:gallery_id", to: "galleries#user_gallery", as: :user_gallery
@@ -38,7 +43,7 @@ Rails.application.routes.draw do
   get "users/:user_id/artist/:artist_id", to: "artist_likes#create", as: :create_artist_like
   delete "users/:user_id/artist/:artist_id", to: "artist_likes#destroy", as: :destroy_artist_like
 
-  # Messages Routes 
+# Messages Routes 
   get "users/:user_id/conversations", to: "conversations#index", as: :conversations
   post "users/:user_id/conversations", to: "conversations#create", as: :create_conversation
   post "users/:user_id/conversations/:conversation_id/messages", to: "messages#create", as: :create_conversation_message

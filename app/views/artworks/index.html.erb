@@ -8,11 +8,11 @@
   <div class="container text-center select-form">
     <div class="row">
        <%= form_tag("",method: "get", remote: true, class: "form-inline") %> 
-       <input type="hidden" name="search_query" value="<%=params[:query]%>">
+       <input type="hidden" name="search_query" value="<%=params[:query]%>" include_blank= "">
        <div class="col-xs-12 col-sm-4">
         <label for="city"> Ville </label>
         <br>
-        <%= select_tag "city", options_from_collection_for_select(Gallery.all.uniq,"city", "city"), id: "city", include_blank: 'AUCUN SELECTIONNER', class: "form-control filter" %>
+        <%= select_tag "city", options_from_collection_for_select(Gallery.all.uniq,"city", "city"), id: "city", include_blank: 'AUCUN SELECTIONNER', name: "city", class: "form-control filter" %>
        </div> 
        <div class="col-xs-12 col-sm-4">
         <label for="category"> Categorie </label>
@@ -24,8 +24,8 @@
           <br>
           <div id="select-category">
           <%= select_tag "subcategory", options_from_collection_for_select(@categories.where(parent_id: @selected_category), "id", "name"), id: "category", include_blank: 'AUCUN SELECTIONNER', class: "form-control filter", name: "subcategory"%>
-         </div>
-       </div>
+          </div>
+        </div>
       </div>
       <br>
       <div class="row">

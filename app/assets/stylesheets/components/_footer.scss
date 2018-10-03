@@ -14,6 +14,13 @@
       color: $gold;
       cursor: pointer;
      } 
+     a {
+      color: inherit;
+      &:hover {
+        color: inherit;
+        text-decoration: none;
+      }
+     }
     }
   }
 
@@ -85,3 +92,4 @@
 .modal-round {
   border-radius: 15px !important;
 }
+

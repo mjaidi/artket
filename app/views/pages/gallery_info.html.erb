@@ -1,0 +1,143 @@
+<div class="full-height">
+<!-- Banner -->
+  <div class="info-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= image_path('comment-marche.png') %>);">
+
+    <div class="title-galeries">
+      <%= image_tag ("ArtKet.svg"),  style: "width: 150px;" %>
+      <p> Vous êtes une galerie? </p>
+    </div>
+    <div class="banner-subtitle">
+      <p>Présentez vos Oeuvres au Monde</p>
+    </div>
+     <%= link_to "S'inscrire", new_user_session_path, class: "log-btn-banner" %>  
+  </div>
+
+
+<!-- row content -->
+  <div class="gallery-content-wrapper">
+    <div class="container">
+      <div class="row row-eq-height border-bottom">
+        <div class="col-sm-6 flex-box">
+          <div class="title-info text-center">
+            <p> Rendez Votre Galerie Mobile </p>
+            <%= image_tag ("mobile.png"),  style: "width: 50px;" %>
+          </div>
+        </div>
+        <div class="col-sm-6  flex-box">
+          <div class="wrap-text">
+            <p>
+              Mettez en ligne vos oeuvres et bénéficiez de tous les avantages d’une galerie virtuelle : présentez vos oeuvres à de potentiels acheteurs à tout moment.
+            </p>
+          </div>
+        </div>
+      </div>    
+      <div class="row row-eq-height border-bottom">
+        <div class="col-sm-6 flex-box">
+          <div class="wrap-text">
+            <p>
+              Depuis votre tableau de bord vous pourrez avoir un apreçu du traffic sur votre page (nombre de vues, oeuvres likées, oeuvres les plus consultées..). Vous pourrez également gérer vos oeuves, expositions et artistes.
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-6 flex-box">
+          <div class="title-info text-center">
+            <p> gerer votre page  </p>
+            <%= image_tag ("gerer.png"),  style: "width: 50px;" %>
+          </div>
+          
+        </div>
+      </div>    
+      <div class="row row-eq-height border-bottom">
+        <div class="col-sm-6 flex-box">
+          <div class="title-info text-center">
+            <p> gardez le contact avec vos clients </p>
+            <%= image_tag ("contact.png"),  style: "width: 50px;" %>
+          </div>
+        </div>
+        <div class="col-sm-6  flex-box">
+          <div class="wrap-text">
+            <p>
+              Grâce au chat vous pourrez discuter avec vos clients, les avertir de vos évenements et des nouveautés sur votre page.
+            </p>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+<!-- abonnement table -->
+
+  <div class="container left">
+    <div class="title-info text-center">
+      <p> Nos Abonnements </p>
+    </div>
+      <table class="table table-striped table-artwork">
+        <tr>
+          <th></th>
+          <th class="text-center">Standard</th>
+          <th class="text-center">Prémium</th>
+        </tr>
+        <tr>
+          <td>Oeuvres mises en ligne</td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Visibilité dans les pages de recherche</td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Visibilité des événements et des oeuvres exposées</td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Accès à la page de gestion</td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Assistance pour les mises en ligne</td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Accès au chat en ligne</td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Galerie en première page</td>
+          <td class="text-center"></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Evénements couverts dans la bannière en première page</td>
+          <td class="text-center"></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Garantie de la meilleur visibilité sur les réseaux sociaux</td>
+          <td class="text-center"></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Mention de la galierie dans les newsletter</td>
+          <td class="text-center"></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Possibilité de mettre des vidéos</td>
+          <td class="text-center"></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Personnalisation de la page de la galerie</td>
+          <td class="text-center"></td>
+          <td class="text-center"><i class="fas fa-circle"></i></td>
+        </tr>
+      </table>
+  </div>
+
+</div>
+
