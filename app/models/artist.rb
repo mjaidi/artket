@@ -1,5 +1,4 @@
 class Artist < ApplicationRecord
-  include AlgoliaSearch
   has_many :artworks
   belongs_to :user
   has_many :artist_likes

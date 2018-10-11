@@ -45,7 +45,6 @@ end
 gem 'faker'
 
 #search
-gem "algoliasearch-rails"
 gem 'pg_search'
 gem 'will_paginate', '~> 3.1.0'
 

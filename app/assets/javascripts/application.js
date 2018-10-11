@@ -2,7 +2,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-multiselect
-//= require algolia/v3/algoliasearch.min
 //= require masonry/jquery.masonry
 //= require masonry/masonry.min
 //= require underscore

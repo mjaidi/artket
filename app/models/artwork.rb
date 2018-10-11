@@ -1,5 +1,4 @@
 class Artwork < ApplicationRecord
-  include AlgoliaSearch
   include PgSearch
 
   belongs_to :gallery
