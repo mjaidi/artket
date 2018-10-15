@@ -2,9 +2,10 @@
     <div class="container top-artwork-container">
       <div class="row">
         <div class="col-xs-12 col-md-6 text-center">
-            <!-- Artist picture -->              
+            <!-- Artist picture -->
+            <% if @artist.photo != nil %>
               <img src="<%= cl_image_path(@artist.photo.url(:cards))%>">
-                
+            <% end %>
         </div>
       <!-- Info about Artist -->
         <div class="col-xs-12 col-md-6">
@@ -16,14 +17,18 @@
               <hr>
               <div class="row">
                 <div class="col-sm-6">
+                  <% if @artist.birth_date != nil %>
                    <div class="cat-art">
                     <p>Année de Naissance: </div>
                     <%= @artist.birth_date.strftime("%d/%m/%Y") %></p>
+                  <% end %>
                 </div>
                 <div class="col-sm-6">
+                  <% if @artist.death_date != nil %>
                    <div class="cat-art">
                     <p>Année de Décès: </div>
                     <%= @artist.death_date.strftime("%d/%m/%Y") %></p>
+                <% end %>
                 </div>
               </div>
               <hr>
@@ -32,7 +37,7 @@
               <p>Description: </div><%= @artist.description %></p>
 
           </div>
-          
+
         </div>
       </div>
     </div>

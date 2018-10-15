@@ -3,7 +3,7 @@ class Gallery < ApplicationRecord
   has_many :artworks
   has_many :exhibitions
   has_many :artists, through: :artworks
-  has_many :gallery_likes
+  has_many :gallery_likes, dependent: :destroy
 
   mount_uploader :photo, PhotoUploader
 

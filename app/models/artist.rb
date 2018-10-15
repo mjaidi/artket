@@ -1,7 +1,7 @@
 class Artist < ApplicationRecord
   has_many :artworks
   belongs_to :user
-  has_many :artist_likes
+  has_many :artist_likes, dependent: :destroy
 
   mount_uploader :photo, PhotoUploader
 
