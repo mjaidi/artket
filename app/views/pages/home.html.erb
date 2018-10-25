@@ -18,14 +18,14 @@
             </div>
             <br>
             <div class="banner-subtitle">
-              <p>Première plateforme pour les galeries d'art au Maroc</p>
+              <p>Plateforme pour les galeries d'art</p>
             </div>
             <% if user_signed_in? %>
             <% else %>
                 <div class="banner-text">
                   <p>Inscrivez-vous pour reçevoir les dernières nouvelles de vos artistes préférés</p>
                 </div>
-                  <%= link_to "Sign In", new_user_session_path, class: "log-btn-banner" %>
+                  <%= link_to "S'inscrire", new_user_session_path, class: "log-btn-banner" %>
             <% end %>
         </div>
       </div>
@@ -84,19 +84,19 @@
       <div class="col-xs-6 col-sm-4 flex-home">
         <%= link_to artworks_path(category: Category.find_by_name("Photographie").id) do %>
            <button class="btn btn-home">Photographie</button>
-        <% end %> 
+        <% end %>
       </div>
-      <div class="col-xs-6 col-sm-4 flex-home">  
+      <div class="col-xs-6 col-sm-4 flex-home">
         <%= link_to artworks_path(category: Category.find_by_name("Editions").id) do %>
            <button class="btn btn-home">Editions</button>
         <% end %>
       </div>
-      <div class="col-xs-6 col-sm-4 flex-home">   
+      <div class="col-xs-6 col-sm-4 flex-home">
         <%= link_to artworks_path(category: Category.find_by_name("Dessin").id) do %>
            <button class="btn btn-home">Dessin</button>
         <% end %>
       </div>
-      <div class="col-xs-6 col-sm-4 flex-home">   
+      <div class="col-xs-6 col-sm-4 flex-home">
         <%= link_to artworks_path do %>
            <button class="btn btn-home">Tous</button>
         <% end %>
@@ -113,12 +113,10 @@
   </div>
     <div class="container">
       <div class="row">
-        <% 3.times do %>
           <% @galleries.each do |gallery| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
             <%= render "shared/gallery_card", gallery: gallery %>
           </div>
-        <% end %>
         <% end %>
       </div>
     </div>
@@ -127,7 +125,7 @@
 
 <!-- Artistes à suivre  -->
   <div class="title-artistes">
-    <p> Artistes à suivre </p>
+    <p> Artistes populaires </p>
   </div>
   <div class="container">
     <div class="row">
