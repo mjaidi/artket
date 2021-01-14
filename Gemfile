@@ -11,7 +11,7 @@ gem 'redis'
 gem 'jquery-rails'
 
 gem 'remotipart', github: 'mshibuya/remotipart'
-gem 'rails_admin', '1.4.0'
+gem 'rails_admin', '2.0.2'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
