@@ -31,7 +31,7 @@ gem 'omniauth-facebook'
 
 #image uploading through cloudinary
 gem "cloudinary"
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 2.1'
 
 # Maps Setup - geocode and display
 gem "geocoder"
